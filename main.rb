@@ -4,6 +4,8 @@ require 'gosu'
 require_relative 'enum'
 require_relative 'hero'
 require_relative 'window'
+require_relative 'map'
+
 
 
 WindowWidth = WindowSize::Width
