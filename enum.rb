@@ -8,6 +8,6 @@ module ZOrder
 end
 
 module WindowSize
-     Width = 1024
-     Height = 576
+     Width = 1000
+     Height = 500
 end

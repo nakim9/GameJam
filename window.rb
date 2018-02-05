@@ -4,6 +4,10 @@ class Window < Gosu::Window
     super
     self.caption = "Mon jeu"
     @hero = Hero.new(width/2, height/2)
+    @map=Map.new()
+    @map.add(0,4,Carre.new(1))
+    @map.add(1,4,Carre.new(1))
+    @map.add(2,4,Carre.new(1))
   end
 
   # fonction appelée 60 fois par seconde
@@ -22,6 +26,7 @@ class Window < Gosu::Window
 
   def draw
     #@background_image.draw(0, 0, ZOrder::Background)
+    @map.draw
     @hero.draw
   end
 
