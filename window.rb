@@ -15,6 +15,7 @@ class Window < Gosu::Window
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
+    #@hero.position
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
   end
