@@ -5,6 +5,7 @@ require_relative 'enum'
 require_relative 'hero'
 require_relative 'window'
 require_relative 'map'
+require_relative 'carre'
 
 
 
