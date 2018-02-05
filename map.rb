@@ -7,7 +7,16 @@ class Map
        i=Array.new(5)
      end
   end
+  
   def add(x,y,color)
     @list[x][y]=color
+  end
+
+  def draw
+    @list.each do |i|
+      i.each do |x|
+      x.draw
+      end
+    end
   end
 end
