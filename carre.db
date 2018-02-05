@@ -1,0 +1,9 @@
+# classe map
+class Carre
+   def initialize(image)
+     @image=image
+   end
+   def draw
+     Gosu::draw_rect(@x, @y, @plateFormeWidth, @plateFormeHeight,  Gosu::Color.new(255, 255, 0, 0)) 
+   end
+end
