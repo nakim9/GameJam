@@ -47,8 +47,8 @@ class Hero
     @y += @velocityY
     @y %= 576
     @velocityX *= 0.96
-    if @velocityY<1
-    @velocityY *= 0.96
+    if @velocityY>1
+      @velocityY *= 0.96
     end
   end
 end
