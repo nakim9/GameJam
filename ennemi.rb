@@ -2,12 +2,13 @@ require_relative 'personnage'
 class Ennemi < Personnage
   # constructeur
   def initialize(x, y,map)
-
-
     super(x,y,map)
-
     #image du personnage
-    @image = Gosu::Image.new("res/hero.png")
+    @images = []
+    # on ajoute les 4 images dans le tableau -- obligatoirement 2 images
+    @images.push(Gosu::Image.new("res/enemis/DragonG.png"))
+    @images.push(Gosu::Image.new("res/enemis/DragonG.png"))
+    @image = @images[1]
   end
 
   #mouvement aléatoire
