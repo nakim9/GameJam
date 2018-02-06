@@ -209,15 +209,15 @@ end
 #methode pour récuperer le carré a partir des coordonnées
 
      def carre(x,y)
-          i = x/CarreTaille::Width
-          j = y/CarreTaille::Height
+          i = x/Carr::Width
+          j = y/Carr::Height
           return @map.list[i][j]
      end
 #methode pour avoir les coordonnées a partir de l'emplacement du carré
      def coodonees(i,j)
           point = []
-          point.push(j*CarreTaille::Height)
-          point.push(i*CarreTaille::Width)
+          point.push(j*Carr::Height)
+          point.push(i*Carr::Width)
           return point
      end
 
