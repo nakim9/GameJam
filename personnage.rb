@@ -213,8 +213,9 @@ class Personnage
       #methode pour avoir les coordonnées a partir de l'emplacement du carré
            def coodonees(i,j)
                 point = []
-                point.push(j*Carr::Height)
                 point.push(i*Carr::Width)
+                point.push(j*Carr::Height)
+
                 return point
            end
 

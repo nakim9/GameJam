@@ -13,7 +13,7 @@ module WindowSize
 end
 
 module NbCarre
-  Height = 5
+  Height = 7
 end
 
 module Carr
@@ -23,7 +23,4 @@ module Carr
     Start="S"
     Arrive="A"
 
-end
-module NbCarre
-  Height = 5
 end

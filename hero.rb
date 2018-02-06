@@ -3,6 +3,7 @@ class Hero < Personnage
   attr_reader :tirs, :temps, :tempsAttente, :pv
   # constructeur
   def initialize(x, y,map)
+
     super(x,y,map)
     #pv du heros
     @pv = 100
@@ -11,6 +12,9 @@ class Hero < Personnage
     @tempsAttente = 50
     @temps = 0
       @image = Gosu::Image.new("res/hero.png")
+      point = localiser
+      @x = point[0]
+      @y = point[1]
   end
 
   def draw
@@ -69,5 +73,21 @@ def ciel
      if contactHaut
           go_down
      end
+end
+
+def localiser
+  point = []
+  i = 0
+  j = 0
+  @map.each do |carres|
+    carres.each do |carre|
+      if carre.start
+        point = self.coodonees(i,j)
+      end
+      j +=1
+    end
+    i +=1
+  end
+  return point
 end
 end
