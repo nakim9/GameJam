@@ -1,14 +1,16 @@
-class Hero
+class Ennemi
   attr_reader :x, :y
   # constructeur
   def initialize(x, y)
+    #dernier sens de déplacement
+    @dernierDeplacement = 'right'
     # coordonnées
     @x = x
     @y = y
     @radius = 10
     # vitesse (de base 0 : à l'arret)
     @velocityX = 0.0
-    @velocityY = 1.5
+    @velocityY = 1
     #image du personnage
     @image = Gosu::Image.new("res/hero.png")
   end
@@ -19,27 +21,29 @@ class Hero
 
   # vitesse en x diminue (équivaut à un déplacement vers la gauche)
   def go_left
-    @velocityX -= 0.5
+    @dernierDeplacement = 'left'
+    @velocityX -= 0.1
   end
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
   def go_right
-    @velocityX += 0.5
+    @dernierDeplacement = 'right'
+    @velocityX += 0.1
   end
 
-  # vitesse en y diminue (équivaut à un déplacement vers le haut)
-  def go_up
-    @velocityY -= 25
-    move
-    sleep(1.0/24.0)
-    @velocityY += 25
+  #mouvement aléatoire
+  def mouvement
+    #puts @x
+    if @x+@image.width>WindowWidth-50
+      self.go_left
+    elsif @x<50
+      self.go_right
+    elsif @dernierDeplacement == 'right'
+      self.go_right
+    elsif @dernierDeplacement == 'left'
+      self.go_left
+    end
   end
-
-  # vitesse en y augmente (équivaut à un déplacement vers le bas)
-  def go_down
-    @velocityY += 0.5
-  end
-
   # modification des coordonées du héros
   def move
     @x += @velocityX
@@ -47,7 +51,7 @@ class Hero
     @y += @velocityY
     @y %= 576
     @velocityX *= 0.96
-    if @velocityY>1.5
+    if @velocityY>1
       @velocityY *= 0.6
     end
   end
@@ -69,10 +73,5 @@ class Hero
     end
   end
 
-  def enContact(item)
-    distance = Gosu::distance(@x,@y,item.x, item.y)
-    if distance<35
-      print "outch"
-    end
-  end
+
 end
