@@ -17,7 +17,11 @@ class Personnage
     end
 
     def draw
-      @image.draw(@x, @y, ZOrder::Hero)
+         carrW = Carr::Width.to_f
+         carrH = Carr::Height.to_f
+         heroW = carrW/@image.width.to_f
+         heroH = (carrH*2.0)/@image.height.to_f
+      @image.draw(@x, @y, ZOrder::Hero, heroW, heroH)
     end
 
     # vitesse en x diminue (équivaut à un déplacement vers la gauche)

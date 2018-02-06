@@ -46,7 +46,7 @@ class Window < Gosu::Window
     end
 
     @camera_x = [@hero.x - WindowSize::Width/2, 0].max
-    @camera_y = 0
+    @camera_y = 1
 
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
@@ -62,7 +62,7 @@ class Window < Gosu::Window
     end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
     if @hero.pv>0
-      #@font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
+      @font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
