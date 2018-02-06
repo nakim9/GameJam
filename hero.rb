@@ -10,6 +10,7 @@ class Hero < Personnage
     @tirs=[]
     @tempsAttente = 50
     @temps = 0
+      @image = Gosu::Image.new("res/hero.png")
   end
 
   def draw
@@ -41,7 +42,7 @@ class Hero < Personnage
       @y %= NbCarre::Height*Carr::Height
       @velocityX *= 0.96
       if   @velocityY<-1
-        @velocityY *=0.85
+        @velocityY *=0.90
       else
         @velocityY=(@velocityY-4)*0.8+6
       end
@@ -50,7 +51,7 @@ class Hero < Personnage
   #methodes
   def attaque
     if(@temps == 0)
-      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement,"res/fire.png"))
       @temps=1;
     end
   end
