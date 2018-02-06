@@ -64,7 +64,7 @@ end
       @x += @velocityX
       #@x %= WindowSize::Width
       @y += @velocityY
-      @y %= WindowSize::Height
+      #@y %= WindowSize::Height
       @velocityX *= 0.96
       if   @velocityY<-1
         @velocityY *=0.85

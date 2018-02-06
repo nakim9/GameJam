@@ -45,8 +45,8 @@ class Window < Gosu::Window
       @hero.enContact(ennemi)
     end
 
-    @camera_x = [@hero.x - WindowSize::Width / 2, 0].max
-    @camera_y = [@hero.y - WindowSize::Height / 2, 0].max
+    @camera_x = [@hero.x - WindowSize::Width/2, 0].max
+    @camera_y = [@hero.y - WindowSize::Height/2, 0].max
 
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
