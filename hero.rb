@@ -79,10 +79,12 @@ def localiser
   point = []
   i = 0
   j = 0
-  @map.each do |carres|
+  @map.list.each do |carres|
     carres.each do |carre|
-      if carre.start
-        point = self.coodonees(i,j)
+      if carre
+        if carre.start
+          point = self.coodonees(i,j)
+        end
       end
       j +=1
     end

@@ -122,11 +122,11 @@ class Map
 
     def creeMap()
       self.addMapToList("maps/test")
-
+=begin
       aleaFloat=2*rand
       aleaInt=+aleaFloat.round
       self.addMapToList("maps/1/"+aleaInt.to_s)
-=begin
+
       aleaFloat=2*rand
       aleaInt=+aleaFloat.round
         self.addMapToList("maps/2/"+aleaInt.to_s)
