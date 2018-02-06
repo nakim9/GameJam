@@ -66,7 +66,11 @@ end
       @x += @velocityX
       #@x %= WindowSize::Width
       @y += @velocityY
+<<<<<<< HEAD
+      #@y %= WindowSize::Height
+=======
       @y %= NbCarre::Height*Carr::Height
+>>>>>>> e6ff968c7744124a8dd493b74a0fc3748c7c6cb8
       @velocityX *= 0.96
       if   @velocityY<-1
         @velocityY *=0.85
