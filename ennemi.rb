@@ -1,34 +1,13 @@
-class Ennemi
-  attr_reader :x, :y, :image
+require_relative 'personnage'
+class Ennemi < Personnage
   # constructeur
-  def initialize(x, y)
-    #dernier sens de déplacement
-    @dernierDeplacement = 'right'
-    # coordonnées
-    @x = x
-    @y = y
-    @radius = 10
-    # vitesse (de base 0 : à l'arret)
-    @velocityX = 0.0
-    @velocityY = 1
+  def initialize(x, y,map)
+
+
+    super(x,y,map)
+
     #image du personnage
     @image = Gosu::Image.new("res/hero.png")
-  end
-
-  def draw
-    @image.draw(@x, @y, ZOrder::Hero)
-  end
-
-  # vitesse en x diminue (équivaut à un déplacement vers la gauche)
-  def go_left
-    @dernierDeplacement = 'left'
-    @velocityX -= 0.1
-  end
-
-  # vitesse en x augmente (équivaut à un déplacement vers la droite)
-  def go_right
-    @dernierDeplacement = 'right'
-    @velocityX += 0.1
   end
 
   #mouvement aléatoire
@@ -44,32 +23,26 @@ class Ennemi
       self.go_left
     end
   end
-  # modification des coordonées du héros
-  def move
-    @x += @velocityX
-    @x %= WindowSize::Width
-    @y += @velocityY
-    @y %= WindowSize::Height
-    @velocityX *= 0.96
-    if @velocityY>1
-      @velocityY *= 0.6
+
+  # vitesse en x diminue (équivaut à un déplacement vers la gauche)
+  def go_left
+    @dernierDeplacement = 'left'
+    if contactGauche
+         puts "blocké left"
+         go_right
+    else
+        @velocityX -= 0.5
     end
   end
 
-  def position(map)
-    #coordonées de la case sur laquelle ce trouve notre hero
-    i = @x/Carr::Width
-    j = (@y+@image.height)/Carr::Height
-    #case
-    if map[i]
-      tile = map[i][j]
-      if tile
-        @velocityY = 0
-      else
-        @velocityY = 1.5
-      end
+  # vitesse en x augmente (équivaut à un déplacement vers la droite)
+  def go_right
+    @dernierDeplacement = 'right'
+    if contactDroit
+        puts "blocké right"
+        go_left
     else
-      @velocityY = 1.5
+        @velocityX += 0.5
     end
   end
 
@@ -85,6 +58,15 @@ class Ennemi
   def update
     self.mouvement
     self.move
+  end
+
+  def sol
+      if contactBas
+        @velocityY = 0
+
+      else
+        @velocityY = 1
+      end
   end
 
 

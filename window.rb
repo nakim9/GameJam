@@ -9,7 +9,7 @@ class Window < Gosu::Window
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
-    #@ennemis.push(Ennemi.new(width/5, height/2))
+    @ennemis.push(Ennemi.new(width/5, height/2,@map))
     #initilisation de la map
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
@@ -40,8 +40,8 @@ class Window < Gosu::Window
     @ennemis.each(&:update)
 
     @ennemis.each do |ennemi|
-      ennemi.position(@map.list)
-      ennemi.tjVivant(@hero.tirs)
+      ennemi.sol
+      #ennemi.tjVivant(@hero.tirs)
       @hero.enContact(ennemi)
     end
 
@@ -66,10 +66,10 @@ class Window < Gosu::Window
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
-    @font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("bd", @hero.bd[0],@hero.bd[1], 0, 1, 1, 0xff_0000ff)
+    #@font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
+    #@font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
+    #@font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
+    #@font.draw("bd", @hero.bd[0],@hero.bd[1], 0, 1, 1, 0xff_0000ff)
 
 
   end
