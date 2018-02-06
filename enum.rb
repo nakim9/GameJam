@@ -13,12 +13,17 @@ module WindowSize
 end
 
 module NbCarre
-  Height = 7
+  Height = 5
 end
 
 module Carr
     Width = Height=WindowSize::Height/NbCarre::Height
     Terre="T"
     Vide="O"
+    Start="S"
+    Arrive="A"
 
+end
+module NbCarre
+  Height = 5
 end
