@@ -14,5 +14,5 @@ require_relative 'test'
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
 
-Window = Window.new(WindowWidth, WindowHeight)
+Window =Window.new(WindowWidth, WindowHeight)
 Window.show

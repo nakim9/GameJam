@@ -20,5 +20,5 @@ module Carr
 
 end
 module NbCarre
-  Height = 7
+  Height = 5
 end
