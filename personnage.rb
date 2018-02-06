@@ -1,0 +1,3 @@
+class personnage
+  
+end
