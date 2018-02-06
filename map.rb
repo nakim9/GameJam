@@ -71,11 +71,11 @@ class Map
     aFile.syswrite("\n")
     for y in 0..NbCarre::Height-1
       for x in 0..@width-1
-        if @list[x][y]
-        aFile.syswrite(Carr::Terre)
-      else
-        aFile.syswrite(Carr::Vide)
-      end
+        if @list[x][y]==Carr::Terre
+          aFile.syswrite(Carr::Terre)
+        else
+          aFile.syswrite(Carr::Vide)
+        end
       end
       aFile.syswrite("\n")
     end
@@ -94,17 +94,17 @@ class Map
         newList = Array.new(taille){Array.new(NbCarre::Height,nil)}
         aFile.sysread(1)
         for y in 0..NbCarre::Height-1
-
           x=0
           notfin=true
           while notfin
-
             if x<@width
               newList[x][y]=@list[x][y]
             else
               c=aFile.sysread(1)
               if c==Carr::Terre
                 newList[x][y]=Carre.new(Carr::Terre)
+              elsif c==Carr::Start
+                newList[x][y]=Carre.new(Carr::Start)
               elsif c=="\n"
                 notfin=false
               else
