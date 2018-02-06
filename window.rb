@@ -9,7 +9,7 @@ class Window < Gosu::Window
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
-    #@ennemis.push(Ennemi.new(width/5, height/2))
+    @ennemis.push(Ennemi.new(width/5, height/2,@map))
     #initilisation de la map
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
@@ -40,8 +40,8 @@ class Window < Gosu::Window
     @ennemis.each(&:update)
 
     @ennemis.each do |ennemi|
-      ennemi.position(@map.list)
-      ennemi.tjVivant(@hero.tirs)
+      ennemi.sol
+      #ennemi.tjVivant(@hero.tirs)
       @hero.enContact(ennemi)
     end
 
@@ -53,16 +53,12 @@ class Window < Gosu::Window
   end
 
   def draw
-             @font.draw(@camera_y.to_s, @camera_x,@camera_y, 0, 1, 1, 0xff_0000ff)
     #@background_image.draw(0, 0, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @hero.draw
       @ennemis.each(&:draw)
       @hero.tirs.each(&:draw)
-      @font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
-      @font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
-      @font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
     end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
     if @hero.pv>0
