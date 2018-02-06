@@ -34,7 +34,7 @@ class Window < Gosu::Window
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
-    @hero.position(@map.list)
+    @hero.position()
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end

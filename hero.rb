@@ -65,13 +65,12 @@ class Hero
 
   end
 
-  def position (map)
+  def position ()
     #coordonées de la case sur laquelle ce trouve notre hero
     i = @x/100
     j = (@y+@image.height)/100
     #case
-    tile = map[i][j]
-    if tile
+    if aLesPiedParterre()
       @velocityY = 0
     end
   end
@@ -89,7 +88,7 @@ class Hero
 
   def aLesPiedParterre()
     i = @x/100
-    j = @y/100
+    j = (@y+@image.height)/100
     return @map.list[i][j]!=nil
   end
 
