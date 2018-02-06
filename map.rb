@@ -51,6 +51,7 @@ class Map
         aFile.syswrite("0")
       end
       end
+      aFile.syswrite("\n")
     end
         aFile.close
     end
