@@ -65,7 +65,7 @@ class Hero
   def position (map)
     #coordonées de la case sur laquelle ce trouve notre hero
     i = @x/100
-    j = @y/100
+    j = (@y+@image.height)/100
     #case
     tile = map[i][j]
     if tile
