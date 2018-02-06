@@ -9,9 +9,6 @@ class Map
   end
 
   def add(x,y,carre)
-    print(x)
-    print(y)
-    print("\n")
     @list[x][y]=carre
 
   end
@@ -22,7 +19,7 @@ class Map
       j=0
       x.each do |y|
         if y
-      Gosu::draw_rect(i*Carre::Width, j*Carre::Height, Carre::Width, Carre::Height,  Gosu::Color.new(255, 255, 0, 0))
+      Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 0, 0))
       end
       j=j+1
     end
@@ -37,7 +34,6 @@ class Map
       disaine=aFile.sysread(1)
       uniter=aFile.sysread(1)
       @whight=centaine.to_i*100+disaine.to_i*10+uniter.to_i
-      print(@whight)
       @list = Array.new(@whight){Array.new(5,nil)}
       aFile.sysread(1)
       for y in 0..NbCarre::Height-1
@@ -66,9 +62,9 @@ class Map
     for y in 0..4
       for x in 0..14
         if @list[x][y]
-        aFile.syswrite("1")
+        aFile.syswrite(Carr::Terre)
       else
-        aFile.syswrite("0")
+        aFile.syswrite(Carr::Vide)
       end
       end
       aFile.syswrite("\n")

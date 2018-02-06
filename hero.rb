@@ -57,9 +57,9 @@ class Hero
   def move
     if @pv>0
       @x += @velocityX
-      @x %= 1024
+      @x %= WindowSize::Width
       @y += @velocityY
-      @y %= 576
+      @y %= WindowSize::Height
       @velocityX *= 0.96
       if   @velocityY<-1
         @velocityY *=0.85
@@ -74,8 +74,8 @@ class Hero
 
   def position ()
     #coordonées de la case sur laquelle ce trouve notre hero
-    i = @x/100
-    j = (@y+@image.height)/100
+    i = @x/Carr::Width
+    j = (@y+@image.height)/Carr::Height
     #case
     if aLesPiedParterre()
       @velocityY = 0
@@ -107,8 +107,8 @@ class Hero
   end
 
   def aLesPiedParterre()
-    i = @x/100
-    j = (@y+@image.height)/100
+    i = @x/Carr::Width
+    j = (@y+@image.height)/Carr::Height
     return @map.list[i][j]!=nil
   end
 
