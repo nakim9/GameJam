@@ -12,9 +12,12 @@ module WindowSize
      Height = 500
 end
 
-module CarreTaille
-    CarreWidth=WindowSize::Width/10
-    CarreHeight=WindowSize::Height/5
+module Carre
+    Width=WindowSize::Width/10
+    Height=WindowSize::Height/5
+    Terre="T"
+    Vide="V"
+
 end
 module NbCarre
   Height = 5
