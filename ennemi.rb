@@ -47,9 +47,9 @@ class Ennemi
   # modification des coordonées du héros
   def move
     @x += @velocityX
-    @x %= 1024
+    @x %= WindowSize::Width
     @y += @velocityY
-    @y %= 576
+    @y %= WindowSize::Height
     @velocityX *= 0.96
     if @velocityY>1
       @velocityY *= 0.6
@@ -58,8 +58,8 @@ class Ennemi
 
   def position(map)
     #coordonées de la case sur laquelle ce trouve notre hero
-    i = (@x)/100
-    j = (@y+@image.height)/100
+    i = @x/Carr::Width
+    j = (@y+@image.height)/Carr::Height
     #case
     if map[i]
       tile = map[i][j]

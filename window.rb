@@ -3,29 +3,17 @@ class Window < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @map=Map.new()
+    @map=Map.new("maptangui")
+
+
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     #@ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
-    @map.add(0,4,Carre.new(1))
-    @map.add(1,4,Carre.new(1))
-    @map.add(2,4,Carre.new(1))
-    @map.add(3,4,Carre.new(1))
-    @map.add(4,4,Carre.new(1))
-    @map.add(5,4,Carre.new(1))
-    @map.add(6,4,Carre.new(1))
-    @map.add(7,4,Carre.new(1))
-    @map.add(8,4,Carre.new(1))
-    @map.add(9,4,Carre.new(1))
-    @map.add(9,3,Carre.new(0,true))
-    @map.add(11,4,Carre.new(1))
-    @map.add(12,4,Carre.new(1))
-    @map.add(0,2,Carre.new(1))
-    @map.add(1,2,Carre.new(1))
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
+    @camera_x = @camera_y = 0
   end
 
   # fonction appelée 60 fois par seconde
@@ -57,16 +45,21 @@ class Window < Gosu::Window
       @hero.enContact(ennemi)
     end
 
+    @camera_x = [@hero.x - WindowSize::Width / 2, 0].max
+    @camera_y = [@hero.y - WindowSize::Height / 2, 0].max
+
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
   end
 
   def draw
     #@background_image.draw(0, 0, ZOrder::Background)
-    @map.draw
-    @hero.draw
-    @ennemis.each(&:draw)
-    @hero.tirs.each(&:draw)
+    Gosu.translate(-@camera_x, -@camera_y) do
+      @map.draw
+      @hero.draw
+      @ennemis.each(&:draw)
+      @hero.tirs.each(&:draw)
+    end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
     if @hero.pv>0
       @font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
