@@ -46,32 +46,30 @@ class Window < Gosu::Window
     end
 
     @camera_x = [@hero.x - WindowSize::Width/2, 0].max
-    @camera_y = [@hero.y - WindowSize::Height/2, 0].max
+    @camera_y = 0
 
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
   end
 
   def draw
+             @font.draw(@camera_y.to_s, @camera_x,@camera_y, 0, 1, 1, 0xff_0000ff)
     #@background_image.draw(0, 0, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @hero.draw
       @ennemis.each(&:draw)
       @hero.tirs.each(&:draw)
+      @font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
     end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
     if @hero.pv>0
-      @font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
+      #@font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
-    @font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
-    @font.draw("bd", @hero.bd[0],@hero.bd[1], 0, 1, 1, 0xff_0000ff)
-
-
   end
 
 end

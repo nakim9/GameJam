@@ -8,17 +8,17 @@ module ZOrder
 end
 
 module WindowSize
-     Width = 1920
-     Height = 1080
+     Width = 800
+     Height = 600
+end
+
+module NbCarre
+  Height = 7
 end
 
 module Carr
-    Width=WindowSize::Width/10
-    Height=WindowSize::Height/5
+    Width = Height=WindowSize::Height/NbCarre::Height
     Terre="T"
     Vide="O"
 
-end
-module NbCarre
-  Height = 7
 end
