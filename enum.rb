@@ -12,7 +12,7 @@ module WindowSize
      Height = 500
 end
 
-module Carre
+module Carr
     Width=WindowSize::Width/10
     Height=WindowSize::Height/5
     Terre="T"
