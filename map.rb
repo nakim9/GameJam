@@ -2,10 +2,10 @@
 
 class Map
   attr_reader :list , :width
-   def initialize(name)
+   def initialize()
      @width=000
      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-     self.addMapToList(name)
+     self.creeMap()
 
   end
 
@@ -47,6 +47,10 @@ class Map
           x=0
           notfin=true
           while notfin
+            print("\n")
+            print(y)
+            print(x)
+            print("\n")
             if x<@width
               newList[x][y]=@list[x][y]
             else
@@ -67,6 +71,7 @@ class Map
 
       aFile.close
       @list=newList
+      @width=taille
     end
     end
 
@@ -74,16 +79,22 @@ class Map
       self.addMapToList("maps/test")
 =begin
       aleaFloat=2*rand
-      aleaInt=+aleaFloat.round
-      self.addMapToList("maps/1/"+aleaInt.to_s)
+      aleaInt=aleaFloat.round
+      self.addMapToList("maps/1/1")
 
       aleaFloat=2*rand
       aleaInt=+aleaFloat.round
-        self.addMapToList("maps/2/"+aleaInt.to_s)
+      self.addMapToList("maps/2/"+aleaInt.to_s)
+      aleaFloat=2*rand
+      aleaInt=+aleaFloat.round
+      self.addMapToList("maps/3/"+aleaInt.to_s)
 =end
     end
 
+
+
 end
+
 =begin
 def lectureMap(name)#lit la map name et l implemente dans @list
   if File::exists?( name )
