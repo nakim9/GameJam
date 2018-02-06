@@ -10,6 +10,8 @@ class Window < Gosu::Window
     @ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
 
+    #font pour les pvs
+    @font = Gosu::Font.new(self, "Arial", 36)
   end
 
   # fonction appelée 60 fois par seconde
@@ -26,7 +28,11 @@ class Window < Gosu::Window
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end
-
+    if (@hero.temps!=0 && @hero.temps<@hero.tempsAttente)
+      @hero.incremente
+    elsif @hero.temps==@hero.tempsAttente
+      @hero.setTemps(0)
+    end
     @hero.tirs.each(&:update)
 
     @ennemis.each(&:update)
@@ -47,6 +53,13 @@ class Window < Gosu::Window
     @hero.draw
     @ennemis.each(&:draw)
     @hero.tirs.each(&:draw)
+    #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
+    if @hero.pv>0
+      @font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
+    else
+      @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
+    end
+
   end
 
 end

@@ -1,7 +1,6 @@
 class Tirs
   attr_reader :x, :y
   def initialize(x, y, sens)
-    puts "tir"
     @velocity = Gosu::random(0.8, 30.3)
     @image = Gosu::Image.new("res/fire.png")
     @x = x
@@ -36,7 +35,6 @@ class Tirs
     reponse = false
     if distance<150
       reponse = true
-      print "outch"
     end
     return reponse
   end
