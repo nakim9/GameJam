@@ -46,7 +46,7 @@ class Window < Gosu::Window
     end
 
     @camera_x = [@hero.x - WindowSize::Width/2, 0].max
-    @camera_y = [@hero.y - WindowSize::Height/2, 0].max
+    @camera_y = 1
 
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
@@ -66,12 +66,6 @@ class Window < Gosu::Window
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
-    #@font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
-    #@font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
-    #@font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
-    #@font.draw("bd", @hero.bd[0],@hero.bd[1], 0, 1, 1, 0xff_0000ff)
-
-
   end
 
 end
