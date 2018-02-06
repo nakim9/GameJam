@@ -48,9 +48,11 @@ class Hero
 end
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
   def go_up
+    if contactBas
     @velocityY -= 25
     move
     sleep(1.0/24.0)
+    end
   end
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
@@ -64,7 +66,11 @@ end
       @x += @velocityX
       #@x %= WindowSize::Width
       @y += @velocityY
+<<<<<<< HEAD
       #@y %= WindowSize::Height
+=======
+      @y %= NbCarre::Height*Carr::Height
+>>>>>>> e6ff968c7744124a8dd493b74a0fc3748c7c6cb8
       @velocityX *= 0.96
       if   @velocityY<-1
         @velocityY *=0.85
