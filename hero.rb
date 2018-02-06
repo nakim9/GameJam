@@ -1,7 +1,8 @@
 class Hero
-  attr_reader :x, :y, :tirs
+  attr_reader :x, :y, :tirs, :temps, :tempsAttente
   # constructeur
-  def initialize(x, y)
+  def initialize(x, y,map)
+    @map=map
     #dernier sens de déplacement
     @dernierDeplacement = 'left'
     # coordonnées
@@ -14,6 +15,8 @@ class Hero
     #image du personnage
     @image = Gosu::Image.new("res/hero.png")
     @tirs=[]
+    @tempsAttente = 50
+    @temps = 0
   end
 
   def draw
@@ -40,9 +43,11 @@ class Hero
 
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
   def go_up
+    if aLesPiedParterre()
     @velocityY -= 25
     move
     sleep(1.0/24.0)
+  end
   end
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
@@ -58,21 +63,20 @@ class Hero
     @y %= 576
     @velocityX *= 0.96
     if   @velocityY<-1
-      @velocityY *=0.6
+      @velocityY *=0.85
     else
-      @velocityY=(@velocityY-4)*0.96+4
+      @velocityY=(@velocityY-4)*0.8+6
     end
 
 
   end
 
-  def position (map)
+  def position ()
     #coordonées de la case sur laquelle ce trouve notre hero
     i = @x/100
     j = (@y+@image.height)/100
     #case
-    tile = map[i][j]
-    if tile
+    if aLesPiedParterre()
       @velocityY = 0
     end
   end
@@ -85,8 +89,26 @@ class Hero
   end
 
   def attaque
-    @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+    if(@temps == 0)
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+      @temps=1;
+    end
   end
+
+  def incremente
+    @temps += 1
+  end
+
+  def setTemps (temps)
+    @temps = temps
+  end
+
+  def aLesPiedParterre()
+    i = @x/100
+    j = (@y+@image.height)/100
+    return @map.list[i][j]!=nil
+  end
+
 
 
 end

@@ -3,12 +3,13 @@ class Window < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @hero = Hero.new(width/2, height/2)
+    @map=Map.new()
+    @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     @ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
-    @map=Map.new()
+
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
     @map.add(2,4,Carre.new(1))
@@ -19,6 +20,8 @@ class Window < Gosu::Window
     @map.add(7,4,Carre.new(1))
     @map.add(8,4,Carre.new(1))
     @map.add(9,4,Carre.new(1))
+    @map.add(11,4,Carre.new(1))
+    @map.add(12,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
     @map.add(1,2,Carre.new(1))
   end
@@ -33,11 +36,15 @@ class Window < Gosu::Window
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
-    @hero.position(@map.list)
+    @hero.position()
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end
-    
+    if (@hero.temps!=0 && @hero.temps<@hero.tempsAttente)
+      @hero.incremente
+    elsif @hero.temps==@hero.tempsAttente
+      @hero.setTemps(0)
+    end
     @hero.tirs.each(&:update)
 
     @ennemis.each(&:update)
