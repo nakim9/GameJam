@@ -4,7 +4,7 @@ class WindowStart < Gosu::Window
     super
     self.caption = "Bienvenu!"
     @font = Gosu::Font.new(self, "Arial", 36)
-    @image = Gosu::Image.new("res/hero.png")
+    @image = Gosu::Image.new("res/acceuil.png")
   end
 
   def update
@@ -18,8 +18,7 @@ class WindowStart < Gosu::Window
 
   def draw
       @image.draw(0, 0, ZOrder::Background)
-      @font.draw("Hello ! ", WindowWidth/3,WindowHeight/3, 1, 1, 1, 0xff_0000ff)
-      @font.draw("Press Space to start ;)", WindowWidth/3,WindowHeight/2, 0, 1, 1, 0xff_0000ff)
+      
   end
 
 end
