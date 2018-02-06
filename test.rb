@@ -3,8 +3,8 @@ class Test  < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @map=Map.new()
-    @map.lectureMap("test")
+    @map=Map.new("maps/mapGrande")
+    @map.creeMap()
   end
 
   def draw
