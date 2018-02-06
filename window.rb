@@ -20,12 +20,14 @@ class Window < Gosu::Window
     @map.add(8,4,Carre.new(1))
     @map.add(9,4,Carre.new(1))
     @map.add(9,3,Carre.new(0,true))
+    @map.add(5,3,Carre.new(1))
     @map.add(11,4,Carre.new(1))
     @map.add(12,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
     @map.add(1,2,Carre.new(1))
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
+    @camera_x = camera_y = 0
   end
 
   # fonction appelée 60 fois par seconde
@@ -56,6 +58,9 @@ class Window < Gosu::Window
       ennemi.tjVivant(@hero.tirs)
       @hero.enContact(ennemi)
     end
+
+    @camera_x = [[@hero.x - WindowSize::Width / 2, 0].max, @map.width * 50 - WIDTH].min
+    @camera_y = [[@hero.y - WindowSize::Height / 2, 0].max, @map.height * 50 - HEIGHT].min
 
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
