@@ -32,7 +32,6 @@ class Hero
     @velocityY -= 25
     move
     sleep(1.0/24.0)
-    @velocityY += 25
   end
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
@@ -47,25 +46,23 @@ class Hero
     @y += @velocityY
     @y %= 576
     @velocityX *= 0.96
-    if @velocityY>1.5
-      @velocityY *= 0.6
+    if   @velocityY<-1
+      @velocityY *=0.6
+    else
+      @velocityY=(@velocityY-4)*0.96+4
     end
+
+
   end
 
-  def position(map)
+  def position (map)
     #coordonées de la case sur laquelle ce trouve notre hero
-    i = (@x)/100
-    j = (@y+@image.height)/100
+    i = @x/100
+    j = @y/100
     #case
-    if map[i]
-      tile = map[i][j]
-      if tile
-        @velocityY = 0
-      else
-        @velocityY = 1.5
-      end
-    else
-      @velocityY = 1.5
+    tile = map[i][j]
+    if tile
+      @velocityY = 0
     end
   end
 end
