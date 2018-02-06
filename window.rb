@@ -19,6 +19,7 @@ class Window < Gosu::Window
     @map.add(7,4,Carre.new(1))
     @map.add(8,4,Carre.new(1))
     @map.add(9,4,Carre.new(1))
+    @map.add(9,3,Carre.new(0,true))
     @map.add(11,4,Carre.new(1))
     @map.add(12,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
@@ -72,7 +73,7 @@ class Window < Gosu::Window
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
-    
+
   end
 
 end

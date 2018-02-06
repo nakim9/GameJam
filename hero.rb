@@ -79,6 +79,7 @@ class Hero
     #case
     if aLesPiedParterre()
       @velocityY = 0
+
     end
   end
 
