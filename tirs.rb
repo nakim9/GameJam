@@ -1,8 +1,8 @@
 class Tirs
   attr_reader :x, :y
-  def initialize(x, y, sens)
+  def initialize(x, y, sens ,image)
     @velocity = Gosu::random(0.8, 30.3)
-    @image = Gosu::Image.new("res/fire.png")
+    @image = Gosu::Image.new(image)
     @x = x
     @y = y
     @sens = sens

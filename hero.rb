@@ -51,7 +51,7 @@ class Hero < Personnage
   #methodes
   def attaque
     if(@temps == 0)
-      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement,"res/fire.png"))
       @temps=1;
     end
   end
