@@ -4,7 +4,8 @@ class Window < Gosu::Window
     super
     self.caption = "Mon jeu"
     @map=Map.new("test")
-    
+    @map.creationFil("test2")
+
 
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis

@@ -3,7 +3,7 @@
 class Map
   attr_reader :list
    def initialize(name)
-     @whight=15
+     @whight=015
      @list = Array.new(@whight){Array.new(5,nil)}
      self.lectureMap(name)
   end
@@ -57,10 +57,19 @@ class Map
 
   def creationFil(name)
     aFile=File.new(name,"w")
-    aFile.syswrite(@whight)
+    if @whight>99
+      aFile.syswrite(@whight)
+    elsif @whight>9
+      aFile.syswrite(0)
+      aFile.syswrite(@whight)
+    else
+      aFile.syswrite(0)
+      aFile.syswrite(0)
+      aFile.syswrite(@whight)
+    end
     aFile.syswrite("\n")
-    for y in 0..4
-      for x in 0..14
+    for y in 0..NbCarre::Height-1
+      for x in 0..@whight-1
         if @list[x][y]
         aFile.syswrite(Carr::Terre)
       else
