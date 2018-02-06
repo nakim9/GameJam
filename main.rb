@@ -8,10 +8,11 @@ require_relative 'map'
 require_relative 'carre'
 require_relative 'ennemi'
 require_relative 'tirs'
+require_relative 'test  '
 
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
 
-Window = Window.new(WindowWidth, WindowHeight)
+Window = Test.new(WindowWidth, WindowHeight)
 Window.show
