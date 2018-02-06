@@ -11,3 +11,8 @@ module WindowSize
      Width = 1000
      Height = 500
 end
+
+module CarreTaille
+    CarreWidth=WindowSize::Width/10
+    CarreHeight=WindowSize::Height/5
+end

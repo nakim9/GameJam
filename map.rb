@@ -15,7 +15,7 @@ class Map
       j=0
       x.each do |y|
         if y
-      Gosu::draw_rect(i*100, j*100, 100, 100,  Gosu::Color.new(255, 255, 0, 0))
+      Gosu::draw_rect(i*CarreTaille::CarreWidth, j*CarreTaille::CarreHeight, CarreTaille::CarreWidth, CarreTaille::CarreHeight,  Gosu::Color.new(255, 255, 0, 0))
       end
       j=j+1
     end
