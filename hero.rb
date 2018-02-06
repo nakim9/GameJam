@@ -48,9 +48,11 @@ class Hero
 end
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
   def go_up
+    if contactBas
     @velocityY -= 25
     move
     sleep(1.0/24.0)
+    end
   end
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
