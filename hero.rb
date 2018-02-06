@@ -1,7 +1,9 @@
 class Hero
-  attr_reader :x, :y, :tirs, :temps, :tempsAttente
+  attr_reader :x, :y, :tirs, :temps, :tempsAttente, :pv
   # constructeur
   def initialize(x, y,map)
+    #pv du heros
+    @pv = 100
     @map=map
     #dernier sens de déplacement
     @dernierDeplacement = 'left'
@@ -58,16 +60,19 @@ class Hero
 
   # modification des coordonées du héros
   def move
-    @x += @velocityX
-    #@x %= 1024
-    @y += @velocityY
-    @y %= 576
-    @velocityX *= 0.96
-    if   @velocityY<-1
-      @velocityY *=0.85
-    else
-      @velocityY=(@velocityY-4)*0.8+6
+    if @pv>0
+      @x += @velocityX
+      @x %= 1024
+      @y += @velocityY
+      @y %= 576
+      @velocityX *= 0.96
+      if   @velocityY<-1
+        @velocityY *=0.85
+      else
+        @velocityY=(@velocityY-4)*0.8+6
+      end
     end
+
 
 
   end
@@ -79,13 +84,15 @@ class Hero
     #case
     if contactBG()
       @velocityY = 0
+
     end
   end
 
   def enContact(item)
     distance = Gosu::distance(@x,@y,item.x, item.y)
     if distance<35
-      print "outch"
+      #print "outch"
+      @pv -= 1
     end
   end
 
