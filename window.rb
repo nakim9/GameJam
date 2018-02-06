@@ -4,10 +4,21 @@ class Window < Gosu::Window
     super
     self.caption = "Mon jeu"
     @hero = Hero.new(width/2, height/2)
+    #ennemis
+    @ennemis = []
+    @ennemis.push(Ennemi.new(width/5, height/2))
+    #initilisation de la map
     @map=Map.new()
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
     @map.add(2,4,Carre.new(1))
+    @map.add(3,4,Carre.new(1))
+    @map.add(4,4,Carre.new(1))
+    @map.add(5,4,Carre.new(1))
+    @map.add(6,4,Carre.new(1))
+    @map.add(7,4,Carre.new(1))
+    @map.add(8,4,Carre.new(1))
+    @map.add(9,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
     @map.add(1,2,Carre.new(1))
   end
@@ -18,10 +29,25 @@ class Window < Gosu::Window
     @hero.go_left if Gosu::button_down?(Gosu::KbLeft)
     @hero.go_right if Gosu::button_down?(Gosu::KbRight)
     @hero.go_up if Gosu::button_down?(Gosu::KbUp)
+    @hero.attaque if Gosu::button_down?(Gosu::KbSpace)
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
     @hero.position(@map.list)
+    @hero.tirs.each do |tirs|
+      tirs.kill(@ennemis)
+    end
+    
+    @hero.tirs.each(&:update)
+
+    @ennemis.each(&:update)
+
+    @ennemis.each do |ennemi|
+      ennemi.position(@map.list)
+      ennemi.tjVivant(@hero.tirs)
+      @hero.enContact(ennemi)
+    end
+
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
   end
@@ -30,6 +56,8 @@ class Window < Gosu::Window
     #@background_image.draw(0, 0, ZOrder::Background)
     @map.draw
     @hero.draw
+    @ennemis.each(&:draw)
+    @hero.tirs.each(&:draw)
   end
 
 end

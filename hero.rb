@@ -1,7 +1,9 @@
 class Hero
-  attr_reader :x, :y
+  attr_reader :x, :y, :tirs
   # constructeur
   def initialize(x, y)
+    #dernier sens de déplacement
+    @dernierDeplacement = 'rien'
     # coordonnées
     @x = x
     @y = y
@@ -11,19 +13,24 @@ class Hero
     @velocityY = 1.5
     #image du personnage
     @image = Gosu::Image.new("res/hero.png")
+    @tirs=[]
   end
 
   def draw
     @image.draw(@x, @y, ZOrder::Hero)
+    @tirs.each(&:update)
+    @tirs.reject! {|tir| tir.x > WindowWidth || tir.x < 10}
   end
 
   # vitesse en x diminue (équivaut à un déplacement vers la gauche)
   def go_left
+    @dernierDeplacement = 'left'
     @velocityX -= 0.5
   end
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
   def go_right
+    @dernierDeplacement = 'right'
     @velocityX += 0.5
   end
 
@@ -52,7 +59,10 @@ class Hero
       @velocityY=(@velocityY-4)*0.96+4
     end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 542bf271566a314b99f1dd3939cab52371e3d746
   end
 
   def position (map)
@@ -65,4 +75,17 @@ class Hero
       @velocityY = 0
     end
   end
+
+  def enContact(item)
+    distance = Gosu::distance(@x,@y,item.x, item.y)
+    if distance<35
+      print "outch"
+    end
+  end
+
+  def attaque
+    @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+  end
+
+
 end
