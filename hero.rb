@@ -57,9 +57,9 @@ class Hero
     @y %= 576
     @velocityX *= 0.96
     if   @velocityY<-1
-      @velocityY *=0.80
+      @velocityY *=0.85
     else
-      @velocityY=(@velocityY-4)*0.96+4
+      @velocityY=(@velocityY-4)*0.8+6
     end
 
 
@@ -91,7 +91,7 @@ class Hero
     j = (@y+@image.height)/100
     return @map.list[i][j]!=nil
   end
-  
+
 
 
 end
