@@ -28,13 +28,19 @@ class Map
   def lectureMap(name)
     if File::exists?( name )
       aFile=File.open(name,"r")
-      for y in 0..4
-        for x in 0..14
-          if aFile.sysread(1)=="1"
+      for y in 0..NbCarre::Height-1
+        x=0
+        notfin=true
+        while notfin
+          c=aFile.sysread(1)
+          if c=="1"
             self.add(x,y,Carre.new(1))
+          elsif c=="\n"
+            notfin=false
           else
             self.add(x,y,nil)
           end
+          x+=1
         end
       end
       aFile.close
