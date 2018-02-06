@@ -13,7 +13,13 @@ class Personnage
       @velocityX = 0.0
       @velocityY = 1
       #image du personnage
-      @image = Gosu::Image.new("res/hero.png")
+      # création d'un tableau qui contiendra les différentes images du héros
+      @images = []
+      # on ajoute les 4 images dans le tableau
+      @images.push(Gosu::Image.new("res/hero/gauche.png"))
+      @images.push(Gosu::Image.new("res/hero/droite.png"))
+      # de base, le héros va a droite
+      @image = @images[1]
     end
 
     def draw
@@ -29,6 +35,7 @@ class Personnage
       else
           @velocityX -= 0.5
       end
+      @image = @images[0]
     end
 
     # vitesse en x augmente (équivaut à un déplacement vers la droite)
@@ -40,6 +47,7 @@ class Personnage
       else
           @velocityX += 0.5
       end
+      @image = @images[1]
     end
 
     def mouvement

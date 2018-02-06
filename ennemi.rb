@@ -33,6 +33,7 @@ class Ennemi < Personnage
     else
         @velocityX -= 0.5
     end
+    @image = @images[0]
   end
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
@@ -44,6 +45,7 @@ class Ennemi < Personnage
     else
         @velocityX += 0.5
     end
+    @image = @images[1]
   end
 
   def tjVivant (tirs)
