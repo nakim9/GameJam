@@ -59,10 +59,7 @@ class Hero
       @velocityY=(@velocityY-4)*0.96+4
     end
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 542bf271566a314b99f1dd3939cab52371e3d746
   end
 
   def position (map)
