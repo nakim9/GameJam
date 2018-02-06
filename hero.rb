@@ -80,6 +80,7 @@ def localiser
   i = 0
   j = 0
   @map.list.each do |carres|
+    j=0
     carres.each do |carre|
       if carre
         if carre.start
