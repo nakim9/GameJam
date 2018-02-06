@@ -52,15 +52,20 @@ class Hero
     end
   end
 
-  def position (map)
+  def position(map)
     #coordonées de la case sur laquelle ce trouve notre hero
-    i = @x/100
-    j = @y/100
+    i = (@x)/100
+    j = (@y+@image.height)/100
     #case
-    tile = map[i][j]
-    if tile
-      @velocityY = 0
+    if map[i]
+      tile = map[i][j]
+      if tile
+        @velocityY = 0
+      else
+        @velocityY = 1.5
+      end
+    else
+      @velocityY = 1.5
     end
-
   end
 end

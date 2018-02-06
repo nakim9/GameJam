@@ -8,6 +8,8 @@ class Window < Gosu::Window
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
     @map.add(2,4,Carre.new(1))
+    @map.add(0,2,Carre.new(1))
+    @map.add(1,2,Carre.new(1))
   end
 
   # fonction appelée 60 fois par seconde
@@ -19,7 +21,7 @@ class Window < Gosu::Window
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
-    #@hero.position
+    @hero.position(@map.list)
     # fermer la fenêtre si la touche pressée est Echap
     close if Gosu::button_down?(Gosu::KbEscape)
   end

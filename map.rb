@@ -1,6 +1,7 @@
 # classe map
 
 class Map
+  attr_reader :list
    def initialize()
      @list = Array.new(10){Array.new(5,nil)}
   end
