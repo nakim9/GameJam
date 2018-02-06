@@ -8,8 +8,7 @@ require_relative 'map'
 require_relative 'carre'
 require_relative 'ennemi'
 require_relative 'tirs'
-require_relative 'test  '
-
+require_relative 'personnage'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
