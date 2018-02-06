@@ -41,7 +41,7 @@ class Map
         notfin=true
         while notfin
           c=aFile.sysread(1)
-          if c=="1"
+          if c==Carr::Terre
             self.add(x,y,Carre.new(1))
           elsif c=="\n"
             notfin=false
