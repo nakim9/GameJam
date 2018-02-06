@@ -7,7 +7,7 @@ class Window < Gosu::Window
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
-    @ennemis.push(Ennemi.new(width/5, height/2))
+    #@ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
@@ -38,7 +38,7 @@ class Window < Gosu::Window
     #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
     # la fonction move est appelée dans tous les cas
     @hero.move
-    @hero.position()
+    @hero.sol
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end
@@ -73,6 +73,11 @@ class Window < Gosu::Window
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
+    @font.draw("hg", @hero.hg[0],@hero.hg[1], 0, 1, 1, 0xff_0000ff)
+    @font.draw("hd", @hero.hd[0],@hero.hd[1], 0, 1, 1, 0xff_0000ff)
+    @font.draw("bg", @hero.bg[0],@hero.bg[1], 0, 1, 1, 0xff_0000ff)
+    @font.draw("bd", @hero.bd[0],@hero.bd[1], 0, 1, 1, 0xff_0000ff)
+
 
   end
 

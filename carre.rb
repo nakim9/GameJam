@@ -4,4 +4,5 @@ class Carre
      @image=image
 
    end
+   
 end

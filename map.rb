@@ -24,9 +24,4 @@ class Map
     end
   end
 
-  # Y a t il un bloc à la postio x,y ?
-  def solid?(x, y)
-   @tiles[x  / CarreTaille::Width][y / CarreTaille::Height]
-  end
-
 end
