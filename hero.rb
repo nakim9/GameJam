@@ -27,11 +27,12 @@ class Hero
 
   # vitesse en x diminue (équivaut à un déplacement vers la gauche)
   def go_left
-       i = @x/100
-      j = @y/100
+       i = @x/CarreTaille::Width
+      j = @y/CarreTaille::Height
     @dernierDeplacement = 'left'
-    if not(map[i][j] && map[i][(y+@image.height)/100]) or i > 0 && j > 0
+    if i > 0 && j > 0 and not(@map.list[i][j] && contactBG)
          @velocityX -= 0.5
+    else @velocityX = 0
     end
   end
 
@@ -43,7 +44,7 @@ class Hero
 
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
   def go_up
-    if aLesPiedParterre()
+    if contactBG()
     @velocityY -= 25
     move
     sleep(1.0/24.0)
@@ -58,7 +59,7 @@ class Hero
   # modification des coordonées du héros
   def move
     @x += @velocityX
-    @x %= 1024
+    #@x %= 1024
     @y += @velocityY
     @y %= 576
     @velocityX *= 0.96
@@ -76,7 +77,7 @@ class Hero
     i = @x/100
     j = (@y+@image.height)/100
     #case
-    if aLesPiedParterre()
+    if contactBG()
       @velocityY = 0
     end
   end
@@ -103,7 +104,7 @@ class Hero
     @temps = temps
   end
 
-  def aLesPiedParterre()
+  def contactBG()
     i = @x/100
     j = (@y+@image.height)/100
     return @map.list[i][j]!=nil
