@@ -3,12 +3,14 @@ class Window < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @map=Map.new()
+    @map=Map.new("test3")
+
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     @ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
+<<<<<<< HEAD
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
     @map.add(2,4,Carre.new(1))
@@ -25,6 +27,9 @@ class Window < Gosu::Window
     @map.add(12,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
     @map.add(1,2,Carre.new(1))
+=======
+
+>>>>>>> 106374cc0a3cbb6d4b71c8aa69abaa7e46fbed51
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
     @camera_x = camera_y = 0
