@@ -6,7 +6,7 @@ class Window < Gosu::Window
     @map=Map.new("maps/test")
 
 
-    @hero = PouleLicorne.new(width/2, height/2,@map)
+    @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     @ennemis.push(Ennemi.new(width/5, height/2,@map))
