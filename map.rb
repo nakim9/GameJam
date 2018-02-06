@@ -1,10 +1,15 @@
 # classe map
 
 class Map
-  attr_reader :list
+  attr_reader :list , :width
    def initialize(name)
+<<<<<<< HEAD
      @whight=015
      @list = Array.new(@whight){Array.new(5,nil)}
+=======
+     @width=15
+     @list = Array.new(@width){Array.new(5,nil)}
+>>>>>>> 5e227634bf53168e1a69e52a945c078550acb100
      self.lectureMap(name)
   end
 
@@ -33,8 +38,9 @@ class Map
       centaine=aFile.sysread(1)
       disaine=aFile.sysread(1)
       uniter=aFile.sysread(1)
-      @whight=centaine.to_i*100+disaine.to_i*10+uniter.to_i
-      @list = Array.new(@whight){Array.new(5,nil)}
+      @width=centaine.to_i*100+disaine.to_i*10+uniter.to_i
+      print(@width)
+      @list = Array.new(@width){Array.new(5,nil)}
       aFile.sysread(1)
       for y in 0..NbCarre::Height-1
         x=0
@@ -57,6 +63,7 @@ class Map
 
   def creationFil(name)
     aFile=File.new(name,"w")
+<<<<<<< HEAD
     if @whight>99
       aFile.syswrite(@whight)
     elsif @whight>9
@@ -67,6 +74,9 @@ class Map
       aFile.syswrite(0)
       aFile.syswrite(@whight)
     end
+=======
+    aFile.syswrite(@width)
+>>>>>>> 5e227634bf53168e1a69e52a945c078550acb100
     aFile.syswrite("\n")
     for y in 0..NbCarre::Height-1
       for x in 0..@whight-1

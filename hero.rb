@@ -57,7 +57,7 @@ class Hero
   def move
     if @pv>0
       @x += @velocityX
-      @x %= WindowSize::Width
+      #@x %= WindowSize::Width
       @y += @velocityY
       @y %= WindowSize::Height
       @velocityX *= 0.96
