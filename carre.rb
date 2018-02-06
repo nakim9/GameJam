@@ -4,7 +4,7 @@ class Carre
    def initialize(type)
      @start=type==Carr::Start
      @arrive=type==Carr::Arrive
-     @image=image
+     @image=type
 
    end
 
