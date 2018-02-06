@@ -16,7 +16,3 @@ module CarreTaille
     CarreWidth=WindowSize::Width/10
     CarreHeight=WindowSize::Height/5
 end
-
-module Map
-  Name="test"
-end
