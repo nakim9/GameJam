@@ -3,12 +3,13 @@ class Window < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @hero = Hero.new(width/2, height/2)
+    @map=Map.new()
+    @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     @ennemis.push(Ennemi.new(width/5, height/2))
     #initilisation de la map
-    @map=Map.new()
+
     @map.add(0,4,Carre.new(1))
     @map.add(1,4,Carre.new(1))
     @map.add(2,4,Carre.new(1))
@@ -37,7 +38,7 @@ class Window < Gosu::Window
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end
-    
+
     @hero.tirs.each(&:update)
 
     @ennemis.each(&:update)

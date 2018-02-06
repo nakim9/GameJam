@@ -1,7 +1,8 @@
 class Hero
   attr_reader :x, :y, :tirs
   # constructeur
-  def initialize(x, y)
+  def initialize(x, y,map)
+    @map=map
     #dernier sens de déplacement
     @dernierDeplacement = 'rien'
     # coordonnées
@@ -36,9 +37,11 @@ class Hero
 
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
   def go_up
+    if aLesPiedParterre()
     @velocityY -= 25
     move
     sleep(1.0/24.0)
+  end
   end
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
@@ -82,6 +85,12 @@ class Hero
 
   def attaque
     @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+  end
+
+  def aLesPiedParterre()
+    i = @x/100
+    j = @y/100
+    return @map.list[i][j]!=nil
   end
 
 
