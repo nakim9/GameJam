@@ -2,8 +2,9 @@
 
 class Map
   attr_reader :list
-   def initialize()
+   def initialize(name)
      @list = Array.new(15){Array.new(5,nil)}
+     self.lectureMap(name)
   end
 
   def add(x,y,carre)
@@ -23,4 +24,35 @@ class Map
     i=i+1
     end
   end
+
+  def lectureMap(name)
+    if File::exists?( name )
+      aFile=File.open(name,"r")
+      for y in 0..4
+        for x in 0..14
+          if aFile.sysread(1)=="1"
+            self.add(x,y,Carre.new(1))
+          else
+            self.add(x,y,nil)
+          end
+        end
+      end
+      aFile.close
+    end
+  end
+
+  def creationFil(name)
+    aFile=File.new(name,"w")
+    for y in 0..4
+      for x in 0..14
+        if @list[x][y]
+        aFile.syswrite("1")
+      else
+        aFile.syswrite("0")
+      end
+      end
+    end
+        aFile.close
+    end
+
 end
