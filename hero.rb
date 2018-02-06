@@ -10,6 +10,7 @@ class Hero < Personnage
     @tirs=[]
     @tempsAttente = 50
     @temps = 0
+      @image = Gosu::Image.new("res/hero.png")
   end
 
   def draw
