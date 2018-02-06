@@ -1,5 +1,5 @@
 class Ennemi
-  attr_reader :x, :y
+  attr_reader :x, :y, :image
   # constructeur
   def initialize(x, y)
     #dernier sens de déplacement
@@ -71,6 +71,20 @@ class Ennemi
     else
       @velocityY = 1.5
     end
+  end
+
+  def tjVivant (tirs)
+    tirs.reject! {|tir| collide?(tir)}
+  end
+
+  def collide?(item)
+    distance = Gosu::distance(@x,@y,item.x, item.y)
+    distance < 35
+  end
+
+  def update
+    self.mouvement
+    self.move
   end
 
 
