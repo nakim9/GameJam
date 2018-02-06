@@ -1,7 +1,7 @@
 # classe map
 
 class Map
-  attr_reader :list
+  attr_reader :list , :width
    def initialize(name)
      @width=15
      @list = Array.new(@width){Array.new(5,nil)}
@@ -33,14 +33,9 @@ class Map
       centaine=aFile.sysread(1)
       disaine=aFile.sysread(1)
       uniter=aFile.sysread(1)
-<<<<<<< HEAD
       @width=centaine.to_i*100+disaine.to_i*10+uniter.to_i
       print(@width)
       @list = Array.new(@width){Array.new(5,nil)}
-=======
-      @whight=centaine.to_i*100+disaine.to_i*10+uniter.to_i
-      @list = Array.new(@whight){Array.new(5,nil)}
->>>>>>> ac860166f170c23621bc340a95124f998b0778b5
       aFile.sysread(1)
       for y in 0..NbCarre::Height-1
         x=0
