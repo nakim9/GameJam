@@ -3,12 +3,17 @@
 class Map
   attr_reader :list
    def initialize(name)
-     @list = Array.new(15){Array.new(5,nil)}
+     @whight=15
+     @list = Array.new(@whight){Array.new(5,nil)}
      self.lectureMap(name)
   end
 
   def add(x,y,carre)
+    print(x)
+    print(y)
+    print("\n")
     @list[x][y]=carre
+
   end
 
   def draw
@@ -28,6 +33,13 @@ class Map
   def lectureMap(name)
     if File::exists?( name )
       aFile=File.open(name,"r")
+      centaine=aFile.sysread(1)
+      disaine=aFile.sysread(1)
+      uniter=aFile.sysread(1)
+      @whight=centaine.to_i*100+disaine.to_i*10+uniter.to_i
+      print(@whight)
+      @list = Array.new(@whight){Array.new(5,nil)}
+      aFile.sysread(1)
       for y in 0..NbCarre::Height-1
         x=0
         notfin=true
@@ -49,6 +61,8 @@ class Map
 
   def creationFil(name)
     aFile=File.new(name,"w")
+    aFile.syswrite(@whight)
+    aFile.syswrite("\n")
     for y in 0..4
       for x in 0..14
         if @list[x][y]

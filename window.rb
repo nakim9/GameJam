@@ -3,7 +3,8 @@ class Window < Gosu::Window
   def initialize(width, height)
     super
     self.caption = "Mon jeu"
-    @map=Map.new("test2")
+    @map=Map.new("test3")
+
     @hero = Hero.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
