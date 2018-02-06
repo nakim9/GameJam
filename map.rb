@@ -16,11 +16,17 @@ class Map
       j=0
       x.each do |y|
         if y
-      Gosu::draw_rect(i*CarreTaille::CarreWidth, j*CarreTaille::CarreHeight, CarreTaille::CarreWidth, CarreTaille::CarreHeight,  Gosu::Color.new(255, 255, 0, 0))
+      Gosu::draw_rect(i*CarreTaille::Width, j*CarreTaille::Height, CarreTaille::Width, CarreTaille::Height,  Gosu::Color.new(255, 255, 0, 0))
       end
       j=j+1
     end
     i=i+1
     end
   end
+
+  # Y a t il un bloc à la postio x,y ?
+  def solid?(x, y)
+   @tiles[x  / CarreTaille::Width][y / CarreTaille::Height]
+  end
+
 end

@@ -13,6 +13,6 @@ module WindowSize
 end
 
 module CarreTaille
-    CarreWidth=WindowSize::Width/10
-    CarreHeight=WindowSize::Height/5
+    Width=WindowSize::Width/10
+    Height=WindowSize::Height/5
 end

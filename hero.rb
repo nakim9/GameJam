@@ -3,7 +3,7 @@ class Hero
   # constructeur
   def initialize(x, y)
     #dernier sens de déplacement
-    @dernierDeplacement = 'rien'
+    @dernierDeplacement = 'left'
     # coordonnées
     @x = x
     @y = y
@@ -24,8 +24,12 @@ class Hero
 
   # vitesse en x diminue (équivaut à un déplacement vers la gauche)
   def go_left
+       i = @x/100
+      j = @y/100
     @dernierDeplacement = 'left'
-    @velocityX -= 0.5
+    if not(map[i][j] && map[i][(y+@image.height)/100]) or i > 0 && j > 0
+         @velocityX -= 0.5
+    end
   end
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
