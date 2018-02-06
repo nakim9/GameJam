@@ -20,6 +20,8 @@ class Window < Gosu::Window
     @map.add(7,4,Carre.new(1))
     @map.add(8,4,Carre.new(1))
     @map.add(9,4,Carre.new(1))
+    @map.add(11,4,Carre.new(1))
+    @map.add(12,4,Carre.new(1))
     @map.add(0,2,Carre.new(1))
     @map.add(1,2,Carre.new(1))
   end

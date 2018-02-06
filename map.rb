@@ -3,7 +3,7 @@
 class Map
   attr_reader :list
    def initialize()
-     @list = Array.new(10){Array.new(5,nil)}
+     @list = Array.new(15){Array.new(5,nil)}
   end
 
   def add(x,y,carre)
