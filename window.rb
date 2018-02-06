@@ -37,7 +37,11 @@ class Window < Gosu::Window
     @hero.tirs.each do |tirs|
       tirs.kill(@ennemis)
     end
-    
+    if (@hero.temps!=0 && @hero.temps<@hero.tempsAttente)
+      @hero.incremente
+    elsif @hero.temps==@hero.tempsAttente
+      @hero.setTemps(0)
+    end
     @hero.tirs.each(&:update)
 
     @ennemis.each(&:update)

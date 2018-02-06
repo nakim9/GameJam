@@ -1,9 +1,9 @@
 class Hero
-  attr_reader :x, :y, :tirs
+  attr_reader :x, :y, :tirs, :temps, :tempsAttente
   # constructeur
   def initialize(x, y)
     #dernier sens de déplacement
-    @dernierDeplacement = 'rien'
+    @dernierDeplacement = 'left'
     # coordonnées
     @x = x
     @y = y
@@ -14,6 +14,8 @@ class Hero
     #image du personnage
     @image = Gosu::Image.new("res/hero.png")
     @tirs=[]
+    @tempsAttente = 50
+    @temps = 0
   end
 
   def draw
@@ -81,7 +83,18 @@ class Hero
   end
 
   def attaque
-    @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+    if(@temps == 0)
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement))
+      @temps=1;
+    end
+  end
+
+  def incremente
+    @temps += 1
+  end
+
+  def setTemps (temps)
+    @temps = temps
   end
 
 
