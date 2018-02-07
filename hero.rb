@@ -38,7 +38,7 @@ class Hero < Personnage
 
   # modification des coordonées du héros
   def move
-    if @pv>0
+
       @x += @velocityX
       #@x %= WindowSize::Width
       @y += @velocityY
@@ -49,7 +49,7 @@ class Hero < Personnage
       else
         @velocityY=(@velocityY-4)*0.8+6
       end
-    end
+
   end
   #methodes
   def attaque1
@@ -62,7 +62,7 @@ class Hero < Personnage
   def attaque2(ennemis)
     ennemis.each do |ennemi|
       if self.enContact(ennemi)
-        enemis.subit(10)
+        ennemi.subir(10)
       end
     end
   end
