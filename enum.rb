@@ -18,6 +18,7 @@ end
 
 module Carr
     Width = Height=WindowSize::Height/NbCarre::Height
+    Herbe="H"
     Terre="T"
     Vide="O"
     Start="S"
