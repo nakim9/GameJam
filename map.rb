@@ -37,11 +37,9 @@ class Map
     @list.each do |x|
       j=0
       x.each do |y|
-      if y && y.image==Carr::Terre
-        Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 0, 0))
-      elsif  y && y.image==Carr::Start
-        Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 255, 0))
-      end
+        if y
+          y.draw(i,j)
+        end
       j=j+1
     end
     i=i+1
@@ -97,9 +95,9 @@ class Map
     def ecritConsole
       for y in 0..NbCarre::Height-1
         for x in 0..@width-1
-          if @list[x][y] && @list[x][y].image==Carr::Terre
+          if @list[x][y] && @list[x][y].type==Carr::Terre
             print("T")
-          elsif @list[x][y] &&  @list[x][y].image==Carr::Start
+          elsif @list[x][y] &&  @list[x][y].type==Carr::Start
             print("S")
           else
             print("O")
