@@ -60,7 +60,11 @@ class Hero < Personnage
   end
 
   def attaque2(ennemis)
-    ennemis.reject! {|ennemi| self.enContact(ennemi)}
+    ennemis.each do |ennemi|
+      if self.enContact(ennemi)
+        enemis.subit(10)
+      end
+    end
   end
 
   def incremente

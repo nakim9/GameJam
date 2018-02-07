@@ -1,11 +1,12 @@
 class Tirs
   attr_reader :x, :y
-  def initialize(x, y, sens ,image)
+  def initialize(x, y, sens ,image, degat = 10)
     @velocity = Gosu::random(20, 30.3)
     @image = Gosu::Image.new(image)
     @x = x
     @y = y
     @sens = sens
+    @degat = degat
   end
 
   def update
@@ -24,7 +25,7 @@ class Tirs
     ennemis.each do |ennemi|
       if self.enContact(ennemi)
         #mettre une constante pour le nb de points de dammage
-        ennemi.subir(10)
+        ennemi.subir(@degat)
       end
 
     end
