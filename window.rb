@@ -9,7 +9,8 @@ class Window < Gosu::Window
     @ennemis = []
     placeEnnemis
     #initilisation de la map
-    @background_image = Gosu::Image.new("res/fondLeMeillieur.png")
+    @background_image1 = Gosu::Image.new("res/Ciel.png")
+    @background_image2 = Gosu::Image.new("res/FondForet.png")
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
     @camera_x = @camera_y = 0
@@ -24,6 +25,7 @@ class Window < Gosu::Window
 
   # fonction appelée 60 fois par seconde
   def update
+
     # FAIRE fonction SI indiceTouchePressée EST touche
     @hero.go_left if Gosu::button_down?(Gosu::KbLeft)
     @hero.go_right if Gosu::button_down?(Gosu::KbRight)
@@ -61,7 +63,8 @@ class Window < Gosu::Window
   end
 
   def draw
-    @background_image.draw(0, 0, ZOrder::Background)
+    @background_image1.draw(0, 0, ZOrder::Background)
+    @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @hero.draw
