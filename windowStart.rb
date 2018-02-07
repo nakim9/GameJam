@@ -5,7 +5,7 @@ class WindowStart < Gosu::Window
     self.caption = "Bienvenu!"
     @font = Gosu::Font.new(self, "Arial", 36)
     @image = Gosu::Image.new("res/acceuil.png")
-    @action = 'play' # ou 'edit'
+    @action = 'play' # ou 'edit' 
   end
 
   def update
