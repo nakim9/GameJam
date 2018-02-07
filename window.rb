@@ -5,18 +5,16 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
-<<<<<<< HEAD
-    @hero = Arbre.new(width/2, height/2,@map)
-=======
+    @hero = RePonce.new(width/2, height/2,@map)
+=begin
     #heros
     @heros = []
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
     chooseHero
+=end
 
-
->>>>>>> 3d34dd0197b2aac8d485dceb23b9c419fcd25474
     #ennemis
     @ennemis = []
     placeEnnemis
