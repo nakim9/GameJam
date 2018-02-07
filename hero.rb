@@ -62,7 +62,6 @@ class Hero < Personnage
 
   def attaque2(ennemis)
     ennemis.reject! {|ennemi| self.enContact(ennemi)}
-    puts
   end
 
   def incremente
