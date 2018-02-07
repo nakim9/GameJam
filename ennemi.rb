@@ -48,7 +48,7 @@ class Ennemi < Personnage
     end
     @image = @images[1]
   end
-
+#pas utilisé -----------------
   def tjVivant (tirs)
     tirs.reject! {|tir| collide?(tir)}
   end
@@ -57,7 +57,7 @@ class Ennemi < Personnage
     distance = Gosu::distance(@x,@y,item.x, item.y)
     distance < 35
   end
-
+#-------------------------------
   def update
     self.mouvement
     self.move
