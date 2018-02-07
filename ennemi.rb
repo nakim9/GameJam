@@ -4,6 +4,7 @@ class Ennemi < Personnage
   def initialize(x, y,map)
     super(x,y,map)
     #image du personnage
+    @depart = true
     @images = []
     # on ajoute les 4 images dans le tableau -- obligatoirement 2 images
     @images.push(Gosu::Image.new("res/enemis/DragonG.png"))
@@ -14,14 +15,16 @@ class Ennemi < Personnage
   #mouvement aléatoire
   def mouvement
     #puts @x
-    if @x+@image.width>WindowWidth-50
-      self.go_left
-    elsif @x<50
-      self.go_right
-    elsif @dernierDeplacement == 'right'
-      self.go_right
-    elsif @dernierDeplacement == 'left'
-      self.go_left
+    if !@depart
+      if @x+@image.width>WindowWidth-50
+        self.go_left
+      elsif @x<50
+        self.go_right
+      elsif @dernierDeplacement == 'right'
+        self.go_right
+      elsif @dernierDeplacement == 'left'
+        self.go_left
+      end
     end
   end
 
@@ -29,7 +32,9 @@ class Ennemi < Personnage
   def go_left
     @dernierDeplacement = 'left'
     if contactGauche
-         go_right
+         @velocityX += 0.5
+         @image = @images[1]
+         @dernierDeplacement = 'right'
     else
         @velocityX -= 0.5
     end
@@ -46,7 +51,7 @@ class Ennemi < Personnage
     end
     @image = @images[1]
   end
-
+#pas utilisé -----------------
   def tjVivant (tirs)
     tirs.reject! {|tir| collide?(tir)}
   end
@@ -55,7 +60,7 @@ class Ennemi < Personnage
     distance = Gosu::distance(@x,@y,item.x, item.y)
     distance < 35
   end
-
+#-------------------------------
   def update
     self.mouvement
     self.move
@@ -63,6 +68,7 @@ class Ennemi < Personnage
 
   def sol
       if contactBas
+        @depart=false
         @velocityY = 0
 
       else

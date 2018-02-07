@@ -26,3 +26,9 @@ module Carr
     Ennemi="E"
 
 end
+
+
+module Volume
+     Bruit = 0.55
+     Music = 0.3
+end

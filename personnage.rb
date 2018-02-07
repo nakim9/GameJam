@@ -1,7 +1,9 @@
 class Personnage
-    attr_reader :x, :y, :image
+    attr_reader :x, :y, :image, :pv
     # constructeur
     def initialize(x, y,map)
+      #pv du heros
+      @pv = 100
       #dernier sens de déplacement
       @dernierDeplacement = 'right'
       @map=map
@@ -231,5 +233,9 @@ class Personnage
                 point.push(y)
                 return point
            end
+
+          def subir(points)
+            @pv -= points
+          end
 
   end

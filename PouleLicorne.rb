@@ -37,19 +37,19 @@ class PouleLicorne < Hero
       end
       @temps=1;
       @image = @images[2]
-      @song[0].volume = 0.55
+      @song[0].volume = Volume::Bruit
       @song[0].play
     end
   end
 
   def attaque2(ennemis)
     super(ennemis)
-    @song[1].volume = 0.55
+    @song[1].volume = Volume::Bruit
     @song[1].play
   end
 
   def cri
-    @song[2].volume = 0.55
+    @song[2].volume = Volume::Bruit
     @song[2].play
   end
 end
