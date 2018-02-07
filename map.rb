@@ -51,6 +51,7 @@ class Map
       self.addMapToList("viellemap/0/0")
       self.addMapToList("viellemap/0/1")
       self.addMapToList("viellemap/0/2")
+      self.addMapToList("viellemap/0/4")
 =begin    for num in 0..6
       clee=@carteSuivant.to_i
       taille=@maps[clee].length
