@@ -130,4 +130,25 @@ def arrive?
   return oui
 end
 
+<<<<<<< HEAD
+=======
+  def contactPortail
+    oui = false
+    i = 0
+    j = 0
+    @map.list.each do |carres|
+      j=0
+      carres.each do |carre|
+        if carre
+          if self.enContactCarre(i,j) && carre.type==Carr::Portail
+            oui=true
+          end
+        end
+        j +=1
+      end
+      i +=1
+    end
+    return oui
+  end
+>>>>>>> 91160cb3904a4185b0795cf91f86f190739f9eb3
 end

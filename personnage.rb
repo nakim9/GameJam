@@ -174,10 +174,14 @@ class Personnage
            def contactDroit
                 p1= self.bd
                 p2 = self.hd
-                #puts "x"+p1[0].to_s+"y"+p1[1].to_s
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
                 if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
-                     return true
+                    if (self.carre(p1[0]-20,p1[1]-20) && self.carre(p1[0]-20,p1[1]-20).type== Carr::Portail )|| (self.carre(p2[0]-20,p2[1]-20) && self.carre(p2[0]-20,p2[1]-20).type== Carr::Portail) || (self.carre(pm[0],pm[1]) && self.carre(pm[0],pm[1]).type== Carr::Portail)
+                      #portail!!
+                      return false
+                     else
+                       return true
+                     end
                 else
                      return false
                 end
@@ -188,8 +192,12 @@ class Personnage
                 p2 = self.bg
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
                 if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
-                     #puts "x = "+pm[0].to_s+"y ="+pm[1].to_s
+                  if (self.carre(p1[0]-20,p1[1]-20) && self.carre(p1[0]-20,p1[1]-20).type== Carr::Portail )|| (self.carre(p2[0]-20,p2[1]-20) && self.carre(p2[0]-20,p2[1]-20).type== Carr::Portail) || (self.carre(pm[0],pm[1]) && self.carre(pm[0],pm[1]).type== Carr::Portail)
+                    #portail!!
+                    return false
+                   else
                      return true
+                   end
                 else
                      return false
                 end
@@ -259,6 +267,9 @@ class Personnage
 
           def subir(points)
             @pv -= points
+          end
+
+          def contactPortail
           end
 
   end

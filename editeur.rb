@@ -17,8 +17,8 @@ class Editeur < Gosu::Window
       @ptr.go_up if Gosu::button_down?(Gosu::KbUp)
       @ptr.switchCarre if Gosu::button_down?(Gosu::KB_TAB)
       @ptr.add if Gosu::button_down?(Gosu::KB_LEFT_CONTROL)
+      @ptr.efface if  Gosu::button_down?(Gosu::KB_LEFT_SHIFT)
       @map.creationFil("mapsEdit/sav") if Gosu::button_down?(Gosu::KB_F5)
-      puts(@ptr.x)
       @camera_x = [@ptr.x*Carr::Width - WindowSize::Width/2, 0].max
       @camera_y = 1
     end

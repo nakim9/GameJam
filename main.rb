@@ -22,9 +22,10 @@ require_relative 'RePonce'
 
 require_relative 'editeur'
 require_relative 'pointeur'
+
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
-WindowStart=WindowStart.new(WindowWidth,WindowHeight)
-WindowStart.show
+wind=WindowStart.new(WindowWidth,WindowHeight)
+wind.show
 
 #Window.show
