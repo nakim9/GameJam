@@ -127,7 +127,8 @@ class Personnage
 
       def enContactCarre(i,j)
         point = coodonees(i,j)
-        distance = Gosu::distance(@x,@y,point[0], point[1])
+        pointBas = bg
+        distance = Gosu::distance(pointBas[0],pointBas[1],point[0], point[1])
         if distance<35
           return true
         else

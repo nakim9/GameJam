@@ -114,7 +114,6 @@ def arrive?
     carres.each do |carre|
       if carre
         if self.enContactCarre(i,j) && carre.arrive
-          puts "passe"
           oui=true
         end
       end
@@ -122,6 +121,6 @@ def arrive?
     end
     i +=1
   end
-  return false
+  return oui
 end
 end
