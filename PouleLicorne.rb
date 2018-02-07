@@ -5,19 +5,19 @@ class PouleLicorne < Hero
     super(x,y,map)
     @pv = 50
     @tempsAttente = 50
-    @temps = 0
+
     #changer l'image et l'array d'images
     @images = []
     # on ajoute les 4 images dans le tableau -- obligatoirement 2 images
-    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
-    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
-    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
+    @images.push(Gosu::Image.new("res/pouleLicorne/Poulicorne.png"))
+    @images.push(Gosu::Image.new("res/pouleLicorne/Poulicorne.png"))
+    @images.push(Gosu::Image.new("res/pouleLicorne/Poulicorne.png"))
 
     # de base, le héros va a droite
     @image = @images[1]
   end
 
-  def attaque
+  def attaque1
     if(@temps == 0)
       #changer l'image du tir
       if @dernierDeplacement=='left'

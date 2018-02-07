@@ -34,7 +34,6 @@ class Personnage
     def go_left
       @dernierDeplacement = 'left'
       if contactGauche
-           puts "blocké left"
            @velocityX = 0
       else
           @velocityX -= 0.5
@@ -46,7 +45,6 @@ class Personnage
     def go_right
       @dernierDeplacement = 'right'
       if contactDroit
-          puts "blocké right"
           @velocityX = 0
       else
           @velocityX += 0.5
@@ -76,7 +74,10 @@ class Personnage
       end
     end
 
-    def attaque
+    def attaque1
+    end
+
+    def attaque2
     end
 
     def incremente
@@ -91,11 +92,9 @@ class Personnage
            return 'down'
       end
       if contactDroit
-           puts "right"
            return 'right'
       end
       if contactGauche
-           puts "left"
            return 'left'
       end
       return 'rien'
@@ -164,7 +163,7 @@ class Personnage
                 p2 = self.bg
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
                 if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
-                     puts "x = "+pm[0].to_s+"y ="+pm[1].to_s
+                     #puts "x = "+pm[0].to_s+"y ="+pm[1].to_s
                      return true
                 else
                      return false

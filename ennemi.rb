@@ -29,7 +29,6 @@ class Ennemi < Personnage
   def go_left
     @dernierDeplacement = 'left'
     if contactGauche
-         puts "blocké left"
          go_right
     else
         @velocityX -= 0.5
@@ -41,7 +40,6 @@ class Ennemi < Personnage
   def go_right
     @dernierDeplacement = 'right'
     if contactDroit
-        puts "blocké right"
         go_left
     else
         @velocityX += 0.5

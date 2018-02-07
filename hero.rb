@@ -10,7 +10,7 @@ class Hero < Personnage
     #dernier sens de déplacement
     @tirs=[]
     @tempsAttente = 50
-    @temps = 0
+    @temps = 5
       @image = Gosu::Image.new("res/hero.png")
       point = localiser
       @x = point[0]
@@ -20,7 +20,7 @@ class Hero < Personnage
   def draw
     super
     @tirs.each(&:update)
-    @tirs.reject! {|tir| tir.x > WindowWidth || tir.x < 10}
+    @tirs.reject! {|tir| tir.x > @map.width*Carr::Width || tir.x < 10}
   end
 
   # vitesse en y diminue (équivaut à un déplacement vers le haut)
@@ -53,11 +53,15 @@ class Hero < Personnage
     end
   end
   #methodes
-  def attaque
+  def attaque1
     if(@temps == 0)
       @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement,"res/fire.png"))
       @temps=1;
     end
+  end
+
+  def attaque2(ennemis)
+    ennemis.reject! {|ennemi| self.enContact(ennemi)}
   end
 
   def incremente
