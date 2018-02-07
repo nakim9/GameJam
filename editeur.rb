@@ -6,6 +6,7 @@ class Editeur < Gosu::Window
     self.caption = "Editeur"
     @map=Map.new()
     @ptr=Pointeur.new(0,0,@map)
+    @camera_x = @camera_y = 0
     end
 
     def update
@@ -15,17 +16,22 @@ class Editeur < Gosu::Window
       @ptr.go_down if Gosu::button_down?(Gosu::KbDown)
       @ptr.go_up if Gosu::button_down?(Gosu::KbUp)
       @ptr.switchCarre if Gosu::button_down?(Gosu::KB_TAB)
-      @ptr.add if Gosu::button_down?(Gosu::KB_ENTER)
+      @ptr.add if Gosu::button_down?(Gosu::KB_LEFT_CONTROL)
       @map.creationFil("mapsEdit/sav") if Gosu::button_down?(Gosu::KB_F5)
+      puts(@ptr.x)
+      @camera_x = [@ptr.x*Carr::Width - WindowSize::Width/2, 0].max
+      @camera_y = 1
     end
 
     def draw
+      Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @ptr.draw
     end
+    end
 
     def nouveau
-      @map.clearList(10)
+      @map.clearList(30)
       @ptr.ptrClear(@map)
     end
 end

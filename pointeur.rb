@@ -1,5 +1,5 @@
 class Pointeur
-  attr_reader :map
+  attr_reader :map,:x,:y
   def initialize(x,y,map)
     @carres= Queue.new()
       @carres.push(Carre.new(Carr::Arrive))
