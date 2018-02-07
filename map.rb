@@ -32,15 +32,16 @@ class Map
 
   def creemap()
     self.addMapToList("maps/test")
-    aleaFloat=2*rand+1
+    aleaFloat=rand*(2)+1.5
     aleaInt=aleaFloat.round
     self.addMapToList("maps/1/"+ aleaInt.to_s)
-      aleaFloat=2*rand+1
+      aleaFloat=rand*(2)+1.5
       aleaInt=aleaFloat.round
     self.addMapToList("maps/2/"+ aleaInt.to_s)
-      aleaFloat=2*rand+1
+      aleaFloat=rand*(2)+1.5
       aleaInt=aleaFloat.round
     self.addMapToList("maps/3/"+ aleaInt.to_s)
+
   end
 
     def addMapToList(name)
