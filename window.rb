@@ -5,7 +5,7 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
-    @hero = Magicien.new(width/2, height/2,@map)
+    @hero = Arbre.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -46,6 +46,7 @@ class Window < Gosu::Window
       @hero.tirs.each do |tirs|
         tirs.kill(@ennemis)
       end
+      @hero.passif(@ennemis)
       if (@hero.temps!=0 && @hero.temps<@hero.tempsAttente)
         @hero.incremente
       elsif @hero.temps==@hero.tempsAttente

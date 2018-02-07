@@ -15,6 +15,8 @@ require_relative 'Vache'
 require_relative 'Ivrogne'
 require_relative 'WindowEnd'
 require_relative 'Magicien'
+require_relative 'Vampire'
+require_relative 'Arbre'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height

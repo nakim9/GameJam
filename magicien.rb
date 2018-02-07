@@ -4,7 +4,7 @@ class Magicien < Hero
   def initialize(x, y,map)
     super(x,y,map)
     @pv = 50
-    @tempsAttente = 50
+    @tempsAttente = 60
 
     #changer l'image et l'array d'images
     @images = []

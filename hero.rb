@@ -63,7 +63,7 @@ class Hero < Personnage
   def attaque2(ennemis)
     ennemis.each do |ennemi|
       if self.enContact(ennemi)
-        ennemi.subir(10)
+        ennemi.subir(25)
       end
     end
   end
@@ -104,4 +104,8 @@ def localiser
   end
   return point
 end
+  def passif
+  end
+  def passif(ennemis)
+  end
 end
