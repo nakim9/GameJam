@@ -9,9 +9,17 @@ class Window < Gosu::Window
     @ennemis = []
     placeEnnemis
     #initilisation de la map
+    @background_image = Gosu::Image.new("res/fondLeMeillieur.png")
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
     @camera_x = @camera_y = 0
+
+    # attribut musique qui prend le fichier music.mp3 dans le répertoire res
+    @song = Gosu::Song.new("res/theme principal.mp3")
+    # fixe le volume à 0.25
+    @song.volume = 0.25
+    # lance la musique
+    @song.play(true)
   end
 
   # fonction appelée 60 fois par seconde
@@ -53,7 +61,7 @@ class Window < Gosu::Window
   end
 
   def draw
-    #@background_image.draw(0, 0, ZOrder::Background)
+    @background_image.draw(0, 0, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @hero.draw
@@ -74,10 +82,10 @@ class Window < Gosu::Window
 
   def placeEnnemis
     i=0
-    @list.each do |x|
+    @map.list.each do |x|
       j=0
       x.each do |y|
-        if y.type==Carr::Ennemi
+        if y && y.type==Carr::Ennemi
           point = coodonees(i,j)
           @ennemis.push(Ennemi.new(point[0], point[1],@map))
         end
