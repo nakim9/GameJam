@@ -2,6 +2,7 @@ class Window < Gosu::Window
 
   def initialize(width, height)
     super
+    @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
     @hero = PouleLicorne.new(width/2, height/2,@map)
@@ -25,8 +26,12 @@ class Window < Gosu::Window
   # fonction appelée 60 fois par seconde
   def update
     if gameOver?
-      puts "gameOver!"
+      wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
+      wind.setPoints(@points)
+      wind.show
+      close
     else
+      @points += 0.5
       # FAIRE fonction SI indiceTouchePressée EST touche
       @hero.go_left if Gosu::button_down?(Gosu::KbLeft)
       @hero.go_right if Gosu::button_down?(Gosu::KbRight)
@@ -71,13 +76,13 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
-    @map.draw
-    @hero.draw
-    @ennemis.each(&:draw)
-    @hero.tirs.each(&:draw)
-    @ennemis.each do |ennemi|
-    @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_0000ff)
-    end
+      @map.draw
+      @hero.draw
+      @ennemis.each(&:draw)
+      @hero.tirs.each(&:draw)
+      @ennemis.each do |ennemi|
+          @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_0000ff)
+      end
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
