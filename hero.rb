@@ -93,5 +93,4 @@ def localiser
   end
   return point
 end
-
 end
