@@ -39,7 +39,6 @@ class PouleLicorne < Hero
       @image = @images[2]
       @song[0].volume = Volume::Bruit
       @song[0].play
-      sleep()
     end
   end
 
