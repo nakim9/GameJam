@@ -218,7 +218,6 @@ class Personnage
                 point = []
                 point.push(i*Carr::Width)
                 point.push(j*Carr::Height)
-
                 return point
            end
 
