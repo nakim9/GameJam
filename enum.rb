@@ -34,6 +34,7 @@ module Carr
     Arc="Y"
     ArbreL1="Z"
     Vide="O"
+    Portail="P"
 
 
 end

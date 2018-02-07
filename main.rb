@@ -16,9 +16,10 @@ require_relative 'Ivrogne'
 require_relative 'WindowEnd'
 require_relative 'editeur'
 require_relative 'pointeur'
+
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
-WindowStart=WindowStart.new(WindowWidth,WindowHeight)
-WindowStart.show
+wind=WindowStart.new(WindowWidth,WindowHeight)
+wind.show
 
 #Window.show

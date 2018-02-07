@@ -12,7 +12,7 @@ class WindowStart < Gosu::Window
     deplacementHaut if Gosu::button_down?(Gosu::KbUp)
     deplacementBas if Gosu::button_down?(Gosu::KbDown)
 
-    if Gosu::button_down?(Gosu::KbSpace)
+    if Gosu::button_down?(Gosu::KB_RETURN)
       if @action == 'play'
         wind = Window.new(WindowWidth, WindowHeight)
         wind.show
