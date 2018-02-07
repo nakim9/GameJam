@@ -5,8 +5,8 @@ class Carre
      @start=type==Carr::Start
      @arrive=type==Carr::Arrive
      @type=type
-     if @type==Carr::Terre
-       @image=Gosu::Image.new("res/cube/Terre2.png")
+     if @type && @type!=Carr::Ennemi
+       @image=Gosu::Image.new("res/cube/"+@type+".png")
      else
        @image=nil
      end

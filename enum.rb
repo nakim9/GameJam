@@ -22,5 +22,6 @@ module Carr
     Vide="O"
     Start="S"
     Arrive="A"
+    Ennemi="E"
 
 end
