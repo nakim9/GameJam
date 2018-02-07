@@ -15,7 +15,7 @@ require_relative 'PouleLicorne'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
-WindowStart = WindowStart.new(WindowWidth, WindowHeight)
+WindowStart=WindowStart.new(WindowWidth,WindowHeight)
 WindowStart.show
-Window = Window.new(WindowWidth, WindowHeight)
+Window = Window.new(WindowWidth,WindowHeight)
 #Window.show

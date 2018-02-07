@@ -5,13 +5,13 @@ class Map
    def initialize()
      @width=000
      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-     self.creeMap()
-
+     print("\ndebut\n")
+     self.creemap()
+     self.ecritConsole
   end
 
   def add(x,y,carre)
       @list[x][y]=carre
-
   end
 
   def draw #dessine la map
@@ -30,8 +30,17 @@ class Map
     end
   end
 
-
-
+  def creemap()
+    aleaFloat=2*rand+1
+    aleaInt=aleaFloat.round
+    self.addMapToList("maps/1/"+ aleaInt.to_s)
+      aleaFloat=2*rand+1
+      aleaInt=aleaFloat.round
+    self.addMapToList("maps/2/"+ aleaInt.to_s)
+      aleaFloat=2*rand+1
+      aleaInt=aleaFloat.round
+    self.addMapToList("maps/3/"+ aleaInt.to_s)
+  end
 
     def addMapToList(name)
       if File::exists?( name )
@@ -47,52 +56,39 @@ class Map
           x=0
           notfin=true
           while notfin
-            print("\n")
-            print(y)
-            print(x)
-            print("\n")
             if x<@width
               newList[x][y]=@list[x][y]
             else
               c=aFile.sysread(1)
-              if c==Carr::Terre
-                newList[x][y]=Carre.new(Carr::Terre)
-              elsif c==Carr::Start
-                newList[x][y]=Carre.new(Carr::Start)
+              if c!="\n" && c!=Carr::Vide
+                newList[x][y]=Carre.new(c)
               elsif c=="\n"
                 notfin=false
-              else
-                  newList[x][y]=nil
               end
             end
             x+=1
           end
       end
-
       aFile.close
       @list=newList
       @width=taille
     end
     end
 
-    def creeMap()
-      self.addMapToList("maps/test")
-=begin
-      aleaFloat=2*rand
-      aleaInt=aleaFloat.round
-      self.addMapToList("maps/1/1")
-
-      aleaFloat=2*rand
-      aleaInt=+aleaFloat.round
-      self.addMapToList("maps/2/"+aleaInt.to_s)
-      aleaFloat=2*rand
-      aleaInt=+aleaFloat.round
-      self.addMapToList("maps/3/"+aleaInt.to_s)
-=end
+    def ecritConsole
+      for y in 0..NbCarre::Height-1
+        for x in 0..@width-1
+          if @list[x][y] && @list[x][y].image==Carr::Terre
+            print("T")
+          elsif @list[x][y] &&  @list[x][y].image==Carr::Start
+            print("S")
+          else
+            print("O")
+          end
+        end
+        print("\n")
+      end
     end
-
-
-
 end
 
 =begin
@@ -110,8 +106,8 @@ def lectureMap(name)#lit la map name et l implemente dans @list
       notfin=true
       while notfin
         c=aFile.sysread(1)
-        if c==Carr::Terre
-          self.add(x,y,Carre.new(1))
+        if c!="\n" && c!=Carr::Vide
+          self.add(x,y,Carre.new(c))
         elsif c=="\n"
           notfin=false
         else
@@ -139,14 +135,30 @@ def creationFil(name)#sauve garde la map dans creation pour la metre dans un fic
   aFile.syswrite("\n")
   for y in 0..NbCarre::Height-1
     for x in 0..@width-1
-      if @list[x][y]==Carr::Terre
-        aFile.syswrite(Carr::Terre)
+      if @list[x][y]
+        aFile.syswrite(@list[x][y].image)
       else
-        aFile.syswrite(Carr::Vide)
+        aFile.syswrite("O")
       end
     end
     aFile.syswrite("\n")
   end
       aFile.close
   end
+
+def creeMap()
+  self.addMapToList("maps/test")
+
+  aleaFloat=2*rand
+  aleaInt=aleaFloat.round
+  self.addMapToList("maps/1/1")
+
+  aleaFloat=2*rand
+  aleaInt=+aleaFloat.round
+  self.addMapToList("maps/2/"+aleaInt.to_s)
+  aleaFloat=2*rand
+  aleaInt=+aleaFloat.round
+  self.addMapToList("maps/3/"+aleaInt.to_s)
+
+end
 =end
