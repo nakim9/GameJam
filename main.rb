@@ -18,9 +18,11 @@ require_relative 'Magicien'
 require_relative 'Vampire'
 require_relative 'Arbre'
 
+require_relative 'editeur'
+require_relative 'pointeur'
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
 WindowStart=WindowStart.new(WindowWidth,WindowHeight)
 WindowStart.show
-Window = Window.new(WindowWidth,WindowHeight)
+
 #Window.show

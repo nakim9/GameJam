@@ -126,6 +126,17 @@ class Personnage
           @pv -= 1
         end
       end
+
+      def enContactCarre(i,j)
+        point = coodonees(i,j)
+        pointBas = bg
+        distance = Gosu::distance(pointBas[0],pointBas[1],point[0], point[1])
+        if distance<35
+          return true
+        else
+          return false
+        end
+      end
       #methodes qui renvoie un boulean pour dire si le cote choisi touche un carré
            def contactBas
                 p1= self.bg
@@ -136,6 +147,17 @@ class Personnage
                 else
                      return false
                 end
+           end
+
+           def getContactBas
+             p1= self.bg
+             p2 = self.bd
+             pm = pointMid(p1[0],p1[1],p2[0],p2[1])
+             if self.carre(p1[0],p1[1]) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
+                  return
+             else
+                  return nil
+             end
            end
 
            def contactHaut

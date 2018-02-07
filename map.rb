@@ -5,8 +5,8 @@ class Map
    def initialize()
      @carteSuivant=0
      @width=000
-     @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-     @maps=Array.new(3){Array.new(2,nil)}
+     @list = Array.new()
+     @maps=Array.new()
      self.initialisationMaps()
      self.creemap()
   end
@@ -53,6 +53,7 @@ class Map
       taille=@maps[clee].length
       self.addMapToList(@maps[clee][rand(taille)])
     end
+    self.addMapToList("viellemap/mapTestArrive")
 
   end
 
@@ -106,6 +107,44 @@ class Map
         print("\n")
       end
     end
+
+
+def clearList(widht)
+  sleep(1.0/8.0)
+  @list=Array.new(widht){Array.new(NbCarre::Height,nil)}
+  @width=widht
+  print(@width)
+end
+
+def creationFil(name)#sauve garde la map dans creation pour la metre dans un fichier name
+  sleep(1.0/8.0)
+  aFile=File.new(name,"w")
+    print("\n")
+    print(@width)
+    print("\n")
+  if @width>99
+    aFile.syswrite(@width)
+  elsif @width>9
+    aFile.syswrite(0)
+    aFile.syswrite(@width)
+  else
+    aFile.syswrite(0)
+    aFile.syswrite(0)
+    aFile.syswrite(@width)
+  end
+  aFile.syswrite("\n")
+  for y in 0..NbCarre::Height-1
+    for x in 0..@width-1
+      if @list[x][y]
+        aFile.syswrite(@list[x][y].type)
+      else
+        aFile.syswrite("O")
+      end
+    end
+    aFile.syswrite("\n")
+  end
+      aFile.close
+  end
 end
 
 =begin

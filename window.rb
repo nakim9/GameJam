@@ -5,7 +5,18 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
+<<<<<<< HEAD
     @hero = Arbre.new(width/2, height/2,@map)
+=======
+    #heros
+    @heros = []
+    @heros.push(PouleLicorne.new(width/2, height/2,@map))
+    @heros.push(Vache.new(width/2, height/2,@map))
+    @heros.push(Ivrogne.new(width/2, height/2,@map))
+    chooseHero
+
+
+>>>>>>> 3d34dd0197b2aac8d485dceb23b9c419fcd25474
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -25,9 +36,14 @@ class Window < Gosu::Window
 
   # fonction appelée 60 fois par seconde
   def update
-    if gameOver?
+    if gameOver? || @hero.arrive?
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
+      if gameOver?
+        wind.cas(1)
+      else
+        wind.cas(2)
+      end
       wind.show
       close
     else
@@ -128,6 +144,12 @@ class Window < Gosu::Window
 
   def gameOver?
     return @hero.pv <= 0
+  end
+
+  def chooseHero
+    r = Random.new
+    i=r.rand(0...@heros.length)
+    @hero = @heros[i]
   end
 
 end

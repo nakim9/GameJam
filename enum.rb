@@ -18,11 +18,23 @@ end
 
 module Carr
     Width = Height=WindowSize::Height/NbCarre::Height
-    Terre="T"
-    Vide="O"
-    Start="S"
     Arrive="A"
+    ArbreL3="B"
+    Bateau="C"
+    Jes="D"
     Ennemi="E"
+    Enfer="F"
+    Enfer2="G"
+    Herbe="H"
+    Enfer3="I"
+    Arbre="Q"
+    Start="S"
+    ArbreL2="R"
+    Terre="T"
+    Arc="Y"
+    ArbreL1="Z"
+    Vide="O"
+
 
 end
 

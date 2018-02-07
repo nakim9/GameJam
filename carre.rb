@@ -1,6 +1,6 @@
 # classe map
 class Carre
-  attr_reader :image, :start, :type
+  attr_reader :image, :start, :type, :arrive
    def initialize(type)
      @start=type==Carr::Start
      @arrive=type==Carr::Arrive
