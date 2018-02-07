@@ -45,16 +45,12 @@ class PouleLicorne < Hero
 
   def attaque2(ennemis)
     super(ennemis)
-<<<<<<< HEAD
     @song[1].volume = Volume::Bruit
-=======
-    @song[1].volume = 0.55
->>>>>>> 434db6b79da9c8894221065360cd490a777263c9
     @song[1].play
   end
 
   def cri
-    @song[2].volume = 0.55
+    @song[2].volume = Volume::Bruit
     @song[2].play
   end
 end
