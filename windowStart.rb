@@ -38,7 +38,6 @@ class WindowStart < Gosu::Window
         @font.draw("Play ", WindowWidth/3, WindowHeight/3, 0, 1, 1, 0xff_0000ff)
         @font.draw("Crée un parcours", WindowWidth/3, WindowHeight/2, 0, 1, 1,  0xff_f62217)
       end
-      @font.draw("Appuyez sur espace pour valider votre choix", WindowWidth/5, WindowHeight/1.5, 0, 1, 1, 0xff_000000)
   end
 
   def deplacementHaut
