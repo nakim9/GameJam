@@ -53,6 +53,7 @@ class Map
       taille=@maps[clee].length
       self.addMapToList(@maps[clee][rand(taille)])
     end
+    self.addMapToList("viellemap/mapTestArrive")
 
   end
 

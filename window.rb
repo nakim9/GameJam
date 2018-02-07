@@ -25,7 +25,7 @@ class Window < Gosu::Window
 
   # fonction appelée 60 fois par seconde
   def update
-    if gameOver?
+    if gameOver? || @hero.arrive?
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
       wind.show

@@ -104,4 +104,24 @@ def localiser
   end
   return point
 end
+
+def arrive?
+  oui = false
+  i = 0
+  j = 0
+  @map.list.each do |carres|
+    j=0
+    carres.each do |carre|
+      if carre
+        if self.enContactCarre(i,j) && carre.arrive
+          puts "passe"
+          oui=true
+        end
+      end
+      j +=1
+    end
+    i +=1
+  end
+  return false
+end
 end
