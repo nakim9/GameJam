@@ -1,5 +1,5 @@
 require_relative 'hero'
-class PouleLicorne < Hero
+class Vache < Hero
 
   def initialize(x, y,map)
     super(x,y,map)
@@ -18,12 +18,12 @@ class PouleLicorne < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/pouleLicorne/pouleCalme2.mp3"))
+    @song.push(Gosu::Song.new("res/music.mp3"))
 
     # fixe le volume à 0.25
-    #@song.volume = 0.25
+    @song.volume = 0.25
     # lance la musique
-    #@song.play(true)
+    @song.play(true)
   end
 
   def attaque1
@@ -36,8 +36,6 @@ class PouleLicorne < Hero
       end
       @temps=1;
       @image = @images[2]
-      @song[0].volume = 0.55
-      @song[0].play
     end
   end
 end
