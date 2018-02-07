@@ -5,14 +5,14 @@ class WindowStart < Gosu::Window
     self.caption = "Bienvenu!"
     @font = Gosu::Font.new(self, "Arial", 36)
     @image = Gosu::Image.new("res/acceuil.png")
-    @action = 'play' # ou 'edit' 
+    @action = 'play' # ou 'edit'
   end
 
   def update
     deplacementHaut if Gosu::button_down?(Gosu::KbUp)
     deplacementBas if Gosu::button_down?(Gosu::KbDown)
 
-    if Gosu::button_down?(Gosu::KbSpace)
+    if Gosu::button_down?(Gosu::KB_RETURN)
       if @action == 'play'
         wind = Window.new(WindowWidth, WindowHeight)
         wind.show
