@@ -29,7 +29,9 @@ class Ennemi < Personnage
   def go_left
     @dernierDeplacement = 'left'
     if contactGauche
-         go_right
+         @velocityX += 0.5
+         @image = @images[1]
+         @dernierDeplacement = 'right'
     else
         @velocityX -= 0.5
     end
