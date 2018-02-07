@@ -5,7 +5,14 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
-    @hero = PouleLicorne.new(width/2, height/2,@map)
+    #heros
+    @heros = []
+    @heros.push(PouleLicorne.new(width/2, height/2,@map))
+    @heros.push(Vache.new(width/2, height/2,@map))
+    @heros.push(Ivrogne.new(width/2, height/2,@map))
+    chooseHero
+
+
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -132,6 +139,12 @@ class Window < Gosu::Window
 
   def gameOver?
     return @hero.pv <= 0
+  end
+
+  def chooseHero
+    r = Random.new
+    i=r.rand(0...@heros.length)
+    @hero = @heros[i]
   end
 
 end
