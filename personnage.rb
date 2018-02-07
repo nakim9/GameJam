@@ -27,7 +27,7 @@ class Personnage
          carrH = Carr::Height.to_f
          heroW = carrW/@image.width.to_f
          heroH = (carrH*2.0)/@image.height.to_f
-      @image.draw(@x, @y, ZOrder::Hero, heroW, heroH)
+      @image.draw(@x, @y, ZOrder::Hero, 1, 1)
     end
 
     # vitesse en x diminue (équivaut à un déplacement vers la gauche)
@@ -208,7 +208,11 @@ class Personnage
            def carre(x,y)
                 i = x/Carr::Width
                 j = y/Carr::Height
-                return @map.list[i][j]
+                if @map.list[i]
+                  return @map.list[i][j]
+                else
+                  return nil
+                end
            end
       #methode pour avoir les coordonnées a partir de l'emplacement du carré
            def coodonees(i,j)

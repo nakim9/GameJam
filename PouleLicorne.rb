@@ -10,8 +10,8 @@ class PouleLicorne < Hero
     @images = []
     # on ajoute les 4 images dans le tableau -- obligatoirement 2 images
     @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
-    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneD.png"))
-    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneOeuf.png"))
+    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
+    @images.push(Gosu::Image.new("res/pouleLicorne/PoulicorneG.png"))
 
     # de base, le héros va a droite
     @image = @images[1]

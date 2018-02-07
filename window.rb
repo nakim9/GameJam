@@ -6,7 +6,7 @@ class Window < Gosu::Window
     @map=Map.new("maps/test")
 
 
-    @hero = Hero.new(width/2, height/2,@map)
+    @hero = PouleLicorne.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     @ennemis.push(Ennemi.new(width/5, height/2,@map))
@@ -63,6 +63,10 @@ class Window < Gosu::Window
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
     if @hero.pv>0
       @font.draw("Mes PV :"+@hero.pv.to_s, 0, 0, 0, 1, 1, 0xff_0000ff)
+      @font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("bd", @hero.bd[0], @hero.bd[1], 0, 1, 1, 0xff_0000ff)
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
