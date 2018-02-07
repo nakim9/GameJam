@@ -107,6 +107,12 @@ class Map
         print("\n")
       end
     end
+
+
+def clearList(widht)
+  @list=Array.new(widht){Array.new(NbCarre::Height,nil)}
+  @widht=widht
+end
 end
 
 =begin

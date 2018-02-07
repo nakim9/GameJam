@@ -14,7 +14,8 @@ require_relative 'PouleLicorne'
 require_relative 'Vache'
 require_relative 'Ivrogne'
 require_relative 'WindowEnd'
-
+require_relative 'editeur'
+require_relative 'pointeur'
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
 WindowStart=WindowStart.new(WindowWidth,WindowHeight)
