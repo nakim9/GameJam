@@ -7,7 +7,7 @@ class Window < Gosu::Window
     @hero = PouleLicorne.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
-    @ennemis.push(Ennemi.new(width/5, height/2,@map))
+    placeEnnemis
     #initilisation de la map
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
@@ -33,6 +33,7 @@ class Window < Gosu::Window
       @hero.incremente
     elsif @hero.temps==@hero.tempsAttente
       @hero.setTemps(0)
+      @hero.cri
     end
     @hero.tirs.each(&:update)
 
@@ -69,6 +70,28 @@ class Window < Gosu::Window
     else
       @font.draw("Perdu!!", 0, 0, 0, 1, 1, 0xff_0000ff)
     end
+  end
+
+  def placeEnnemis
+    i=0
+    @list.each do |x|
+      j=0
+      x.each do |y|
+        if y.type==Carr::Ennemi
+          point = coodonees(i,j)
+          @ennemis.push(Ennemi.new(point[0], point[1],@map))
+        end
+      j=j+1
+    end
+    i=i+1
+    end
+  end
+
+  def coodonees(i,j)
+       point = []
+       point.push(i*Carr::Width)
+       point.push(j*Carr::Height)
+       return point
   end
 
 end

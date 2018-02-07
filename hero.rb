@@ -72,6 +72,9 @@ class Hero < Personnage
     @temps = temps
   end
 
+  def cri
+  end
+
 
 def ciel
      if contactHaut

@@ -20,6 +20,7 @@ class PouleLicorne < Hero
     @song = []
     @song.push(Gosu::Song.new("res/pouleLicorne/pouleEnervé1.mp3"))
     @song.push(Gosu::Song.new("res/pouleLicorne/pouleQuiCharge1.mp3"))
+    @song.push(Gosu::Song.new("res/pouleLicorne/pouleCalme2.mp3"))
     # fixe le volume à 0.25
     #@song.volume = 0.25
     # lance la musique
@@ -43,7 +44,12 @@ class PouleLicorne < Hero
 
   def attaque2(ennemis)
     super(ennemis)
-    @song[0].volume = 0.55
+    @song[1].volume = 0.55
     @song[1].play
+  end
+
+  def cri
+    @song[2].volume = 0.55
+    @song[2].play
   end
 end
