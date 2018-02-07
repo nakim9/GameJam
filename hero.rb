@@ -10,10 +10,11 @@ class Hero < Personnage
     @tirs=[]
     @tempsAttente = 50
     @temps = 5
-    @image = Gosu::Image.new("res/hero.png")
-    point = localiser
-    @x = point[0]
-    @y = point[1]
+    @projectile = "res/fire.png"
+      @image = Gosu::Image.new("res/hero.png")
+      point = localiser
+      @x = point[0]
+      @y = point[1]
   end
 
   def draw
@@ -54,7 +55,7 @@ class Hero < Personnage
   #methodes
   def attaque1
     if(@temps == 0)
-      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement,"res/fire.png"))
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),@dernierDeplacement, @projectile))
       @temps=1;
     end
   end
