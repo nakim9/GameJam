@@ -2,16 +2,34 @@
 
 class Map
   attr_reader :list , :width
-   def initialize(name)
+   def initialize()
+     @carteSuivant=0
      @width=000
      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-     self.addMapToList(name)
+     @maps=Array.new(3){Array.new(2,nil)}
+     self.initialisationMaps()
+     self.creemap()
+  end
 
+  def initialisationMaps()
+    print("iniinini")
+    @maps=Array.new()
+    x=0
+    Dir.foreach("./maps") do |fichier|
+        if fichier!=".." && fichier!="."
+          @maps.push(Array.new())
+        Dir.foreach("maps" +"/" +fichier) do |fichier2|
+          if fichier2!=".." && fichier2!="."
+            @maps[x].push("maps/"+fichier+"/"+fichier2)
+        end
+        end
+        x+=1
+      end
+    end
   end
 
   def add(x,y,carre)
       @list[x][y]=carre
-
   end
 
   def draw #dessine la map
@@ -19,8 +37,10 @@ class Map
     @list.each do |x|
       j=0
       x.each do |y|
-        if y
-      Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 0, 0))
+      if y && y.image==Carr::Terre
+        Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 0, 0))
+      elsif  y && y.image==Carr::Start
+        Gosu::draw_rect(i*Carr::Width, j*Carr::Height, Carr::Width, Carr::Height,  Gosu::Color.new(255, 255, 255, 0))
       end
       j=j+1
     end
@@ -28,60 +48,15 @@ class Map
     end
   end
 
-  def lectureMap(name)#lit la map name et l implemente dans @list
-    if File::exists?( name )
-      aFile=File.open(name,"r")
-      centaine=aFile.sysread(1)
-      disaine=aFile.sysread(1)
-      uniter=aFile.sysread(1)
-      @width=centaine.to_i*100+disaine.to_i*10+uniter.to_i
-      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-      aFile.sysread(1)
-      for y in 0..NbCarre::Height-1
-        x=0
-        notfin=true
-        while notfin
-          c=aFile.sysread(1)
-          if c==Carr::Terre
-            self.add(x,y,Carre.new(1))
-          elsif c=="\n"
-            notfin=false
-          else
-            self.add(x,y,nil)
-          end
-          x+=1
-        end
-      end
-      aFile.close
+  def creemap()
+    self.addMapToList("viellemap/test")
+    for num in 0..2
+      clee=@carteSuivant.to_i
+      taille=@maps[clee].length
+      self.addMapToList(@maps[clee][rand(taille)])
     end
+
   end
-
-  def creationFil(name)#sauve garde la map dans creation pour la metre dans un fichier name
-    aFile=File.new(name,"w")
-    if @width>99
-      aFile.syswrite()
-    elsif @width>9
-      aFile.syswrite(0)
-      aFile.syswrite(@width)
-    else
-      aFile.syswrite(0)
-      aFile.syswrite(0)
-      aFile.syswrite(@width)
-    end
-    aFile.syswrite("\n")
-    for y in 0..NbCarre::Height-1
-      for x in 0..@width-1
-        if @list[x][y]==Carr::Terre
-          aFile.syswrite(Carr::Terre)
-        else
-          aFile.syswrite(Carr::Vide)
-        end
-      end
-      aFile.syswrite("\n")
-    end
-        aFile.close
-    end
-
 
     def addMapToList(name)
       if File::exists?( name )
@@ -101,36 +76,108 @@ class Map
               newList[x][y]=@list[x][y]
             else
               c=aFile.sysread(1)
-              if c==Carr::Terre
-                newList[x][y]=Carre.new(Carr::Terre)
-              elsif c==Carr::Start
-                newList[x][y]=Carre.new(Carr::Start)
+              if c!="\n" && c!=Carr::Vide
+                newList[x][y]=Carre.new(c)
               elsif c=="\n"
                 notfin=false
-              else
-                  newList[x][y]=nil
               end
             end
             x+=1
           end
       end
-
+      @carteSuivant=aFile.sysread(1)
       aFile.close
       @list=newList
+      @width=taille
+    else
+      print("fichier"+name+"introuvable")
     end
     end
 
-    def creeMap()
-      self.addMapToList("maps/test")
+    def ecritConsole
+      for y in 0..NbCarre::Height-1
+        for x in 0..@width-1
+          if @list[x][y] && @list[x][y].image==Carr::Terre
+            print("T")
+          elsif @list[x][y] &&  @list[x][y].image==Carr::Start
+            print("S")
+          else
+            print("O")
+          end
+        end
+        print("\n")
+      end
+    end
+end
+
 =begin
-      aleaFloat=2*rand
-      aleaInt=+aleaFloat.round
-      self.addMapToList("maps/1/"+aleaInt.to_s)
-
-      aleaFloat=2*rand
-      aleaInt=+aleaFloat.round
-        self.addMapToList("maps/2/"+aleaInt.to_s)
-=end
+def lectureMap(name)#lit la map name et l implemente dans @list
+  if File::exists?( name )
+    aFile=File.open(name,"r")
+    centaine=aFile.sysread(1)
+    disaine=aFile.sysread(1)
+    uniter=aFile.sysread(1)
+    @width=centaine.to_i*100+disaine.to_i*10+uniter.to_i
+    @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
+    aFile.sysread(1)
+    for y in 0..NbCarre::Height-1
+      x=0
+      notfin=true
+      while notfin
+        c=aFile.sysread(1)
+        if c!="\n" && c!=Carr::Vide
+          self.add(x,y,Carre.new(c))
+        elsif c=="\n"
+          notfin=false
+        else
+          self.add(x,y,nil)
+        end
+        x+=1
+      end
     end
+    aFile.close
+  end
+end
+
+def creationFil(name)#sauve garde la map dans creation pour la metre dans un fichier name
+  aFile=File.new(name,"w")
+  if @width>99
+    aFile.syswrite()
+  elsif @width>9
+    aFile.syswrite(0)
+    aFile.syswrite(@width)
+  else
+    aFile.syswrite(0)
+    aFile.syswrite(0)
+    aFile.syswrite(@width)
+  end
+  aFile.syswrite("\n")
+  for y in 0..NbCarre::Height-1
+    for x in 0..@width-1
+      if @list[x][y]
+        aFile.syswrite(@list[x][y].image)
+      else
+        aFile.syswrite("O")
+      end
+    end
+    aFile.syswrite("\n")
+  end
+      aFile.close
+  end
+
+def creeMap()
+  self.addMapToList("maps/test")
+
+  aleaFloat=2*rand
+  aleaInt=aleaFloat.round
+  self.addMapToList("maps/1/1")
+
+  aleaFloat=2*rand
+  aleaInt=+aleaFloat.round
+  self.addMapToList("maps/2/"+aleaInt.to_s)
+  aleaFloat=2*rand
+  aleaInt=+aleaFloat.round
+  self.addMapToList("maps/3/"+aleaInt.to_s)
 
 end
+=end
