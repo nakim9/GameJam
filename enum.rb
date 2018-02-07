@@ -13,7 +13,7 @@ module WindowSize
 end
 
 module NbCarre
-  Height = 7
+  Height = 15
 end
 
 module Carr
