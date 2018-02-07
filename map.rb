@@ -44,7 +44,7 @@ class Map
   end
 
   def creemap()
-    self.addMapToList("maps/test")
+    self.addMapToList("viellemap/test")
     for num in 0..2
       clee=@carteSuivant.to_i
       taille=@maps[clee].length
