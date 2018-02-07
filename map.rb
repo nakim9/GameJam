@@ -3,11 +3,24 @@
 class Map
   attr_reader :list , :width
    def initialize()
+     @carteSuivant=0
      @width=000
      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
-     print("\ndebut\n")
+     @maps=Array.new(3){Array.new(2,nil)}
+     self.initialisationMaps()
      self.creemap()
      self.ecritConsole
+  end
+
+  def initialisationMaps()
+    @maps=Array.new(3){Array.new(2,nil)}
+    @maps[0][0]="maps/1/1"
+    @maps[0][1]="maps/1/2"
+    @maps[1][0]="maps/2/1"
+    @maps[1][1]="maps/2/2"
+    @maps[2][0]="maps/3/1"
+    @maps[2][1]="maps/3/2"
+
   end
 
   def add(x,y,carre)
@@ -32,15 +45,11 @@ class Map
 
   def creemap()
     self.addMapToList("maps/test")
-    aleaFloat=rand*(2)+1.5
-    aleaInt=aleaFloat.round
-    self.addMapToList("maps/1/"+ aleaInt.to_s)
-      aleaFloat=rand*(2)+1.5
-      aleaInt=aleaFloat.round
-    self.addMapToList("maps/2/"+ aleaInt.to_s)
-      aleaFloat=rand*(2)+1.5
-      aleaInt=aleaFloat.round
-    self.addMapToList("maps/3/"+ aleaInt.to_s)
+    for num in 0..2
+      clee=@carteSuivant.to_i
+      taille=@maps[clee].length
+      self.addMapToList(@maps[clee][rand(taille)])
+    end
 
   end
 
@@ -71,6 +80,7 @@ class Map
             x+=1
           end
       end
+      @carteSuivant=aFile.sysread(1)
       aFile.close
       @list=newList
       @width=taille
