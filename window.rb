@@ -28,6 +28,11 @@ class Window < Gosu::Window
     if gameOver? || @hero.arrive?
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
+      if gameOver?
+        wind.cas(1)
+      else
+        wind.cas(2)
+      end
       wind.show
       close
     else
