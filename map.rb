@@ -9,18 +9,23 @@ class Map
      @maps=Array.new(3){Array.new(2,nil)}
      self.initialisationMaps()
      self.creemap()
-     self.ecritConsole
   end
 
   def initialisationMaps()
-    @maps=Array.new(3){Array.new(2,nil)}
-    @maps[0][0]="maps/1/1"
-    @maps[0][1]="maps/1/2"
-    @maps[1][0]="maps/2/1"
-    @maps[1][1]="maps/2/2"
-    @maps[2][0]="maps/3/1"
-    @maps[2][1]="maps/3/2"
-
+    print("iniinini")
+    @maps=Array.new()
+    x=0
+    Dir.foreach("./maps") do |fichier|
+        if fichier!=".." && fichier!="."
+          @maps.push(Array.new())
+        Dir.foreach("maps" +"/" +fichier) do |fichier2|
+          if fichier2!=".." && fichier2!="."
+            @maps[x].push("maps/"+fichier+"/"+fichier2)
+        end
+        end
+        x+=1
+      end
+    end
   end
 
   def add(x,y,carre)
