@@ -14,6 +14,9 @@ class Ivrogne < Hero
     # de base, le héros va a droite
     @image = @images[1]
 
+    # image du projectile (de base fireball)
+    @projectile = "res/pouleLicorne/Oeuf.png"
+
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
     @song.push(Gosu::Song.new("res/Ivrogne/ivrogne.mp3"))
@@ -43,7 +46,7 @@ class Ivrogne < Hero
   def attaque1
     if(@temps == 0)
       #changer l'image du tir
-      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)), @dernierDeplacement,"res/pouleLicorne/Oeuf.png"))
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)), @dernierDeplacement,@projectile))
       @temps=1;
       @song[0].volume = Volume::Bruit
       @song[0].play
