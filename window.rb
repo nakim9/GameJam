@@ -53,6 +53,9 @@ class Window < Gosu::Window
       # la fonction move est appelée dans tous les cas
       @hero.move
       @hero.sol
+      if @hero.contactPortail
+        chooseHero
+      end
       @hero.tirs.each do |tirs|
         tirs.kill(@ennemis)
       end
@@ -86,7 +89,7 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
-      @map.draw 
+      @map.draw
       @hero.draw
       @ennemis.each(&:draw)
       @hero.tirs.each(&:draw)
