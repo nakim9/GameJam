@@ -1,20 +1,19 @@
 require_relative 'personnage'
 class Hero < Personnage
-  attr_reader :tirs, :temps, :tempsAttente, :pv
+  attr_reader :tirs, :temps, :tempsAttente
   # constructeur
   def initialize(x, y,map)
 
     super(x,y,map)
-    #pv du heros
-    @pv = 100
+
     #dernier sens de déplacement
     @tirs=[]
     @tempsAttente = 50
     @temps = 5
-      @image = Gosu::Image.new("res/hero.png")
-      point = localiser
-      @x = point[0]
-      @y = point[1]
+    @image = Gosu::Image.new("res/hero.png")
+    point = localiser
+    @x = point[0]
+    @y = point[1]
   end
 
   def draw

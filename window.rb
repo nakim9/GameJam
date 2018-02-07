@@ -4,7 +4,7 @@ class Window < Gosu::Window
     super
     self.caption = "Mon jeu"
     @map=Map.new()
-    @hero = Ivrogne.new(width/2, height/2,@map)
+    @hero = PouleLicorne.new(width/2, height/2,@map)
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -14,7 +14,6 @@ class Window < Gosu::Window
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
     @camera_x = @camera_y = 0
-
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = Gosu::Song.new("res/theme principal.mp3")
     # fixe le volume à 0.25
@@ -47,6 +46,8 @@ class Window < Gosu::Window
     end
     @hero.tirs.each(&:update)
 
+    @ennemis.reject! {|ennemi| ennemi.pv<=0}
+
     @ennemis.each(&:update)
 
     @ennemis.each do |ennemi|
@@ -66,10 +67,13 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
-      @map.draw
-      @hero.draw
-      @ennemis.each(&:draw)
-      @hero.tirs.each(&:draw)
+    @map.draw
+    @hero.draw
+    @ennemis.each(&:draw)
+    @hero.tirs.each(&:draw)
+    @ennemis.each do |ennemi|
+      @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_0000ff)
+    end
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
