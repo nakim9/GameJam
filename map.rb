@@ -31,6 +31,7 @@ class Map
   end
 
   def creemap()
+    self.addMapToList("maps/test")
     aleaFloat=2*rand+1
     aleaInt=aleaFloat.round
     self.addMapToList("maps/1/"+ aleaInt.to_s)
@@ -72,6 +73,8 @@ class Map
       aFile.close
       @list=newList
       @width=taille
+    else
+      print("fichier"+name+"introuvable")
     end
     end
 
