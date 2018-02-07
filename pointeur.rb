@@ -1,4 +1,5 @@
 class Pointeur
+  attr_reader :map,:x,:y
   def initialize(x,y,map)
     @carres= Queue.new()
       @carres.push(Carre.new(Carr::Arrive))
@@ -42,7 +43,7 @@ class Pointeur
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
   def go_right
-    if @x!=@map.width
+    if @x!=@map.width-1
       @x+=1
     end
     sleep(1.0/8.0)
@@ -58,7 +59,7 @@ class Pointeur
 
   # vitesse en y augmente (équivaut à un déplacement vers le bas)
   def go_down
-    if @y!=NbCarre::Height
+    if @y!=NbCarre::Height-1
       @y+=1
     end
     sleep(1.0/8.0)
@@ -67,6 +68,12 @@ class Pointeur
   def add
     @map.add(@x,@y,@carre)
     sleep(1.0/8.0)
+  end
+
+  def ptrClear(map)
+    @map=map
+    @x=0
+    @y=0
   end
   # modification des coordonées du héros
 
