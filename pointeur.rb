@@ -3,7 +3,10 @@ class Pointeur
     @carres= Queue.new()
     @carres.push(Carre.new(Carr::Herbe))
     @carres.push(Carre.new(Carr::Terre))
-    @carre=Carre.new(Carr::Terre)
+    @carres.push(Carre.new(Carr::Start))
+    @carres.push(Carre.new(Carr::Arrive))
+    @carres.push(Carre.new(Carr::Ennemi))
+    @carre=@carres.pop()
     @map=map
     @x=x
     @y=y
