@@ -31,9 +31,9 @@ class PouleLicorne < Hero
     if(@temps == 0)
       #changer l'image du tir
       if @dernierDeplacement=='left'
-        @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),'right',"res/pouleLicorne/Oeuf.png"))
+        @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),'right',"res/pouleLicorne/Oeuf.png",50))
       else
-        @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),'left',"res/pouleLicorne/Oeuf.png"))
+        @tirs.push(Tirs.new(@x,(@y+(@image.height/2)),'left',"res/pouleLicorne/Oeuf.png",50))
       end
       @temps=1;
       @image = @images[2]

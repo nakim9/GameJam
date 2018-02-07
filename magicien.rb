@@ -22,21 +22,33 @@ class Magicien < Hero
     @song.push(Gosu::Song.new("res/Magicien/sortQuiFoir1.mp3"))
     @song.push(Gosu::Song.new("res/Magicien/sortQuiReussi.mp3"))
     @song.push(Gosu::Song.new("res/Magicien/MagicienQuiMeurt.mp3"))
+    @song.push(Gosu::Song.new("res/Magicien/sortQuiFoir2.mp3"))
   end
 
   def attaque1
     if(@temps == 0)
-         @image = @images[3]
-         @song[1].volume = Volume::Bruit
-         @song[1].play
-         @temps=1
+      @image = @images[3]
+      if rand(3) == 0
+        if rand(2) ==0
+        @song[0].volume = Volume::Bruit
+        @song[0].play
+      else
+        @song[3].volume = Volume::Bruit
+        @song[3].play
+      end
+    else
+        super
+        @song[1].volume = Volume::Bruit
+        @song[1].play
+    end
+      @temps=1
     end
   end
 
   def attaque2(ennemis)
       super(ennemis)
       @image = @images[2]
-      @song[0].volume = Volume::Bruit
-      @song[0].play
+      @song[2].volume = Volume::Bruit
+      @song[2].play
   end
 end

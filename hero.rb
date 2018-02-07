@@ -63,7 +63,7 @@ class Hero < Personnage
   def attaque2(ennemis)
     ennemis.each do |ennemi|
       if self.enContact(ennemi)
-        enemis.subit(10)
+        ennemi.subit(10)
       end
     end
   end

@@ -13,6 +13,7 @@ require_relative 'personnage'
 require_relative 'PouleLicorne'
 require_relative 'Vache'
 require_relative 'Ivrogne'
+require_relative 'Magicien'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
