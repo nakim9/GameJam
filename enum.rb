@@ -24,3 +24,9 @@ module Carr
     Arrive="A"
 
 end
+
+
+module Volume
+     Bruit = 0.55
+     Music = 0.3
+end

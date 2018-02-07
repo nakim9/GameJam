@@ -11,6 +11,7 @@ require_relative 'tirs'
 require_relative 'WindowStart'
 require_relative 'personnage'
 require_relative 'PouleLicorne'
+require_relative 'Vache'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
