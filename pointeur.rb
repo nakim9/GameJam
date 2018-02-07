@@ -17,14 +17,22 @@ class Pointeur
       @carres.push(Carre.new(Carr::Terre))
       @carres.push(Carre.new(Carr::Arc))
       @carres.push(Carre.new(Carr::ArbreL1))
+
     @carre=@carres.pop()
     @map=map
     @x=x
     @y=y
   end
 
+  def efface
+    @map.add(@x,@y,nil)
+  end
+
+
   def draw
-    @carre.draw(@x,@y)
+    if @carre
+      @carre.draw(@x,@y)
+    end
   end
 
   def switchCarre
@@ -68,6 +76,7 @@ class Pointeur
   def add
     @map.add(@x,@y,@carre)
     sleep(1.0/8.0)
+
   end
 
   def ptrClear(map)
