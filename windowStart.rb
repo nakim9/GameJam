@@ -14,10 +14,12 @@ class WindowStart < Gosu::Window
 
     if Gosu::button_down?(Gosu::KB_RETURN)
       if @action == 'play'
-        wind = Window.new(WindowWidth, WindowHeight)
+        sleep(1.0/8.0)
+        wind = WindowSelectNiveau.new(WindowWidth, WindowHeight)
         wind.show
         close
       else
+        sleep(1.0/8.0)
         wind = Editeur.new(WindowWidth, WindowHeight)
         wind.show
         close

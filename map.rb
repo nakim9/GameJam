@@ -45,20 +45,29 @@ class Map
     end
   end
 
-  def creeMap()
-    self.addMapToList("viellemap/test")
+  def creeMap(map)
+    if map=="mapsDebut/mapAleatoir"
+      self.addMapToList(map)
+    else
+      self.addMapToList("mapsDebut/test")
+      for num in 0..6
+        clee=@carteSuivant.to_i
+        taille=@maps[clee].length
+        self.addMapToList(@maps[clee][rand(taille)])
+      end
+    end
 =begin      self.addMapToList("viellemap/0/0")
       self.addMapToList("viellemap/0/1")
       self.addMapToList("viellemap/0/2")
       self.addMapToList("viellemap/0/4")
-=end
+
     for num in 0..6
       clee=@carteSuivant.to_i
       taille=@maps[clee].length
       self.addMapToList(@maps[clee][rand(taille)])
     end
     self.addMapToList("viellemap/mapTestArrive")
-
+=end
   end
 
     def addMapToList(name)

@@ -1,12 +1,14 @@
 class Window < Gosu::Window
 
-  def initialize(width, height)
-    super
+  def initialize(width, height,map)
+    super(width, height)
+    @start = true
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
-    @map.creeMap()
-    @start = true
+    @map.creeMap(map)
+    @tChangement = 0
+
     #heros
     @heros = []
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
@@ -185,7 +187,6 @@ class Window < Gosu::Window
       py = @hero.y
       @hero = @heros[i]
       @hero.positionner(px,py)
-      puts "changer de hero"
     end
 
   end
