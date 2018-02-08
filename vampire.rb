@@ -17,7 +17,7 @@ class Vampire < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Sample.new("res/Vampire/vampire.mp3"))
+    @song.push(Gosu::Sample.new("res/Vampire/vampire.ogg"))
 
   end
 
