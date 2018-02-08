@@ -108,6 +108,8 @@ class Personnage
     def sol
         if contactBas
           @velocityY = 0
+        else
+          @velocityY += 0.5
         end
     end
 

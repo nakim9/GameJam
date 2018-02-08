@@ -71,7 +71,7 @@ class Window < Gosu::Window
         elsif @hero2 && @hero2.tomber?
           wind.joueur("joueur 2")
           wind.raison("il est tomber")
-        elsif @hero2 && gameOver(2)
+        elsif @hero2 && gameOver?(2)
           wind.joueur("joueur 2")
           wind.raison("plus de pv!")
         end

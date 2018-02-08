@@ -40,11 +40,11 @@ class Hero < Personnage
 
       @x += @velocityX
       if @x<=10 || contactDroit ||contactGauche
-        @x -= @velocityX
+        @x -= @velocityX + (@velocityX/10)
       end
       @y += @velocityY
       if y<=10 && y>0 || contactHaut
-        @y -= @velocityY
+        @y -= @velocityY + (@velocityY/10)
       elsif  y<0
         @y = 0
       end
