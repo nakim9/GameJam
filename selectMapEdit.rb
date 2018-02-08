@@ -14,6 +14,7 @@ class SelectMapEdit < Gosu::Window
 
   def draw
     @image.draw(0, 0, ZOrder::Background)
+    @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
     @font.draw("Saisir le nom de la Map : ",  WindowHeight/(8), WindowHeight/8, 0, 1, 1, 0xff_0000ff)
     @font.draw("Saisir la taille : ",  WindowHeight/(8), WindowHeight/3, 0, 1, 1, 0xff_0000ff)
     if @lettre
