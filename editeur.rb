@@ -72,7 +72,8 @@ class Editeur < Gosu::Window
     def ouvrir()
       @map.lectureMap(@nom)
       @map.ecritConsole
-      if @map == Array.new
+      if @map.list.length == 0
+        puts "ok"
         nouveau
       else
         @ptr.ptrClear(@map)
