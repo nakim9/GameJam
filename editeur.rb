@@ -78,7 +78,6 @@ class Editeur < Gosu::Window
         @ptr.ptrClear(@map)
         @taille=@map.width
       end
-      puts @taille
     end
 
     def nouveau
