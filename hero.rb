@@ -130,8 +130,6 @@ def arrive?
   return oui
 end
 
-<<<<<<< HEAD
-=======
   def contactPortail
     oui = false
     i = 0
@@ -150,5 +148,4 @@ end
     end
     return oui
   end
->>>>>>> 91160cb3904a4185b0795cf91f86f190739f9eb3
 end

@@ -13,11 +13,8 @@ class Window < Gosu::Window
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
     chooseHero
-<<<<<<< HEAD
 =end
 
-=======
->>>>>>> 91160cb3904a4185b0795cf91f86f190739f9eb3
     #ennemis
     @ennemis = []
     placeEnnemis
