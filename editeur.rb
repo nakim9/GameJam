@@ -1,13 +1,14 @@
 
 class Editeur < Gosu::Window
 
-  def initialize(width, height,nomMap)
+  def initialize(width, height,nomMap,taille)
     super(width, height)
+    @taille=taille
     @nom=nomMap
     self.caption = "Editeur"
     @map=Map.new()
-    self.ouvrir(@nom)
     @ptr=Pointeur.new(0,0,@map)
+    self.ouvrir()
     @camera_x = @camera_y = 0
     @font = Gosu::Font.new(self, "Arial", 20)
     @background_image1 = Gosu::Image.new("res/Ciel.png")
@@ -22,7 +23,7 @@ class Editeur < Gosu::Window
 
     def update
       retour if Gosu::button_down?(Gosu::KB_BACKSPACE)
-      self.nouveau if Gosu::button_down?(Gosu::KB_F9)
+      self.ouvrir if Gosu::button_down?(Gosu::KB_F9)
       @ptr.go_left if Gosu::button_down?(Gosu::KB_A)
       @ptr.go_right if Gosu::button_down?(Gosu::KB_D)
       @ptr.go_down if Gosu::button_down?(Gosu::KB_S)
@@ -41,13 +42,11 @@ class Editeur < Gosu::Window
 
     def scipFond1
       @ptrImage=(@ptrImage+1) % (@background_image2List.length)
-      print(@ptrImage)
       sleep(1.0/4.0)
     end
 
     def scipFond2
       @ptrImage=(@ptrImage-1) % (@background_image2List.length)
-      print(@ptrImage)
       sleep(1.0/4.0)
     end
 
@@ -70,14 +69,24 @@ class Editeur < Gosu::Window
     end
     end
 
-    def ouvrir(nomMap)
-      @map.lectureMap(nomMap)
+    def ouvrir()
+      @map.lectureMap(@nom)
+      @map.ecritConsole
+      if @map == Array.new
+        nouveau
+      else
+        @ptr.ptrClear(@map)
+        @taille=@map.width
+      end
+      puts @taille
     end
 
     def nouveau
-      @map.clearList(200)
+      @map.clearList(@taille)
       @ptr.ptrClear(@map)
+
     end
+
 
     def retour
       wind = WindowStart.new(WindowWidth, WindowHeight)

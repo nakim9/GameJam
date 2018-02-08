@@ -8,7 +8,6 @@ class Map
      @list = Array.new()
      @maps=Array.new()
      self.initialisationMaps()
-     clearList(10)
   end
 
   def initialisationMaps()
@@ -173,8 +172,11 @@ def creationFil(name)#sauve garde la map dans creation pour la metre dans un fic
         end
       end
       aFile.close
+    else
+      @map=Array.new()
     end
   end
+
 end
 
 =begin
