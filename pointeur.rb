@@ -38,13 +38,13 @@ class Pointeur
   end
 
   def switchCarrea
-    sleep(1.0/8.0)
+    sleep(1.0/4.0)
     @ptrCarres=(@ptrCarres+1)% (@carres.length-1)
     @carre=@carres[@ptrCarres]
   end
 
-  def switchCarrez
-    sleep(1.0/8.0)
+  def switchCarree
+    sleep(1.0/4.0)
     @ptrCarres=(@ptrCarres-1)% (@carres.length-1)
     @carre=@carres[@ptrCarres]
   end
