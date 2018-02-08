@@ -10,6 +10,7 @@ class WindowSelectNiveau< Gosu::Window
    end
 
    def update
+     retour if Gosu::button_down?(Gosu::KB_BACKSPACE)
      deplacementHaut if Gosu::button_down?(Gosu::KbUp)
      deplacementBas if Gosu::button_down?(Gosu::KbDown)
      lancerParti if Gosu::button_down?(Gosu::KB_RETURN)
@@ -55,4 +56,11 @@ class WindowSelectNiveau< Gosu::Window
      wind.show
      close
    end
+
+   def retour
+     wind = WindowStart.new(WindowWidth, WindowHeight)
+     wind.show
+     close
+   end
+   
 end
