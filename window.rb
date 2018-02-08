@@ -1,5 +1,6 @@
 class Window < Gosu::Window
 
+<<<<<<< HEAD
   def initialize(width, height,map)
     super(width, height)
     @start = true
@@ -8,18 +9,25 @@ class Window < Gosu::Window
     @map=Map.new()
     @map.creeMap(map)
     @tChangement = 0
+=======
+  def initialize(width, height)
+    super
+    @points = 0
+    self.caption = "Mon jeu"
+    @map=Map.new()
+    @map.creeMap()
+>>>>>>> eb0ea7c81405fa1a193746dcb38cd119d90df00c
 
     #heros
     @heros = []
-    @heros.push(PouleLicorne.new(width/2, height/2,@map))
-    @heros.push(Vache.new(width/2, height/2,@map))
-    @heros.push(Ivrogne.new(width/2, height/2,@map))
-    #@heros.push(RePonce.new(width/2, height/2,@map))
+    #@heros.push(PouleLicorne.new(width/2, height/2,@map))
+    #@heros.push(Vache.new(width/2, height/2,@map))
+    #@heros.push(Ivrogne.new(width/2, height/2,@map))
+    @heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
-
-
-
+    @portails = []
+    placePortails
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -39,10 +47,10 @@ class Window < Gosu::Window
 
   # fonction appelée 60 fois par seconde
   def update
-    if gameOver? || @hero.arrive?
+    if gameOver? || @hero.arrive? || @hero.tomber?
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
-      if gameOver?
+      if gameOver? || @hero.tomber?
         wind.cas(1)
       else
         wind.cas(2)
@@ -60,11 +68,11 @@ class Window < Gosu::Window
       reset if Gosu::button_down?(Gosu::KB_NUMPAD_3)
       #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
       # la fonction move est appelée dans tous les cas
+      if @points%100==0
+        placeEnnemis
+      end
       @hero.move
       @hero.sol
-      if @hero.contactPortail
-        chooseHero
-      end
       @hero.tirs.each do |tirs|
         tirs.kill(@ennemis)
       end
@@ -78,7 +86,12 @@ class Window < Gosu::Window
       @hero.tirs.each(&:update)
 
       @ennemis.reject! {|ennemi| ennemi.pv<=0}
-
+      @portails.each do |portail|
+        if  portail.enContact(@hero)
+          @portails.delete(portail)
+          chooseHero
+        end
+      end
       @ennemis.each(&:update)
 
       @ennemis.each do |ennemi|
@@ -99,6 +112,7 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
+      @portails.each(&:draw)
       @map.draw
       @hero.draw
       @ennemis.each(&:draw)
@@ -108,8 +122,7 @@ class Window < Gosu::Window
       end
       @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, WindowHeight/5, 3, 1, 1, 0xff_0000ff)
       @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, WindowHeight/4, 3, 1, 1, 0xff_0000ff)
-      @font.draw("Sautez dans les portails pour changer de personnages ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
-      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/2, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
 
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
@@ -137,6 +150,21 @@ class Window < Gosu::Window
     end
   end
 
+  def placePortails
+    i=0
+    @map.list.each do |x|
+      j=0
+      x.each do |y|
+        if y && y.type==Carr::Portail
+          point = coodonees(i,j)
+          @portails.push(Portail.new(point[0], point[1],@map))
+        end
+      j=j+1
+    end
+    i=i+1
+    end
+  end
+
   def coodonees(i,j)
        point = []
        point.push(i*Carr::Width)
@@ -144,27 +172,15 @@ class Window < Gosu::Window
        return point
   end
 
-  def reset
-    @map=Map.new()
-    @hero = PouleLicorne.new(width/2, height/2,@map)
-    #ennemis
-    @ennemis = []
-    placeEnnemis
-    @camera_x = @camera_y = 0
-  end
-
   def gameOver?
     return @hero.pv <= 0
   end
 
   def chooseHero
-    if @points - @tChangement > 100 || @start
       r = Random.new
       i=r.rand(0...@heros.length)
       @hero = @heros[i]
-      @tChangement=@points
-      @start = false
-    end
+      puts 
   end
 
 
