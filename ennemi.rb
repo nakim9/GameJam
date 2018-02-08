@@ -5,10 +5,29 @@ class Ennemi < Personnage
     super(x,y,map)
     #image du personnage
     @depart = true
+    @perso = []
     @images = []
     # on ajoute les 4 images dans le tableau -- obligatoirement 2 images
     @images.push(Gosu::Image.new("res/enemis/DragonG.png"))
-    @images.push(Gosu::Image.new("res/enemis/DragonG.png"))
+    @images.push(Gosu::Image.new("res/enemis/DragonD.png"))
+    @perso.push(@images)
+    @images = []
+    @images.push(Gosu::Image.new("res/enemis/DragonD'eauG.png"))
+    @images.push(Gosu::Image.new("res/enemis/DragonD'eauD.png"))
+    @perso.push(@images)
+    @images = []
+    @images.push(Gosu::Image.new("res/enemis/EcureilG.png"))
+    @images.push(Gosu::Image.new("res/enemis/EcureilD.png"))
+    @perso.push(@images)
+    @images = []
+    @images.push(Gosu::Image.new("res/enemis/OiseauG.png"))
+    @images.push(Gosu::Image.new("res/enemis/OiseauD.png"))
+    @perso.push(@images)
+    @images = []
+    @images.push(Gosu::Image.new("res/enemis/SqueletteG.png"))
+    @images.push(Gosu::Image.new("res/enemis/SqueletteD.png"))
+    @perso.push(@images)
+    choixImage
     @image = @images[1]
   end
 
@@ -77,5 +96,10 @@ class Ennemi < Personnage
       end
   end
 
+ def choixImage
+   r = Random.new
+   i=r.rand(0...@perso.length)
+   @images = @perso[i]
+ end
 
 end

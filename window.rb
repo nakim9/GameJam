@@ -6,12 +6,12 @@ class Window < Gosu::Window
     self.caption = "Mon jeu"
     @map=Map.new()
     @map.creeMap()
-
+    @start = true
     #heros
     @heros = []
-    #@heros.push(PouleLicorne.new(width/2, height/2,@map))
-    #@heros.push(Vache.new(width/2, height/2,@map))
-    #@heros.push(Ivrogne.new(width/2, height/2,@map))
+    @heros.push(PouleLicorne.new(width/2, height/2,@map))
+    @heros.push(Vache.new(width/2, height/2,@map))
+    @heros.push(Ivrogne.new(width/2, height/2,@map))
     @heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
@@ -22,7 +22,13 @@ class Window < Gosu::Window
     placeEnnemis
     #initilisation de la map
     @background_image1 = Gosu::Image.new("res/Ciel.png")
-    @background_image2 = Gosu::Image.new("res/FondForet.png")
+    @background_image2List = []
+    @background_image2List.push(Gosu::Image.new("res/FondForet.png"))
+    @background_image2List.push(Gosu::Image.new("res/Bateau.png"))
+    @background_image2List.push(Gosu::Image.new("res/Eau.png"))
+    @background_image2List.push(Gosu::Image.new("res/Enfer.png"))
+    @background_image2List.push(Gosu::Image.new("res/Taverne.png"))
+    @background_image2 = @background_image2List[0]
     #font pour les pvs
     @font = Gosu::Font.new(self, "Arial", 36)
     @camera_x = @camera_y = 0
@@ -79,6 +85,7 @@ class Window < Gosu::Window
         if  portail.enContact(@hero)
           @portails.delete(portail)
           chooseHero
+          chooseFond
         end
       end
       @ennemis.each(&:update)
@@ -166,10 +173,27 @@ class Window < Gosu::Window
   end
 
   def chooseHero
+    if @start
       r = Random.new
       i=r.rand(0...@heros.length)
       @hero = @heros[i]
-      puts 
+      @start = false
+    else
+      r = Random.new
+      i=r.rand(0...@heros.length)
+      px = @hero.x
+      py = @hero.y
+      @hero = @heros[i]
+      @hero.positionner(px,py)
+      puts "changer de hero"
+    end
+
+  end
+
+  def chooseFond
+      r = Random.new
+      i=r.rand(0...@background_image2List.length)
+      @background_image2 = @background_image2List[i]
   end
 
 
