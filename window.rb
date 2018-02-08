@@ -58,12 +58,31 @@ class Window < Gosu::Window
 
   # fonction appelée 60 fois par seconde
   def update
-    if gameOver? || @hero.arrive? || @hero.tomber? || @hero2 && @hero2.arrive? || @hero2 && @hero2.tomber?
+    if gameOver?(1) || @hero.arrive? || @hero.tomber? || @hero2 && @hero2.arrive? || @hero2 && @hero2.tomber? || @hero2 && gameOver?(2)
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
-      if gameOver? || @hero.tomber? || @hero2 && @hero2.tomber?
+      if gameOver?(1) || @hero.tomber? || @hero2 && @hero2.tomber? || @hero2 && gameOver?(2)
+        if gameOver?(1)
+          wind.joueur("joueur 1")
+          wind.raison("plus de pv!")
+        elsif @hero.tomber?
+          wind.joueur("joueur 1")
+          wind.raison("il est tomber")
+        elsif @hero2 && @hero2.tomber?
+          wind.joueur("joueur 2")
+          wind.raison("il est tomber")
+        elsif @hero2 && gameOver(2)
+          wind.joueur("joueur 2")
+          wind.raison("plus de pv!")
+        end
         wind.cas(1)
       else
+        if @hero.arrive?
+          wind.joueur("joueur 1")
+        elsif @hero2 && @hero2.arrive?
+          wind.joueur("joueur 2")
+        end
+        wind.raison("Il est arrivé!")
         wind.cas(2)
       end
       wind.show
@@ -232,8 +251,13 @@ class Window < Gosu::Window
        return point
   end
 
-  def gameOver?
-    return @hero.pv <= 0
+  def gameOver?(int)
+    if int ==1
+      return @hero.pv <= 0
+    else
+      return @hero2.pv <= 0
+    end
+
   end
 
   def chooseHero(int)
