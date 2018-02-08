@@ -19,7 +19,7 @@ class Editeur < Gosu::Window
       @ptr.go_right if Gosu::button_down?(Gosu::KB_D)
       @ptr.go_down if Gosu::button_down?(Gosu::KB_S)
       @ptr.go_up if Gosu::button_down?(Gosu::KB_W)
-      @ptr.switchCarrea if Gosu::button_down?(Gosu::KB_Q)
+      @ptr.switchCarree if Gosu::button_down?(Gosu::KB_Q)
       @ptr.switchCarrea if Gosu::button_down?(Gosu::KB_E)
       @ptr.add if Gosu::button_down?(Gosu::KB_SPACE)
       @ptr.efface if  Gosu::button_down?(Gosu::KB_LEFT_SHIFT)
