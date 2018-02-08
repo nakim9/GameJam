@@ -3,7 +3,7 @@ class WindowSelectNiveau< Gosu::Window
    def initialize(width, height)
     super
     @image=Gosu::Image.new("res/acceuil.png")
-    self.caption="select"
+    self.caption="Selectionnez votre carte !"
     self.maps
     @font = Gosu::Font.new(self, "Arial", 36)
     @ptrx=0
@@ -55,7 +55,7 @@ def maps()
      @image.draw(0, 0, ZOrder::Background)
      @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
      @font.draw("Retour : BackSpace", 0, 30, 0, 1, 1, 0xff_f62217)
-     @font.draw("Choisissez notre Map : ", WindowWidth/(8),WindowHeight/12, 0, 1, 1, 0xff_000000)
+     @font.draw("Choisir une carte : ", WindowWidth/(8),WindowHeight/12, 0, 1, 1, 0xff_000000)
      i=0
      @map.each do |x|
        j=0
