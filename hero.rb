@@ -106,7 +106,7 @@ def localiser
     i +=1
   end
   @x = point[0]
-  @y = point[1]-150
+  @y = point[1]-250
 end
 
   def passif
