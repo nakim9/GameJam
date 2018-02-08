@@ -14,6 +14,8 @@ class WindowSelectNiveau< Gosu::Window
      retour if Gosu::button_down?(Gosu::KB_BACKSPACE)
      deplacementHaut if Gosu::button_down?(Gosu::KbUp)
      deplacementBas if Gosu::button_down?(Gosu::KbDown)
+     deplacementGauche if Gosu::button_down?(Gosu::KbLeft)
+     deplacementDroit if Gosu::button_down?(Gosu::KbRight)
      lancerParti if Gosu::button_down?(Gosu::KB_RETURN)
      close if Gosu::button_down?(Gosu::KbEscape)
    end
@@ -81,6 +83,23 @@ for i in 0..@map.length-1
 end
 =end
 
+  def deplacementGauche
+    @ptrx-=1
+    print("\n"+@map[@ptrx][@ptry])
+    if @ptrx==-1
+      @ptrx=@map.length-1
+    end
+    sleep(1.0/8.0)
+  end
+
+  def deplacementDroit
+    @ptrx+=1
+    if @ptrx==@map.length
+      @ptrx=0
+    end
+    sleep(1.0/8.0)
+  end
+
    def deplacementBas
      @ptry= @ptry+1
      if @ptry==@map[@ptrx].length || @map[@ptrx][@ptry]=="sansnom"
@@ -97,8 +116,13 @@ end
    def deplacementHaut
      @ptry= @ptry-1
    if @ptry==-1
-     @ptry=@map[@ptrx].length-1
-     @ptrx=@ptrx-1
+     if @ptrx==0
+       @ptrx=@map.length-1
+       @ptry=@map[@ptrx].length-1
+     else
+       @ptrx=@ptrx-1
+       @ptry=@map[@ptrx].length-1
+     end
    end
      sleep(1.0/8.0)
    end
