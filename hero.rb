@@ -11,10 +11,7 @@ class Hero < Personnage
     @tempsAttente = 50
     @temps = 5
     @projectile = "res/fire.png"
-      @image = Gosu::Image.new("res/hero.png")
-      point = localiser
-      @x = point[0]
-      @y = point[1]
+    @image = Gosu::Image.new("res/hero.png")
   end
 
   def draw
@@ -63,7 +60,7 @@ class Hero < Personnage
   def attaque2(ennemis)
     ennemis.each do |ennemi|
       if self.enContact(ennemi)
-        ennemi.subir(10)
+        ennemi.subir(25)
       end
     end
   end
@@ -102,8 +99,15 @@ def localiser
     end
     i +=1
   end
-  return point
+  @x = point[0]
+  @y = point[1]
 end
+
+  def passif
+  end
+  def passif(ennemis)
+  end
+
 
 def arrive?
   oui = false
@@ -141,5 +145,10 @@ end
       i +=1
     end
     return oui
+  end
+  
+  def positionner(x,y)
+    @x = x
+    @y = y
   end
 end

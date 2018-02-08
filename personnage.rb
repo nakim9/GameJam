@@ -1,5 +1,5 @@
 class Personnage
-    attr_reader :x, :y, :image, :pv
+    attr_accessor :x, :y, :image, :pv
     # constructeur
     def initialize(x, y,map)
       #pv du heros
@@ -118,9 +118,11 @@ class Personnage
     end
 
     #en contact a quelque chose (objet et non map)
+    #redefini dans Vampire
       def enContact(item)
         distance = Gosu::distance(@x,@y,item.x, item.y)
-        if distance<35
+        if distance<45
+          #print "outch"
           @pv -= 1
         end
       end

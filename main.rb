@@ -14,6 +14,12 @@ require_relative 'PouleLicorne'
 require_relative 'Vache'
 require_relative 'Ivrogne'
 require_relative 'WindowEnd'
+require_relative 'Magicien'
+require_relative 'Vampire'
+require_relative 'Arbre'
+require_relative 'Chasseur'
+require_relative 'RePonce'
+
 require_relative 'editeur'
 require_relative 'pointeur'
 
