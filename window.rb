@@ -2,12 +2,10 @@ class Window < Gosu::Window
 
   def initialize(width, height)
     super
-    @start = true
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
     @map.creeMap()
-    @tChangement = 0
 
     #heros
     @heros = []
@@ -64,9 +62,6 @@ class Window < Gosu::Window
       end
       @hero.move
       @hero.sol
-      if @hero.contactPortail
-        chooseHero
-      end
       @hero.tirs.each do |tirs|
         tirs.kill(@ennemis)
       end
@@ -80,7 +75,12 @@ class Window < Gosu::Window
       @hero.tirs.each(&:update)
 
       @ennemis.reject! {|ennemi| ennemi.pv<=0}
-
+      @portails.each do |portail|
+        if  portail.enContact(@hero)
+          @portails.delete(portail)
+          chooseHero
+        end
+      end
       @ennemis.each(&:update)
 
       @ennemis.each do |ennemi|
@@ -162,27 +162,14 @@ class Window < Gosu::Window
        return point
   end
 
-  def reset
-    @map=Map.new()
-    @hero = PouleLicorne.new(width/2, height/2,@map)
-    #ennemis
-    @ennemis = []
-    placeEnnemis
-    @camera_x = @camera_y = 0
-  end
-
   def gameOver?
     return @hero.pv <= 0
   end
 
   def chooseHero
-    if @points - @tChangement > 100 || @start
       r = Random.new
       i=r.rand(0...@heros.length)
       @hero = @heros[i]
-      @tChangement=@points
-      @start = false
-    end
   end
 
 
