@@ -14,7 +14,7 @@ class WindowStart < Gosu::Window
 
     if Gosu::button_down?(Gosu::KB_RETURN)
       if @action == 'play'
-        wind = Window.new(WindowWidth, WindowHeight)
+        wind = WindowSelectNiveau.new(WindowWidth, WindowHeight)
         wind.show
         close
       elsif @action == 'credit'

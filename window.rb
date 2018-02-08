@@ -6,6 +6,9 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "L'extraordinaire aventure des Niapocs"
     @map=Map.new()
+    print("\n")
+    print(map)
+    print("\n")
     @map.creeMap(map)
     @tChangement = 0
     #heros
