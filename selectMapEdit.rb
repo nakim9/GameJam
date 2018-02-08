@@ -68,7 +68,7 @@ class SelectMapEdit < Gosu::Window
     if namMap ==""
       namMap="sansnom"
     end
-    nameMap="mapsEdit/"+namMap
+    nameMap="mapsDebut/"+namMap
     wind = Editeur.new(WindowWidth, WindowHeight,nameMap)
     wind.show
     close
