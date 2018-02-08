@@ -17,6 +17,9 @@ class RePonce < Hero
     # de base, le héros va a droite
     @image = @images[1]
 
+    # image du projectile (de base fireball)
+    @projectile = "res/Raiponce/cheveux.png"
+
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
     @song.push(Gosu::Sample.new("res/Raiponce/poele.ogg"))
@@ -25,10 +28,9 @@ class RePonce < Hero
 
   def attaque1
     if(@temps == 0)
-         @image = @images[3]
-         @song[1].volume = Volume::Bruit
-         @song[1].play
-         @temps=1
+      #changer l'image du tir
+      @tirs.push(Tirs.new(@x,(@y+(@image.height/2)), @dernierDeplacement,@projectile,0))
+      @temps=1
     end
   end
 
@@ -42,5 +44,14 @@ class RePonce < Hero
     end
   end
 
+  def passif(ennemis)
+    @tirs.each{ |tir|
+      ennemis.each{ |ennemi|
+        if tir.enContact(ennemi)
+          ennemi.stuned = 60*3
+        end
+      }
+    }
+  end
 #FAIRE PASSIF ET ATTAQUE 1
 end
