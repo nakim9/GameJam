@@ -7,6 +7,7 @@ class Editeur < Gosu::Window
     @map=Map.new()
     @ptr=Pointeur.new(0,0,@map)
     @camera_x = @camera_y = 0
+    @font = Gosu::Font.new(self, "Arial", 20)
     end
 
     def update
@@ -21,12 +22,21 @@ class Editeur < Gosu::Window
       @map.creationFil("mapsEdit/sav") if Gosu::button_down?(Gosu::KB_F5)
       @camera_x = [@ptr.x*Carr::Width - WindowSize::Width/2, 0].max
       @camera_y = 1
+      close if Gosu::button_down?(Gosu::KbEscape)
     end
 
     def draw
       Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @ptr.draw
+
+      @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche,Bas) ", WindowWidth/4, WindowHeight/50, 3, 1, 1, 0xff_0000ff)
+      @font.draw("F9 : nouveau", WindowWidth/4, (WindowHeight/50)*2, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Tab : Changer de carre", WindowWidth/4, (WindowHeight/50)*3, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Ctrl a gauche : ajouter", WindowWidth/4, (WindowHeight/50)*4, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Shift gauche : effacer", WindowWidth/4, (WindowHeight/50)*5, 3, 1, 1, 0xff_0000ff)
+      @font.draw("F5 : sauvegarder", WindowWidth/4, (WindowHeight/50)*6, 3, 1, 1, 0xff_0000ff)
+
     end
     end
 
