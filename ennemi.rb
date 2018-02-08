@@ -62,6 +62,7 @@ class Ennemi < Personnage
   end
 #-------------------------------
   def update
+    super
     self.mouvement
     self.move
   end

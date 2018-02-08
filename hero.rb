@@ -1,4 +1,5 @@
 require_relative 'personnage'
+
 class Hero < Personnage
   attr_reader :tirs, :temps, :tempsAttente
   # constructeur
@@ -133,9 +134,23 @@ def arrive?
   return oui
 end
 
-  def positionner(x,y)
-    @x = x
-    @y = y
+  def contactPortail
+    oui = false
+    i = 0
+    j = 0
+    @map.list.each do |carres|
+      j=0
+      carres.each do |carre|
+        if carre
+          if self.enContactCarre(i,j) && carre.type==Carr::Portail
+            oui=true
+          end
+        end
+        j +=1
+      end
+      i +=1
+    end
+    return oui
   end
 
   def tomber?

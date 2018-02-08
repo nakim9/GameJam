@@ -9,10 +9,10 @@ class Window < Gosu::Window
 
     #heros
     @heros = []
-    @heros.push(PouleLicorne.new(width/2, height/2,@map))
-    @heros.push(Vache.new(width/2, height/2,@map))
-    @heros.push(Ivrogne.new(width/2, height/2,@map))
-    #@heros.push(RePonce.new(width/2, height/2,@map))
+    #@heros.push(PouleLicorne.new(width/2, height/2,@map))
+    #@heros.push(Vache.new(width/2, height/2,@map))
+    #@heros.push(Ivrogne.new(width/2, height/2,@map))
+    @heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
     @portails = []

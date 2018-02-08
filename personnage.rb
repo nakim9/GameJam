@@ -1,5 +1,5 @@
 class Personnage
-    attr_accessor :x, :y, :image, :pv
+    attr_accessor :x, :y, :image, :pv, :stuned
     # constructeur
     def initialize(x, y,map)
       #pv du heros
@@ -22,6 +22,8 @@ class Personnage
       @images.push(Gosu::Image.new("res/hero/droite.png"))
       # de base, le héros va a droite
       @image = @images[1]
+      # Un personnage peut être paralisé penndant un nombre de tick
+      @stuned = 0
     end
 
     def draw
@@ -66,11 +68,13 @@ class Personnage
     end
     # modification des coordonées du héros
     def move
-      @x += @velocityX
-      #@x %= WindowSize::Width
+      if not stuned?
+        @x += @velocityX
+        #@x %= WindowSize::Width
+        @velocityX *= 0.96
+      end
       @y += @velocityY
       @y %= NbCarre::Height*Carr::Height
-      @velocityX *= 0.96
       if @velocityY>1
         @velocityY *= 0.6
       end
@@ -115,6 +119,7 @@ class Personnage
     end
 
     def update
+      @stuned -= 1 if stuned?
     end
 
     #en contact a quelque chose (objet et non map)
@@ -138,16 +143,16 @@ class Personnage
         end
       end
       #methodes qui renvoie un boulean pour dire si le cote choisi touche un carré
-           def contactBas
-                p1= self.bg
-                p2 = self.bd
-                pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-                if self.carre(p1[0],p1[1]) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
-                     return true
-                else
-                     return false
-                end
-           end
+     def contactBas
+          p1= self.bg
+          p2 = self.bd
+          pm = pointMid(p1[0],p1[1],p2[0],p2[1])
+          if self.carre(p1[0],p1[1]) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
+               return true
+          else
+               return false
+          end
+     end
 
            def getContactBas
              p1= self.bg
@@ -262,4 +267,12 @@ class Personnage
           def contactPortail
           end
 
+          def positionner(x,y)
+            @x = x
+            @y = y
+          end
+
+          def stuned?
+            @stuned > 0
+          end
   end
