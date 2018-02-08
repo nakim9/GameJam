@@ -10,6 +10,14 @@ class Editeur < Gosu::Window
     @ptr=Pointeur.new(0,0,@map)
     @camera_x = @camera_y = 0
     @font = Gosu::Font.new(self, "Arial", 20)
+    @background_image1 = Gosu::Image.new("res/Ciel.png")
+    @ptrImage=0
+    @background_image2List = Array.new()
+    @background_image2List.push(Gosu::Image.new("res/FondForet.png"))
+    @background_image2List.push(Gosu::Image.new("res/Bateau.png"))
+    @background_image2List.push(Gosu::Image.new("res/Eau.png"))
+    @background_image2List.push(Gosu::Image.new("res/Enfer.png"))
+    @background_image2List.push(Gosu::Image.new("res/Taverne.png"))
     end
 
     def update
@@ -24,12 +32,26 @@ class Editeur < Gosu::Window
       @ptr.add if Gosu::button_down?(Gosu::KB_SPACE)
       @ptr.efface if  Gosu::button_down?(Gosu::KB_LEFT_SHIFT)
       @map.creationFil(@nom) if Gosu::button_down?(Gosu::KB_F5)
+      scipFond1 if Gosu::button_down?(Gosu::KB_R)
+      scipFond2 if Gosu::button_down?(Gosu::KB_F)
       @camera_x = [@ptr.x*Carr::Width - WindowSize::Width/2, 0].max
       @camera_y = 1
       close if Gosu::button_down?(Gosu::KbEscape)
     end
 
+    def scipFond1
+      (@ptrImage+1) % (@background_image2List.length)
+      sleep(1.0/4.0)
+    end
+
+    def scipFond2
+      (@ptrImage-1) % (@background_image2List.length)
+      sleep(1.0/4.0)
+    end
+
     def draw
+      @background_image1.draw(0, 0, ZOrder::Background)
+      @background_image2List[@ptrImage].draw(0, WindowSize::Height-@background_image2List[@ptrImage].height, ZOrder::Background)
       Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @ptr.draw
