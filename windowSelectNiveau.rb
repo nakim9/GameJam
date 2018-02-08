@@ -61,9 +61,9 @@ def maps()
        x.each do |y|
          if y
            if i==@ptrx && j==@ptry
-             @font.draw(@map[i][j], WindowWidth/(5)*i,Carr::Width*(i+2)*j, 0, 1, 1, 0xff_f62217)
+             @font.draw(@map[i][j], (WindowWidth/(5))*(i+1),(WindowHeight/15)*(j+2.5), 0, 1, 1, 0xff_f62217)
            else
-             @font.draw(@map[i][j], WindowWidth/(5)*i, Carr::Width*(i+2)*j, 0, 1, 1, 0xff_0000ff)
+             @font.draw(@map[i][j], (WindowWidth/(5))*(i+1), (WindowHeight/15)*(j+2.5), 0, 1, 1, 0xff_0000ff)
            end
          end
        j=j+1

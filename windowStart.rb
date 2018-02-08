@@ -61,7 +61,7 @@ class WindowStart < Gosu::Window
     elsif @action == 'credit'
       @action = 'edit'
     end
-    sleep(1.0/8.0)
+    sleep(1.0/6.0)
   end
 
   def deplacementBas
@@ -70,7 +70,7 @@ class WindowStart < Gosu::Window
     elsif @action == 'edit'
       @action = 'credit'
     end
-    sleep(1.0/8.0)
+    sleep(1.0/6.0)
   end
 
 end
