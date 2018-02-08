@@ -39,11 +39,11 @@ class Hero < Personnage
   def move
 
       @x += @velocityX
-      if @x<=10
+      if @x<=10 || contactDroit ||contactGauche
         @x -= @velocityX
       end
       @y += @velocityY
-      if y<=10
+      if y<=10 || contactHaut
         @y -= @velocityY
       end
       @y %= NbCarre::Height*Carr::Height
