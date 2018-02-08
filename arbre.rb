@@ -20,7 +20,7 @@ class Arbre < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/Arbre/arbre.mp3"))
+    @song.push(Gosu::Sample.new("res/Arbre/arbre.ogg"))
   end
 
   def go_left
@@ -49,7 +49,6 @@ class Arbre < Hero
       #changer l'image du tir
       @tirs.push(Tirs.new(@x,(@y+(@image.height/2)), @dernierDeplacement,@projectile,0))
       @temps=1;
-      @song[0].volume = Volume::Bruit
       @song[0].play
     end
   end
@@ -57,7 +56,6 @@ class Arbre < Hero
   def attaque2(ennemis)
       super(ennemis)
       @image = @images[2]
-      @song[0].volume = Volume::Bruit
       @song[0].play
   end
 

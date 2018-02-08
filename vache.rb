@@ -19,14 +19,13 @@ class Vache < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/vache/meu1.mp3"))
-    @song.push(Gosu::Song.new("res/vache/VacheCharme1.mp3"))
+    @song.push(Gosu::Sample.new("res/vache/meu1.ogg"))
+    @song.push(Gosu::Sample.new("res/vache/VacheCharme1.ogg"))
   end
 
   def attaque1
     if(@temps == 0)
          @image = @images[3]
-         @song[1].volume = Volume::Bruit
          @song[1].play
          @temps=1
     end
@@ -35,7 +34,6 @@ class Vache < Hero
   def attaque2(ennemis)
       super(ennemis)
       @image = @images[2]
-      @song[0].volume = Volume::Bruit
       @song[0].play
   end
 end

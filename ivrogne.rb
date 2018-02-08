@@ -19,7 +19,7 @@ class Ivrogne < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/Ivrogne/ivrogne.mp3"))
+    @song.push(Gosu::Sample.new("res/Ivrogne/ivrogne.ogg"))
   end
 
   def go_left
@@ -48,14 +48,12 @@ class Ivrogne < Hero
       #changer l'image du tir
       @tirs.push(Tirs.new(@x,(@y+(@image.height/2)), @dernierDeplacement,@projectile))
       @temps=1;
-      @song[0].volume = Volume::Bruit
       @song[0].play
     end
   end
 
   def attaque2(ennemis)
       super(ennemis)
-      @song[0].volume = Volume::Bruit
       @song[0].play
   end
 end

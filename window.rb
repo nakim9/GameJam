@@ -13,7 +13,15 @@ class Window < Gosu::Window
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
+    @heros.push(Arbre.new(width/2, height/2,@map))
+    @heros.push(Chasseur.new(width/2, height/2,@map))
+    @heros.push(Epouvantail.new(width/2, height/2,@map))
+    @heros.push(Magicien.new(width/2, height/2,@map))
+    @heros.push(Pestifere.new(width/2, height/2,@map))
+    @heros.push(Vampire.new(width/2, height/2,@map))
     @heros.push(RePonce.new(width/2, height/2,@map))
+    @heros.push(Ninja.new(width/2, height/2,@map))
+
     chooseHero(1)
     @hero.localiser
     #hero2
