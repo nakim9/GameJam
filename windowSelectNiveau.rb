@@ -2,6 +2,7 @@ class WindowSelectNiveau< Gosu::Window
 
    def initialize(width, height)
     super
+    @image=Gosu::Image.new("res/acceuil.png")
     self.caption="select"
     @map=self.maps
     @font = Gosu::Font.new(self, "Arial", 36)
@@ -13,7 +14,6 @@ class WindowSelectNiveau< Gosu::Window
      deplacementBas if Gosu::button_down?(Gosu::KbDown)
      lancerParti if Gosu::button_down?(Gosu::KB_RETURN)
      close if Gosu::button_down?(Gosu::KbEscape)
-
    end
 
    def maps()
@@ -27,8 +27,9 @@ class WindowSelectNiveau< Gosu::Window
    end
 
    def draw()
-     @image.draw(0,0,ZOrder::Background)
-     @font.draw("Choisisser votre map :")WindowWidth/8,WindowWidth/12,0,1,1,00xff_000000)
+     print(@map[0])
+     @image.draw(0, 0, ZOrder::Background)
+     @font.draw("Choisissez notre Map : ", WindowWidth/(8),WindowHeight/12, 0, 1, 1, 0xff_000000)
         for i in 0..@map.length-1
           if i==@ptr
             @font.draw(@map[i], WindowWidth/(8),Carr::Width*(i+2), 0, 1, 1, 0xff_f62217)
