@@ -6,7 +6,9 @@ class Window < Gosu::Window
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
+    @map.creeMap()
     @tChangement = 0
+
     #heros
     @heros = []
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
