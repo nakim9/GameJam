@@ -70,7 +70,7 @@ class SelectMapEdit < Gosu::Window
     sept if Gosu::button_down?(Gosu::KB_7)
     huit if Gosu::button_down?(Gosu::KB_8)
     neuf if Gosu::button_down?(Gosu::KB_9)
-    suppr if Gosu::button_down?(Gosu::KB_BACKSPACE)
+    supprint if Gosu::button_down?(Gosu::KB_BACKSPACE)
     end
     swap if Gosu::button_down?(Gosu::KB_UP)
     swap if Gosu::button_down?(Gosu::KB_DOWN)
@@ -118,7 +118,7 @@ class SelectMapEdit < Gosu::Window
     if @lettre==false
     namMap=nomMap
     if namMap ==""
-      namMap="sansnom"
+      namMap="noName"
     end
     nameMap="mapsDebut/"+namMap
     taille=tailletoint
