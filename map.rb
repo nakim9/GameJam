@@ -45,7 +45,7 @@ class Map
     end
   end
 
-  def creemap()
+  def creeMap()
     self.addMapToList("viellemap/test")
 =begin      self.addMapToList("viellemap/0/0")
       self.addMapToList("viellemap/0/1")
