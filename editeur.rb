@@ -73,13 +73,11 @@ class Editeur < Gosu::Window
       @map.lectureMap(@nom)
       @map.ecritConsole
       if @map.list.length == 0
-        puts "ok"
         nouveau
       else
         @ptr.ptrClear(@map)
         @taille=@map.width
       end
-      puts @taille
     end
 
     def nouveau

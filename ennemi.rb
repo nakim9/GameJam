@@ -33,7 +33,6 @@ class Ennemi < Personnage
 
   #mouvement aléatoire
   def mouvement
-    #puts @x
     if !@depart
       if @x+@image.width>WindowWidth-50
         self.go_left
