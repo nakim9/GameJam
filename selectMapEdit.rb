@@ -57,6 +57,7 @@ class SelectMapEdit < Gosu::Window
     x if Gosu::button_down?(Gosu::KB_X)
     y if Gosu::button_down?(Gosu::KB_Y)
     z if Gosu::button_down?(Gosu::KB_W)
+    suppr if Gosu::button_down?(Gosu::KB_BACKSPACE)
     else
     zero if Gosu::button_down?(Gosu::KB_0)
     un if Gosu::button_down?(Gosu::KB_1)
@@ -68,10 +69,10 @@ class SelectMapEdit < Gosu::Window
     sept if Gosu::button_down?(Gosu::KB_7)
     huit if Gosu::button_down?(Gosu::KB_8)
     neuf if Gosu::button_down?(Gosu::KB_9)
+    suppr if Gosu::button_down?(Gosu::KB_BACKSPACE)
     end
     swap if Gosu::button_down?(Gosu::KB_UP)
     swap if Gosu::button_down?(Gosu::KB_DOWN)
-    suppr if Gosu::button_down?(Gosu::KB_BACKSPACE)
     entre if Gosu::button_down?(Gosu::KB_RETURN)
     close if Gosu::button_down?(Gosu::KbEscape)
 
@@ -84,6 +85,10 @@ class SelectMapEdit < Gosu::Window
 
   def suppr
     @nom.pop
+    sleep(@att)
+  end
+  def supprint
+    @taille.pop
     sleep(@att)
   end
 
@@ -109,6 +114,7 @@ class SelectMapEdit < Gosu::Window
   end
 
   def entre
+    if @lettre==false
     namMap=nomMap
     if namMap ==""
       namMap="sansnom"
@@ -116,11 +122,14 @@ class SelectMapEdit < Gosu::Window
     nameMap="mapsDebut/"+namMap
     taille=tailletoint
     if taille==0
-      taille=10
+      taille=100
     end
     wind = Editeur.new(WindowWidth, WindowHeight,nameMap,taille)
     wind.show
     close
+    else
+      swap
+    end
   end
 
   def zero
