@@ -20,7 +20,7 @@ class WindowStart < Gosu::Window
         close
       else
         sleep(1.0/8.0)
-        wind = Editeur.new(WindowWidth, WindowHeight)
+        wind = SelectMapEdit.new(WindowWidth, WindowHeight)
         wind.show
         close
       end
@@ -32,7 +32,7 @@ class WindowStart < Gosu::Window
 
   def draw
       @image.draw(0, 0, ZOrder::Background)
-      @font.draw("Bienvenu dans l'extraordinaire aventure des Niampocs !", WindowWidth/5, WindowHeight/5, 0, 1, 1, 0xff_000000)
+      @font.draw("Bienvenu dans l'extraordinaire aventure des Niapocs !", WindowWidth/5, WindowHeight/5, 0, 1, 1, 0xff_000000)
       if @action == 'play'
         @font.draw("Play ", WindowWidth/3, WindowHeight/3, 0, 1, 1, 0xff_f62217)
         @font.draw("Crée un parcours", WindowWidth/3, WindowHeight/2, 0, 1, 1, 0xff_0000ff)
