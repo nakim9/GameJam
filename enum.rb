@@ -27,6 +27,7 @@ module Carr
     Enfer2="G"
     Herbe="H"
     Enfer3="I"
+    Portail="P"
     Arbre="Q"
     Start="S"
     ArbreL2="R"
@@ -34,7 +35,7 @@ module Carr
     Arc="Y"
     ArbreL1="Z"
     Vide="O"
-    Portail="P"
+
 
 
 end

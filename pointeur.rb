@@ -1,7 +1,8 @@
 class Pointeur
   attr_reader :map,:x,:y
   def initialize(x,y,map)
-    @carres= Queue.new()
+    @carres= Array.new()
+      @carres.push(Carre.new(Carr::Portail))
       @carres.push(Carre.new(Carr::Arrive))
       @carres.push(Carre.new(Carr::ArbreL3))
       @carres.push(Carre.new(Carr::Bateau))
@@ -18,7 +19,8 @@ class Pointeur
       @carres.push(Carre.new(Carr::Arc))
       @carres.push(Carre.new(Carr::ArbreL1))
 
-    @carre=@carres.pop()
+    @ptrCarres=0
+    @carre=@carres[@ptrCarres]
     @map=map
     @x=x
     @y=y
@@ -35,12 +37,17 @@ class Pointeur
     end
   end
 
-  def switchCarre
+  def switchCarrea
     sleep(1.0/8.0)
-    @carre=@carres.pop()
-    @carres.push(@carre)
+    @ptrCarres=(@ptrCarres+1)% (@carres.length-1)
+    @carre=@carres[@ptrCarres]
   end
 
+  def switchCarrez
+    sleep(1.0/8.0)
+    @ptrCarres=(@ptrCarres-1)% (@carres.length-1)
+    @carre=@carres[@ptrCarres]
+  end
 
   def go_left
     if @x!=0
