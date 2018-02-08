@@ -147,6 +147,7 @@ def creationFil(name)#sauve garde la map dans creation pour la metre dans un fic
     end
     aFile.syswrite("\n")
   end
+    aFile.syswrite("0")
       aFile.close
   end
 
