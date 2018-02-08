@@ -111,8 +111,7 @@ class Window < Gosu::Window
       end
       @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, WindowHeight/5, 3, 1, 1, 0xff_0000ff)
       @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, WindowHeight/4, 3, 1, 1, 0xff_0000ff)
-      @font.draw("Sautez dans les portails pour changer de personnages ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
-      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/2, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
 
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)

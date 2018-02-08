@@ -139,7 +139,7 @@ end
   end
 
   def tomber?
-    if @y >= WindowSize::Height - 5
+    if @y >= WindowSize::Height - 15
       return true
     else
       return false
