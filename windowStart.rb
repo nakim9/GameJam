@@ -14,14 +14,20 @@ class WindowStart < Gosu::Window
 
     if Gosu::button_down?(Gosu::KB_RETURN)
       if @action == 'play'
+<<<<<<< HEAD
+=======
+        sleep(1.0/8.0)
+>>>>>>> 9bfe365a6c066e18d32605d5dcffc41dc883916e
         wind = WindowSelectNiveau.new(WindowWidth, WindowHeight)
         wind.show
         close
       elsif @action == 'credit'
+        sleep(1.0/8.0)
         wind = WindowCredit.new(WindowWidth, WindowHeight)
         wind.show
         close
       else
+        sleep(1.0/8.0)
         wind = SelectMapEdit.new(WindowWidth, WindowHeight)
         wind.show
         close
