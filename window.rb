@@ -15,6 +15,7 @@ class Window < Gosu::Window
     #@heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
+    @portail = Portail.new(@map)
 
 
 
@@ -58,6 +59,9 @@ class Window < Gosu::Window
       reset if Gosu::button_down?(Gosu::KB_NUMPAD_3)
       #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
       # la fonction move est appelée dans tous les cas
+      if @points%100==0
+        placeEnnemis
+      end
       @hero.move
       @hero.sol
       if @hero.contactPortail
@@ -97,6 +101,7 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
+      @portail.draw
       @map.draw
       @hero.draw
       @ennemis.each(&:draw)
