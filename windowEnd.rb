@@ -14,15 +14,17 @@ class WindowEnd < Gosu::Window
 
   def update
     if Gosu::button_down?(Gosu::KbSpace)
-      wind = Window.new(WindowWidth,WindowHeight)
+      wind = WindowSelectNiveau.new(WindowWidth,WindowHeight)
       wind.show
       close
     end
     close if Gosu::button_down?(Gosu::KbEscape)
   end
+
   def cas(cas)
     @cas = cas
   end
+
   def setPoints (points)
     @points = points
   end
