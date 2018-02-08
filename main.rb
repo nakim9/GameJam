@@ -24,6 +24,7 @@ require_relative 'WindowSelectNiveau'
 require_relative 'editeur'
 require_relative 'pointeur'
 require_relative 'selectMapEdit'
+require_relative 'WindowCredit'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height

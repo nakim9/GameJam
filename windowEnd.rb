@@ -31,6 +31,7 @@ class WindowEnd < Gosu::Window
 
   def draw
       @image.draw(0, 0, ZOrder::Background)
+      @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
       if (@cas==1)
         @font.draw("Perdu ! ", WindowWidth/5, WindowHeight/5, 0, 1, 1, 0xff_0000ff)
         @font.draw("Vous avez essayer de réussir en " + @points.to_s+" unitées de temps niapocs !", WindowWidth/5, WindowHeight/4, 0, 1, 1, 0xff_0000ff)

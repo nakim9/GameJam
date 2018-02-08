@@ -30,6 +30,8 @@ class WindowSelectNiveau< Gosu::Window
    def draw()
      print(@map[0])
      @image.draw(0, 0, ZOrder::Background)
+     @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
+     @font.draw("Retour : BackSpace", 0, 30, 0, 1, 1, 0xff_f62217)
      @font.draw("Choisissez notre Map : ", WindowWidth/(8),WindowHeight/12, 0, 1, 1, 0xff_000000)
         for i in 0..@map.length-1
           if i==@ptr
@@ -62,5 +64,5 @@ class WindowSelectNiveau< Gosu::Window
      wind.show
      close
    end
-   
+
 end

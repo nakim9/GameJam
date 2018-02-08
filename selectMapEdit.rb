@@ -10,8 +10,10 @@ class SelectMapEdit < Gosu::Window
   end
 
   def draw
+    @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_0000ff)
+    @font.draw("Saisir le nom de la Map : ", WindowWidth/5, WindowHeight/8, 0, 1, 1, 0xff_0000ff)
     for i in 0..@nom.length-1
-          @font.draw(@nom[i],Carr::Width*(i+1),WindowHeight/(2), 0, 1, 1, 0xff_f62217)
+          @font.draw(@nom[i],Carr::Width*(i+1),WindowHeight/(2), 0, 1, 1, 0xff_0000ff)
     end
   end
 
@@ -44,6 +46,7 @@ class SelectMapEdit < Gosu::Window
     z if Gosu::button_down?(Gosu::KB_W)
     suppr if Gosu::button_down?(Gosu::KB_BACKSPACE)
     entre if Gosu::button_down?(Gosu::KB_RETURN)
+    close if Gosu::button_down?(Gosu::KbEscape)
 
   end
 
