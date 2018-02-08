@@ -147,7 +147,7 @@ class Window < Gosu::Window
         end
         if  @hero2 && portail.enContact(@hero2)
           @portails.delete(portail)
-          chooseHero(1)
+          chooseHero(2)
           chooseFond
         end
       end
