@@ -115,14 +115,13 @@ class Window < Gosu::Window
             @hero2.cri
           end
           @hero2.tirs.each(&:update)
-
         else
           initialiserJ2
         end
       end
       #@hero.go_down if Gosu::button_down?(Gosu::KbDown)
       # la fonction move est appelée dans tous les cas
-      if @points%100==0
+      if @points%200==0
         placeEnnemis
       end
       @hero.move
