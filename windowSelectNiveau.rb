@@ -4,9 +4,10 @@ class WindowSelectNiveau< Gosu::Window
     super
     @image=Gosu::Image.new("res/acceuil.png")
     self.caption="select"
-    @map=self.maps
+    self.maps
     @font = Gosu::Font.new(self, "Arial", 36)
-    @ptr=0
+    @ptrx=0
+    @ptry=0
    end
 
    def update
@@ -16,7 +17,7 @@ class WindowSelectNiveau< Gosu::Window
      lancerParti if Gosu::button_down?(Gosu::KB_RETURN)
      close if Gosu::button_down?(Gosu::KbEscape)
    end
-
+=begin
    def maps()
      map=Array.new()
      Dir.foreach("./mapsDebut") do |fichier|
@@ -26,32 +27,84 @@ class WindowSelectNiveau< Gosu::Window
        end
      return map
    end
+=end
+
+def maps()
+  @map=Array.new()
+  @map.push(Array.new())
+  x=0
+  y=0
+  Dir.foreach("./mapsDebut") do |fichier|
+      if fichier!=".." && fichier!="."
+        @map[x].push(fichier)
+        print(@map[x][0])
+      y+=1
+      if y==7
+        y=0
+        x+=1
+        @map.push(Array.new())
+    end
+  end
+    end
+  end
+
+
 
    def draw()
-     print(@map[0])
      @image.draw(0, 0, ZOrder::Background)
+     @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
+     @font.draw("Retour : BackSpace", 0, 30, 0, 1, 1, 0xff_f62217)
      @font.draw("Choisissez notre Map : ", WindowWidth/(8),WindowHeight/12, 0, 1, 1, 0xff_000000)
-        for i in 0..@map.length-1
-          if i==@ptr
-            @font.draw(@map[i], WindowWidth/(8),Carr::Width*(i+2), 0, 1, 1, 0xff_f62217)
-          else
-            @font.draw(@map[i], WindowWidth/(8), Carr::Width*(i+2), 0, 1, 1, 0xff_0000ff)
-          end
-        end
+     i=0
+     @map.each do |x|
+       j=0
+       x.each do |y|
+         if y
+           if i==@ptrx && j==@ptry
+             @font.draw(@map[i][j], WindowWidth/(5)*i,Carr::Width*(i+2)*j, 0, 1, 1, 0xff_f62217)
+           else
+             @font.draw(@map[i][j], WindowWidth/(5)*i, Carr::Width*(i+2)*j, 0, 1, 1, 0xff_0000ff)
+           end
+         end
+       j=j+1
+     end
+     i=i+1
+     end
    end
+=begin
+for i in 0..@map.length-1
+  if i==@ptr
+    @font.draw(@map[i], WindowWidth/(8),Carr::Width*(i+2), 0, 1, 1, 0xff_f62217)
+  else
+    @font.draw(@map[i], WindowWidth/(8), Carr::Width*(i+2), 0, 1, 1, 0xff_0000ff)
+  end
+end
+=end
 
    def deplacementBas
-     @ptr= (@ptr+1) % (@map.length)
+     @ptry= @ptry+1
+     if @ptry==@map[@ptrx].length || @map[@ptrx][@ptry]=="sansnom"
+       @ptry=0
+       if @ptrx==@map.length-1
+         @ptrx=0
+       else
+         @ptrx=@ptrx+1
+       end
+     end
      sleep(1.0/8.0)
    end
 
    def deplacementHaut
-     @ptr= (@ptr-1) % (@map.length)
+     @ptry= @ptry-1
+   if @ptry==-1
+     @ptry=@map[@ptrx].length-1
+     @ptrx=@ptrx-1
+   end
      sleep(1.0/8.0)
    end
 
    def lancerParti
-     wind = Window.new(WindowWidth, WindowHeight,"./mapsDebut/"+@map[@ptr])
+     wind = Window.new(WindowWidth, WindowHeight,"./mapsDebut/"+@map[@ptrx][@ptry])
      #wind.setMap("./mapsDebut/"+@map[@ptr])
      wind.show
      close
@@ -62,5 +115,5 @@ class WindowSelectNiveau< Gosu::Window
      wind.show
      close
    end
-   
+
 end
