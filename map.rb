@@ -47,7 +47,6 @@ class Map
 
   def creeMap(map)
     if map!="./mapsDebut/mapAleatoir"
-      print(map)
       self.addMapToList(map)
     else
       self.addMapToList("mapsDebut/test")
@@ -86,7 +85,10 @@ class Map
             x+=1
           end
       end
-      @carteSuivant=aFile.sysread(1)
+      c=aFile.sysread(1)
+      if c
+        @carteSuivant=c
+      end
       aFile.close
       @list=newList
       @width=taille
@@ -147,7 +149,7 @@ def creationFil(name)#sauve garde la map dans creation pour la metre dans un fic
   end
       aFile.close
   end
-  
+
   def lectureMap(name)#lit la map name et l implemente dans @list
     if File::exists?( name )
       aFile=File.open(name,"r")
