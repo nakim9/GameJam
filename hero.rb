@@ -43,10 +43,10 @@ class Hero < Personnage
         @x -= @velocityX
       end
       @y += @velocityY
-      if y<=10
-        @y -= @velocityY
+      if y<= - Carr::Height * 0
+        @velocityY = 0
       end
-      @y %= NbCarre::Height*Carr::Height
+      #@y %= NbCarre::Height*Carr::Height
       @velocityX *= 0.96
       if   @velocityY<-1
         @velocityY *=0.90

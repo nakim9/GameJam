@@ -30,26 +30,30 @@ class Ennemi < Personnage
 
   # vitesse en x diminue (équivaut à un déplacement vers la gauche)
   def go_left
-    @dernierDeplacement = 'left'
-    if contactGauche
-         @velocityX += 0.5
-         @image = @images[1]
-         @dernierDeplacement = 'right'
-    else
-        @velocityX -= 0.5
+    if not stuned?
+      @dernierDeplacement = 'left'
+      if contactGauche
+           @velocityX += 0.5
+           @image = @images[1]
+           @dernierDeplacement = 'right'
+      else
+          @velocityX -= 0.5
+      end
+      @image = @images[0]
     end
-    @image = @images[0]
   end
 
   # vitesse en x augmente (équivaut à un déplacement vers la droite)
   def go_right
-    @dernierDeplacement = 'right'
-    if contactDroit
-        go_left
-    else
-        @velocityX += 0.5
+    if not stuned?
+      @dernierDeplacement = 'right'
+      if contactDroit
+          go_left
+      else
+          @velocityX += 0.5
+      end
+      @image = @images[1]
     end
-    @image = @images[1]
   end
 #pas utilisé -----------------
   def tjVivant (tirs)
