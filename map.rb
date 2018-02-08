@@ -11,7 +11,6 @@ class Map
   end
 
   def initialisationMaps()
-    print("iniinini")
     @maps=Array.new()
     x=0
     Dir.foreach("./maps") do |fichier|
@@ -46,7 +45,8 @@ class Map
   end
 
   def creeMap(map)
-    if map=="mapsDebut/mapAleatoir"
+    if map!="./mapsDebut/mapAleatoir"
+      print(map)
       self.addMapToList(map)
     else
       self.addMapToList("mapsDebut/test")
@@ -56,18 +56,6 @@ class Map
         self.addMapToList(@maps[clee][rand(taille)])
       end
     end
-=begin      self.addMapToList("viellemap/0/0")
-      self.addMapToList("viellemap/0/1")
-      self.addMapToList("viellemap/0/2")
-      self.addMapToList("viellemap/0/4")
-
-    for num in 0..6
-      clee=@carteSuivant.to_i
-      taille=@maps[clee].length
-      self.addMapToList(@maps[clee][rand(taille)])
-    end
-    self.addMapToList("viellemap/mapTestArrive")
-=end
   end
 
     def addMapToList(name)
