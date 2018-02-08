@@ -94,7 +94,6 @@ class Personnage
 
     def position(map)
       if contactBas
-          # puts "down"
            return 'down'
       end
       if contactDroit
@@ -127,7 +126,6 @@ class Personnage
       def enContact(item)
         distance = Gosu::distance(@x,@y,item.x, item.y)
         if distance<45
-          #print "outch"
           @pv -= 1
         end
       end
@@ -169,7 +167,7 @@ class Personnage
                 p1= self.bd
                 p2 = self.hd
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-                if self.carre(p1[0]-100,p1[1]-100) || self.carre(p2[0]-100,p2[1]+100) || self.carre(pm[0]-100,pm[1])
+                if self.carre(p1[0]-50,p1[1]-50) || self.carre(p2[0]-50,p2[1]+50) || self.carre(pm[0]-50,pm[1])
                       return true
                 else
                      return false
