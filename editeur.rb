@@ -40,12 +40,14 @@ class Editeur < Gosu::Window
     end
 
     def scipFond1
-      (@ptrImage+1) % (@background_image2List.length)
+      @ptrImage=(@ptrImage+1) % (@background_image2List.length)
+      print(@ptrImage)
       sleep(1.0/4.0)
     end
 
     def scipFond2
-      (@ptrImage-1) % (@background_image2List.length)
+      @ptrImage=(@ptrImage-1) % (@background_image2List.length)
+      print(@ptrImage)
       sleep(1.0/4.0)
     end
 
