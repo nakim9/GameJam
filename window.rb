@@ -10,19 +10,11 @@ class Window < Gosu::Window
     @tChangement = 0
     #heros
     @heros = []
-<<<<<<< HEAD
-    #@heros.push(PouleLicorne.new(width/2, height/2,@map))
-    #@heros.push(Vache.new(width/2, height/2,@map))
-    #@heros.push(Ivrogne.new(width/2, height/2,@map))
-    @heros.push(Ninja.new(width/2, height/2,@map))
-    chooseHero
-=======
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
     @heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero(1)
->>>>>>> 9b09c9a8deaed4b7611bd0e36f94fce3bca66cb9
     @hero.localiser
     #hero2
     @heros2 = []
@@ -267,14 +259,9 @@ class Window < Gosu::Window
 
   def chooseFond
       r = Random.new
-<<<<<<< HEAD
-      i=r.rand(0...@heros.length)
-      @hero = @heros[i]
-      puts
-=======
       i=r.rand(0...@background_image2List.length)
       @background_image2 = @background_image2List[i]
->>>>>>> 9b09c9a8deaed4b7611bd0e36f94fce3bca66cb9
+
   end
 
   def initialiserJ2
