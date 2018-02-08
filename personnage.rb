@@ -181,12 +181,7 @@ class Personnage
                 p2 = self.hd
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
                 if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
-                    if (self.carre(p1[0]-20,p1[1]-20) && self.carre(p1[0]-20,p1[1]-20).type== Carr::Portail )|| (self.carre(p2[0]-20,p2[1]-20) && self.carre(p2[0]-20,p2[1]-20).type== Carr::Portail) || (self.carre(pm[0],pm[1]) && self.carre(pm[0],pm[1]).type== Carr::Portail)
-                      #portail!!
-                      return false
-                     else
-                       return true
-                     end
+                      return true
                 else
                      return false
                 end
@@ -197,12 +192,7 @@ class Personnage
                 p2 = self.bg
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
                 if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
-                  if (self.carre(p1[0]-20,p1[1]-20) && self.carre(p1[0]-20,p1[1]-20).type== Carr::Portail )|| (self.carre(p2[0]-20,p2[1]-20) && self.carre(p2[0]-20,p2[1]-20).type== Carr::Portail) || (self.carre(pm[0],pm[1]) && self.carre(pm[0],pm[1]).type== Carr::Portail)
-                    #portail!!
-                    return false
-                   else
                      return true
-                   end
                 else
                      return false
                 end
