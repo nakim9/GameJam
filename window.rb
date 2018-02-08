@@ -1,12 +1,12 @@
 class Window < Gosu::Window
 
-  def initialize(width, height)
-    super
+  def initialize(width, height,map)
+    super(width, height)
     @start = true
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
-    @map.creeMap()
+    @map.creeMap(map)
     @tChangement = 0
 
     #heros

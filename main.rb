@@ -19,7 +19,7 @@ require_relative 'Vampire'
 require_relative 'Arbre'
 require_relative 'Chasseur'
 require_relative 'RePonce'
-
+require_relative 'WindowSelectNiveau'
 require_relative 'editeur'
 require_relative 'pointeur'
 
