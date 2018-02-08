@@ -169,6 +169,7 @@ class Window < Gosu::Window
       r = Random.new
       i=r.rand(0...@heros.length)
       @hero = @heros[i]
+      puts 
   end
 
 
