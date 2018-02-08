@@ -38,8 +38,13 @@ class Hero < Personnage
   def move
 
       @x += @velocityX
-      #@x %= WindowSize::Width
+      if @x<=10
+        @x -= @velocityX
+      end
       @y += @velocityY
+      if y<=10
+        @y -= @velocityY
+      end
       @y %= NbCarre::Height*Carr::Height
       @velocityX *= 0.96
       if   @velocityY<-1
@@ -100,7 +105,7 @@ def localiser
     i +=1
   end
   @x = point[0]
-  @y = point[1]
+  @y = point[1]-150
 end
 
   def passif
@@ -131,5 +136,13 @@ end
   def positionner(x,y)
     @x = x
     @y = y
+  end
+
+  def tomber?
+    if @y >= WindowSize::Height - 5
+      return true
+    else
+      return false
+    end
   end
 end
