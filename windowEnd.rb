@@ -13,6 +13,11 @@ class WindowEnd < Gosu::Window
   end
 
   def update
+    if @cas == 1
+      self.caption = "Perdu!!"
+    else
+      self.caption = "Bravo!!"
+    end
     if Gosu::button_down?(Gosu::KbSpace)
       wind = WindowSelectNiveau.new(WindowWidth,WindowHeight)
       wind.show

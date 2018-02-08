@@ -165,15 +165,15 @@ class Window < Gosu::Window
       @ennemis.each do |ennemi|
           @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_00ff00)
       end
-      @font.draw("Player 1 : ", WindowWidth/5, WindowHeight/10, 3, 1, 1, 0xff_000000)
+      @font.draw("Joueur 1 : ", WindowWidth/5, WindowHeight/10, 3, 1, 1, 0xff_000000)
       @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, (WindowHeight/10)*2, 3, 1, 1, 0xff_000000)
-      @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, (WindowHeight/10)*3, 3, 1, 1, 0xff_000000)
-      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, (WindowHeight/10)*7, 3, 1, 1, 0xff_000000)
+      @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les activer avec 1 et 2 du pad", WindowWidth/5, (WindowHeight/10)*3, 3, 1, 1, 0xff_000000)
+      @font.draw("Bonne chance cher Niapoc! ", WindowWidth/5, (WindowHeight/10)*7, 3, 1, 1, 0xff_000000)
 
       if @hero2
-        @font.draw("Player 2 ", WindowWidth/5, (WindowHeight/10)*4, 3, 1, 1, 0xff_000000)
+        @font.draw("Joueur 2 ", WindowWidth/5, (WindowHeight/10)*4, 3, 1, 1, 0xff_000000)
         @font.draw("Pour se déplacer utiliser les fleches (Q,Z,D) ", WindowWidth/5, (WindowHeight/10)*5, 3, 1, 1, 0xff_000000)
-        @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec R et T", WindowWidth/5, (WindowHeight/10)*6, 3, 1, 1, 0xff_000000)
+        @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les activer avec R et T", WindowWidth/5, (WindowHeight/10)*6, 3, 1, 1, 0xff_000000)
         @hero2.draw
         @hero2.tirs.each(&:draw)
         @font.draw("P2", @hero2.x+(@hero2.image.width/2), @hero2.y-30, 0, 1, 1, 0xff_000000)
@@ -189,7 +189,7 @@ class Window < Gosu::Window
     if @hero2
       @font.draw("Mes PV (J2):"+@hero2.pv.to_s, 0, 30, 0, 1, 1, 0xff_ffffff)
     else
-      @font.draw("Mes PV (J2): appuyer sur Z,Q ou D pour rejoidre la partie", 0, 30, 0, 1, 1, 0xff_ffffff)
+      @font.draw("Mes PV (J2): appuyer sur Z,Q ou D pour rejoindre la partie", 0, 30, 0, 1, 1, 0xff_ffffff)
 
     end
 
