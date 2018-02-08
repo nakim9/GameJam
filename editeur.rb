@@ -13,6 +13,7 @@ class Editeur < Gosu::Window
     end
 
     def update
+      retour if Gosu::button_down?(Gosu::KB_BACKSPACE)
       self.nouveau if Gosu::button_down?(Gosu::KB_F9)
       @ptr.go_left if Gosu::button_down?(Gosu::KbLeft)
       @ptr.go_right if Gosu::button_down?(Gosu::KbRight)
@@ -39,6 +40,7 @@ class Editeur < Gosu::Window
       @font.draw("Shift gauche : effacer", WindowWidth/4, (WindowHeight/50)*5, 3, 1, 1, 0xff_0000ff)
       @font.draw("F5 : sauvegarder", WindowWidth/4, (WindowHeight/50)*6, 3, 1, 1, 0xff_0000ff)
 
+
     end
     end
 
@@ -49,5 +51,11 @@ class Editeur < Gosu::Window
     def nouveau
       @map.clearList(30)
       @ptr.ptrClear(@map)
+    end
+
+    def retour
+      wind = WindowStart.new(WindowWidth, WindowHeight)
+      wind.show
+      close
     end
 end

@@ -4,7 +4,7 @@ class Window < Gosu::Window
     super(width, height)
     @start = true
     @points = 0
-    self.caption = "Mon jeu"
+    self.caption = "L'extraordinaire aventure des Niapocs"
     @map=Map.new()
     @map.creeMap(map)
     @tChangement = 0
@@ -62,7 +62,7 @@ class Window < Gosu::Window
       close
     else
       @points += 0.5
-      # FAIRE fonction SI indiceTouchePressée EST touche
+      retour if Gosu::button_down?(Gosu::KB_BACKSPACE)
       @hero.go_left if Gosu::button_down?(Gosu::KbLeft)
       @hero.go_right if Gosu::button_down?(Gosu::KbRight)
       @hero.go_up if Gosu::button_down?(Gosu::KbUp)
@@ -267,6 +267,10 @@ class Window < Gosu::Window
     chooseHero(2)
     @hero.localiser
   end
-
+  def retour
+    wind = WindowSelectNiveau.new(WindowWidth, WindowHeight)
+    wind.show
+    close
+  end
 
 end
