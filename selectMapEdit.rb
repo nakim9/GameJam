@@ -58,12 +58,14 @@ class SelectMapEdit < Gosu::Window
       str=str+@nom[i]
     end
     return str
-    sleep(@att)
   end
 
   def entre
-    nomMap="sansnom" if !nomMap
-    nameMap="mapsEdit/"+nomMap
+    namMap=nomMap
+    if namMap ==""
+      namMap="sansnom"
+    end
+    nameMap="mapsEdit/"+namMap
     wind = Editeur.new(WindowWidth, WindowHeight,nameMap)
     wind.show
     close
