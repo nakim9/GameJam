@@ -147,6 +147,34 @@ def creationFil(name)#sauve garde la map dans creation pour la metre dans un fic
   end
       aFile.close
   end
+  
+  def lectureMap(name)#lit la map name et l implemente dans @list
+    if File::exists?( name )
+      aFile=File.open(name,"r")
+      centaine=aFile.sysread(1)
+      disaine=aFile.sysread(1)
+      uniter=aFile.sysread(1)
+      @width=centaine.to_i*100+disaine.to_i*10+uniter.to_i
+      @list = Array.new(@width){Array.new(NbCarre::Height,nil)}
+      aFile.sysread(1)
+      for y in 0..NbCarre::Height-1
+        x=0
+        notfin=true
+        while notfin
+          c=aFile.sysread(1)
+          if c!="\n" && c!=Carr::Vide
+            self.add(x,y,Carre.new(c))
+          elsif c=="\n"
+            notfin=false
+          else
+            self.add(x,y,nil)
+          end
+          x+=1
+        end
+      end
+      aFile.close
+    end
+  end
 end
 
 =begin

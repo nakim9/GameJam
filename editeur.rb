@@ -1,10 +1,12 @@
 
 class Editeur < Gosu::Window
 
-  def initialize(width, height)
-    super
+  def initialize(width, height,nomMap)
+    super(width, height)
+    @nom=nomMap
     self.caption = "Editeur"
     @map=Map.new()
+    self.ouvrir(@nom)
     @ptr=Pointeur.new(0,0,@map)
     @camera_x = @camera_y = 0
     @font = Gosu::Font.new(self, "Arial", 20)
@@ -19,7 +21,7 @@ class Editeur < Gosu::Window
       @ptr.switchCarre if Gosu::button_down?(Gosu::KB_TAB)
       @ptr.add if Gosu::button_down?(Gosu::KB_LEFT_CONTROL)
       @ptr.efface if  Gosu::button_down?(Gosu::KB_LEFT_SHIFT)
-      @map.creationFil("mapsEdit/sav") if Gosu::button_down?(Gosu::KB_F5)
+      @map.creationFil(@nom) if Gosu::button_down?(Gosu::KB_F5)
       @camera_x = [@ptr.x*Carr::Width - WindowSize::Width/2, 0].max
       @camera_y = 1
       close if Gosu::button_down?(Gosu::KbEscape)
@@ -38,6 +40,10 @@ class Editeur < Gosu::Window
       @font.draw("F5 : sauvegarder", WindowWidth/4, (WindowHeight/50)*6, 3, 1, 1, 0xff_0000ff)
 
     end
+    end
+
+    def ouvrir(nomMap)
+      @map.lectureMap(nomMap)
     end
 
     def nouveau

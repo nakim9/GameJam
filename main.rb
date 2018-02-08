@@ -23,6 +23,7 @@ require_relative 'portail'
 require_relative 'WindowSelectNiveau'
 require_relative 'editeur'
 require_relative 'pointeur'
+require_relative 'selectMapEdit'
 
 WindowWidth = WindowSize::Width
 WindowHeight = WindowSize::Height
