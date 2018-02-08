@@ -19,10 +19,10 @@ class Magicien < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/Magicien/sortQuiFoir1.mp3"))
-    @song.push(Gosu::Song.new("res/Magicien/sortQuiReussi.mp3"))
-    @song.push(Gosu::Song.new("res/Magicien/MagicienQuiMeurt.mp3"))
-    @song.push(Gosu::Song.new("res/Magicien/sortQuiFoir2.mp3"))
+    @song.push(Gosu::Sample.new("res/Magicien/sortQuiFoir1.ogg"))
+    @song.push(Gosu::Sample.new("res/Magicien/sortQuiReussi.ogg"))
+    @song.push(Gosu::Sample.new("res/Magicien/MagicienQuiMeurt.ogg"))
+    @song.push(Gosu::Sample.new("res/Magicien/sortQuiFoir2.ogg"))
   end
 
   def attaque1
@@ -30,15 +30,12 @@ class Magicien < Hero
       @image = @images[3]
       if rand(3) == 0
         if rand(2) ==0
-        @song[0].volume = Volume::Bruit
         @song[0].play
       else
-        @song[3].volume = Volume::Bruit
         @song[3].play
       end
     else
         super
-        @song[1].volume = Volume::Bruit
         @song[1].play
     end
       @temps=1
@@ -48,7 +45,6 @@ class Magicien < Hero
   def attaque2(ennemis)
       super(ennemis)
       @image = @images[2]
-      @song[2].volume = Volume::Bruit
       @song[2].play
   end
 end

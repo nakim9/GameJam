@@ -17,7 +17,7 @@ class Vampire < Hero
 
     # attribut musique qui prend le fichier music.mp3 dans le répertoire res
     @song = []
-    @song.push(Gosu::Song.new("res/Vampire/vampire.mp3"))
+    @song.push(Gosu::Sample.new("res/Vampire/vampire.mp3"))
 
   end
 
@@ -39,7 +39,6 @@ class Vampire < Hero
         end
       end
     end
-    @song[0].volume = Volume::Bruit
     @song[0].play
   end
 

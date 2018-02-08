@@ -13,7 +13,15 @@ class Window < Gosu::Window
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
+    @heros.push(Arbre.new(width/2, height/2,@map))
+    @heros.push(Chasseur.new(width/2, height/2,@map))
+    @heros.push(Epouvantail.new(width/2, height/2,@map))
+    @heros.push(Magicien.new(width/2, height/2,@map))
+    @heros.push(Pestifere.new(width/2, height/2,@map))
+    @heros.push(Vampire.new(width/2, height/2,@map))
     @heros.push(RePonce.new(width/2, height/2,@map))
+    @heros.push(Ninja.new(width/2, height/2,@map))
+
     chooseHero(1)
     @hero.localiser
     #hero2
@@ -153,6 +161,7 @@ class Window < Gosu::Window
       @hero.draw
       @ennemis.each(&:draw)
       @hero.tirs.each(&:draw)
+      @font.draw("P1", @hero.x+(@hero.image.width/2), @hero.y-30, 0, 1, 1, 0xff_000000)
       @ennemis.each do |ennemi|
           @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_00ff00)
       end
@@ -167,11 +176,12 @@ class Window < Gosu::Window
         @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec R et T", WindowWidth/5, (WindowHeight/10)*6, 3, 1, 1, 0xff_000000)
         @hero2.draw
         @hero2.tirs.each(&:draw)
+        @font.draw("P2", @hero2.x+(@hero2.image.width/2), @hero2.y-30, 0, 1, 1, 0xff_000000)
       end
-      @font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
-      @font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
-      @font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
-      @font.draw("bd", @hero.bd[0], @hero.bd[1], 0, 1, 1, 0xff_0000ff)
+      #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
+      #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
+      #@font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
+      #@font.draw("bd", @hero.bd[0], @hero.bd[1], 0, 1, 1, 0xff_0000ff)
     end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
 
@@ -261,6 +271,7 @@ class Window < Gosu::Window
       r = Random.new
       i=r.rand(0...@background_image2List.length)
       @background_image2 = @background_image2List[i]
+
   end
 
   def initialiserJ2
