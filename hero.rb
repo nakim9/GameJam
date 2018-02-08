@@ -140,4 +140,8 @@ end
     end
     return oui
   end
+  def positionner(x,y)
+    @x = x
+    @y = y
+  end
 end

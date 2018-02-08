@@ -97,9 +97,11 @@ class Window < Gosu::Window
       @ennemis.each do |ennemi|
           @font.draw(ennemi.pv.to_s, ennemi.x+(ennemi.image.width/2), ennemi.y-30, 0, 1, 1, 0xff_0000ff)
       end
-      @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, WindowHeight/5, 0, 1, 1, 0xff_0000ff)
-      @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, WindowHeight/4, 0, 1, 1, 0xff_0000ff)
-      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/3, 0, 1, 1, 0xff_0000ff)
+      @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, WindowHeight/5, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, WindowHeight/4, 3, 1, 1, 0xff_0000ff)
+@font.draw("Sautez dans les portails pour changer de personnages ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/2, 3, 1, 1, 0xff_0000ff)
+
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
       #@font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
@@ -149,7 +151,11 @@ class Window < Gosu::Window
   def chooseHero
     r = Random.new
     i=r.rand(0...@heros.length)
+    #px = @hero.x
+    #py=@hero.y
     @hero = @heros[i]
+    #@hero.localiser(px,py)
   end
+
 
 end
