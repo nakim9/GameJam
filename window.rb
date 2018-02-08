@@ -1,6 +1,5 @@
 class Window < Gosu::Window
 
-<<<<<<< HEAD
   def initialize(width, height,map)
     super(width, height)
     @start = true
@@ -9,14 +8,6 @@ class Window < Gosu::Window
     @map=Map.new()
     @map.creeMap(map)
     @tChangement = 0
-=======
-  def initialize(width, height)
-    super
-    @points = 0
-    self.caption = "Mon jeu"
-    @map=Map.new()
-    @map.creeMap()
->>>>>>> eb0ea7c81405fa1a193746dcb38cd119d90df00c
 
     #heros
     @heros = []
@@ -180,7 +171,7 @@ class Window < Gosu::Window
       r = Random.new
       i=r.rand(0...@heros.length)
       @hero = @heros[i]
-      puts 
+      puts
   end
 
 

@@ -19,11 +19,8 @@ require_relative 'Vampire'
 require_relative 'Arbre'
 require_relative 'Chasseur'
 require_relative 'RePonce'
-<<<<<<< HEAD
-require_relative 'WindowSelectNiveau'
-=======
 require_relative 'portail'
->>>>>>> eb0ea7c81405fa1a193746dcb38cd119d90df00c
+require_relative 'WindowSelectNiveau'
 require_relative 'editeur'
 require_relative 'pointeur'
 
