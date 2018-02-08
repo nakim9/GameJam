@@ -2,16 +2,22 @@ class Window < Gosu::Window
 
   def initialize(width, height)
     super
+    @start = true
     @points = 0
     self.caption = "Mon jeu"
     @map=Map.new()
+    @tChangement = 0
     #heros
     @heros = []
     @heros.push(PouleLicorne.new(width/2, height/2,@map))
     @heros.push(Vache.new(width/2, height/2,@map))
     @heros.push(Ivrogne.new(width/2, height/2,@map))
+    #@heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
+
+
+
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -60,6 +66,7 @@ class Window < Gosu::Window
       @hero.tirs.each do |tirs|
         tirs.kill(@ennemis)
       end
+      @hero.passif(@ennemis)
       if (@hero.temps!=0 && @hero.temps<@hero.tempsAttente)
         @hero.incremente
       elsif @hero.temps==@hero.tempsAttente
@@ -99,7 +106,7 @@ class Window < Gosu::Window
       end
       @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche) ", WindowWidth/5, WindowHeight/5, 3, 1, 1, 0xff_0000ff)
       @font.draw("Les personnages peuvent avoit deux attaques : Vous pouvez les avtivées avec 1 et 2 du pad", WindowWidth/5, WindowHeight/4, 3, 1, 1, 0xff_0000ff)
-@font.draw("Sautez dans les portails pour changer de personnages ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
+      @font.draw("Sautez dans les portails pour changer de personnages ", WindowWidth/5, WindowHeight/3, 3, 1, 1, 0xff_0000ff)
       @font.draw("Bonne chance chère Niapoc! ", WindowWidth/5, WindowHeight/2, 3, 1, 1, 0xff_0000ff)
 
       #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
@@ -149,12 +156,13 @@ class Window < Gosu::Window
   end
 
   def chooseHero
-    r = Random.new
-    i=r.rand(0...@heros.length)
-    #px = @hero.x
-    #py=@hero.y
-    @hero = @heros[i]
-    #@hero.localiser(px,py)
+    if @points - @tChangement > 100 || @start
+      r = Random.new
+      i=r.rand(0...@heros.length)
+      @hero = @heros[i]
+      @tChangement=@points
+      @start = false
+    end
   end
 
 
