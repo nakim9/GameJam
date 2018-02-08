@@ -8,6 +8,7 @@ class Map
      @list = Array.new()
      @maps=Array.new()
      self.initialisationMaps()
+     clearList(10)
   end
 
   def initialisationMaps()
