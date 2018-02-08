@@ -39,7 +39,6 @@ def maps()
   Dir.foreach("./mapsDebut") do |fichier|
       if fichier!=".." && fichier!="."
         @map[x].push(fichier)
-        print(@map[x][0])
       y+=1
       if y==7
         y=0
@@ -85,7 +84,6 @@ end
 
   def deplacementGauche
     @ptrx-=1
-    print("\n"+@map[@ptrx][@ptry])
     if @ptrx==-1
       @ptrx=@map.length-1
     end

@@ -4,7 +4,6 @@ class Editeur < Gosu::Window
   def initialize(width, height,nomMap)
     super(width, height)
     @nom=nomMap
-    print(@nom)
     self.caption = "Editeur"
     @map=Map.new()
     self.ouvrir(@nom)
