@@ -17,10 +17,8 @@ class Window < Gosu::Window
     #@heros.push(RePonce.new(width/2, height/2,@map))
     chooseHero
     @hero.localiser
-    @portail = Portail.new(@map)
-
-
-
+    @portails = []
+    placePortails
     #ennemis
     @ennemis = []
     placeEnnemis
@@ -103,7 +101,7 @@ class Window < Gosu::Window
     @background_image1.draw(0, 0, ZOrder::Background)
     @background_image2.draw(0, WindowSize::Height-@background_image2.height, ZOrder::Background)
     Gosu.translate(-@camera_x, -@camera_y) do
-      @portail.draw
+      @portails.each(&:draw)
       @map.draw
       @hero.draw
       @ennemis.each(&:draw)
@@ -135,6 +133,21 @@ class Window < Gosu::Window
         if y && y.type==Carr::Ennemi
           point = coodonees(i,j)
           @ennemis.push(Ennemi.new(point[0], point[1],@map))
+        end
+      j=j+1
+    end
+    i=i+1
+    end
+  end
+
+  def placePortails
+    i=0
+    @map.list.each do |x|
+      j=0
+      x.each do |y|
+        if y && y.type==Carr::Portail
+          point = coodonees(i,j)
+          @portails.push(Portail.new(point[0], point[1],@map))
         end
       j=j+1
     end
