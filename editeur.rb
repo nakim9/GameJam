@@ -32,7 +32,8 @@ class Editeur < Gosu::Window
       Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
       @ptr.draw
-
+      @font.draw("Sortir : ESC", 0, 0, 0, 1, 1, 0xff_f62217)
+      @font.draw("Retour : BackSpace", 0, 30, 0, 1, 1, 0xff_f62217)
       @font.draw("Pour se déplacer utiliser les fleches (Haut,Droit,Gauche,Bas) ", WindowWidth/4, WindowHeight/50, 3, 1, 1, 0xff_0000ff)
       @font.draw("F9 : nouveau", WindowWidth/4, (WindowHeight/50)*2, 3, 1, 1, 0xff_0000ff)
       @font.draw("Tab : Changer de carre", WindowWidth/4, (WindowHeight/50)*3, 3, 1, 1, 0xff_0000ff)

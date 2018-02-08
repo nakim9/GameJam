@@ -147,13 +147,13 @@ class Personnage
           p1= self.bg
           p2 = self.bd
           pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-          if self.carre(p1[0],p1[1]) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
+          if self.carre(p1[0],p1[1]+20) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
                return true
           else
                return false
           end
      end
-     
+
            def contactHaut
                 p1= self.hg
                 p2 = self.hd
