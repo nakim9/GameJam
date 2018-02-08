@@ -46,15 +46,16 @@ class Map
   end
 
   def creeMap(map)
-    if map!="./mapsDebut/mapAleatoir"
+    if map!="./mapsDebut/MapAleatoire"
       self.addMapToList(map)
     else
-      self.addMapToList("mapsDebut/test")
+      self.addMapToList("Map/debut")
       for num in 0..6
         clee=@carteSuivant.to_i
         taille=@maps[clee].length
         self.addMapToList(@maps[clee][rand(taille)])
       end
+      self.addMapToList("Map/fin")
     end
   end
 
@@ -117,15 +118,11 @@ def clearList(widht)
   sleep(1.0/8.0)
   @list=Array.new(widht){Array.new(NbCarre::Height,nil)}
   @width=widht
-  print(@width)
 end
 
 def creationFil(name)#sauve garde la map dans creation pour la metre dans un fichier name
   sleep(1.0/8.0)
   aFile=File.new(name,"w")
-    print("\n")
-    print(@width)
-    print("\n")
   if @width>99
     aFile.syswrite(@width)
   elsif @width>9
