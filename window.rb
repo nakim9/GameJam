@@ -270,7 +270,7 @@ class Window < Gosu::Window
         r = Random.new
         i=r.rand(0...@heros.length)
         px = @hero.x
-        py = @hero.y
+        py = @hero.y-50
         @hero = @heros[i]
         @hero.positionner(px,py)
       end
@@ -279,7 +279,7 @@ class Window < Gosu::Window
         r = Random.new
         i=r.rand(0...@heros2.length)
         px = @hero2.x
-        py = @hero2.y
+        py = @hero2.y-50
         @hero2 = @heros2[i]
         @hero2.positionner(px,py)
       else
