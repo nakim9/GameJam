@@ -48,7 +48,7 @@ class Hero < Personnage
       end
       @y %= NbCarre::Height*Carr::Height
       @velocityX *= 0.96
-      if   @velocityY<-1
+      if @velocityY<-1
         @velocityY *=0.90
       else
         @velocityY=(@velocityY-4)*0.8+6

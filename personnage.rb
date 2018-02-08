@@ -153,23 +153,12 @@ class Personnage
                return false
           end
      end
-
-           def getContactBas
-             p1= self.bg
-             p2 = self.bd
-             pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-             if self.carre(p1[0],p1[1]) || self.carre(p2[0],p2[1]) || self.carre(pm[0],pm[1])
-                  return
-             else
-                  return nil
-             end
-           end
-
+     
            def contactHaut
                 p1= self.hg
                 p2 = self.hd
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-                if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0]-20,pm[1]-20)
+                if self.carre(p1[0]+20,p1[1]+20) || self.carre(p2[0]-20,p2[1]+20) || self.carre(pm[0],pm[1]+20)
                      return true
                 else
                      return false
@@ -180,7 +169,7 @@ class Personnage
                 p1= self.bd
                 p2 = self.hd
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-                if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
+                if self.carre(p1[0]-100,p1[1]-100) || self.carre(p2[0]-100,p2[1]+100) || self.carre(pm[0]-100,pm[1])
                       return true
                 else
                      return false
@@ -191,7 +180,7 @@ class Personnage
                 p1= self.hg
                 p2 = self.bg
                 pm = pointMid(p1[0],p1[1],p2[0],p2[1])
-                if self.carre(p1[0]-20,p1[1]-20) || self.carre(p2[0]-20,p2[1]-20) || self.carre(pm[0],pm[1])
+                if self.carre(p1[0]+50,p1[1]+50) || self.carre(p2[0]+50,p2[1]-50) || self.carre(pm[0]+50,pm[1])
                      return true
                 else
                      return false

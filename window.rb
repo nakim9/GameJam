@@ -53,7 +53,7 @@ class Window < Gosu::Window
     if gameOver? || @hero.arrive? || @hero.tomber? || @hero2 && @hero2.arrive? || @hero2 && @hero2.tomber?
       wind = WindowEnd.new(WindowSize::Width, WindowSize::Height)
       wind.setPoints(@points)
-      if gameOver? || @hero.tomber? || @hero2 && @hero2.arrive?
+      if gameOver? || @hero.tomber? || @hero2 && @hero2.tomber?
         wind.cas(1)
       else
         wind.cas(2)
@@ -168,10 +168,10 @@ class Window < Gosu::Window
         @hero2.draw
         @hero2.tirs.each(&:draw)
       end
-      #@font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
-      #@font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
-      #@font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
-      #@font.draw("bd", @hero.bd[0], @hero.bd[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("hg", @hero.hg[0], @hero.hg[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("hd", @hero.hd[0], @hero.hd[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("bg", @hero.bg[0], @hero.bg[1], 0, 1, 1, 0xff_0000ff)
+      @font.draw("bd", @hero.bd[0], @hero.bd[1], 0, 1, 1, 0xff_0000ff)
     end
     #pour afficher une info en haut de la fenetre (pv, gagner, perdu,...)
 
