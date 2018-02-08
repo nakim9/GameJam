@@ -44,6 +44,7 @@ class Hero < Personnage
       end
       @y += @velocityY
       if y<=10 || contactHaut
+        puts "passe"
         @y -= @velocityY
       end
       #@y %= NbCarre::Height*Carr::Height
